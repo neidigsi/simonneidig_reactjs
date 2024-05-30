@@ -1,0 +1,32 @@
+/**
+ * General button styling
+ */
+.btn {
+  @apply p-2 rounded-md;
+}
+
+.btn:hover {
+  @apply bg-gradient-to-r from-primary to-secondary text-white;
+}
+
+// Active buttons should always have a gradient background
+.btn-active {
+  @apply bg-gradient-to-r from-primary to-secondary;
+}
+
+/**
+ * Color btn classes
+ */
+@each $color in $colors {
+  .btn-#{$color} {
+    @apply btn;
+  }
+}
+
+.btn-light-grey {
+  @apply btn bg-light-grey;
+}
+
+.btn-white {
+  @apply btn bg-white;
+}
