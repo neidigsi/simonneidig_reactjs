@@ -4,7 +4,10 @@ import "@/assets/scss/main.scss";
 import Sidebar from "@/components/sidebar/sidebar";
 import MainSection from "@/components/main/mainSection";
 
-const montserrat = Montserrat_Alternates({ weight: "100", subsets: ["latin"] });
+const montserrat = Montserrat_Alternates({
+  weight: ["200", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Simon Neidig",

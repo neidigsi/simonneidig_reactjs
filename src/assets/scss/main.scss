@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 @import "./variables/app";
-@import "./components/general/button";
+
+
 @import "./utilities/background";
+@import "./utilities/general";
+
+@import "./components/general/badge";
+@import "./components/general/button";
