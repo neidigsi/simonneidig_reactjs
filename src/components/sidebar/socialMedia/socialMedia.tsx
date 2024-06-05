@@ -9,13 +9,11 @@ export default function SocialMedia() {
     <div className="flex justify-center gap-2">
       {socialMedia != undefined &&
         socialMedia.map((item: any) => (
-          <>
-            <SocialMediaButton
-              color={item.color}
-              path={item.path}
-              url={item.url}
-            />
-          </>
+          <SocialMediaButton
+            color={item.color}
+            path={item.path}
+            url={item.url}
+          />
         ))}
     </div>
   );
