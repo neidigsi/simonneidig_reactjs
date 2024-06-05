@@ -1,9 +1,10 @@
-import Badge from "@/components/general/badge";
+// Import internal dependencies
+import Icon from "@/components/general/icon";
 
 interface PersonalInfoItemObject {
   label: string;
   value: string;
-  icon: React.ReactNode;
+  icon: string;
 }
 
 export default function PersonalInfoItem({
@@ -16,7 +17,7 @@ export default function PersonalInfoItem({
       <div className="grid col-span-1 items-center justify-items-center ">
         <div className=" bg-white text-primary rounded-lg drop-shadow-xl">
           <div className="m-3">
-            <div className="size-7">{icon}</div>
+            <div className="size-7"><Icon icon={icon} /></div>
           </div>
         </div>
       </div>

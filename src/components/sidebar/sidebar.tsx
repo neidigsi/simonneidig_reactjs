@@ -1,19 +1,34 @@
+// Import external dependencies
+import { useEffect } from "react";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+
+// Import internal dependencies
 import Badge from "@/components/general/badge";
 import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
 import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
-import ProfilePicture from "./profilePicture";
+import ProfilePicture from "@/components/sidebar/profilePicture";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 
 export default function Sidebar() {
+  const name = useAppSelector((state) => state.personalInfo.name);
+  const position = useAppSelector((state) => state.personalInfo.position);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadPersonalInfo());
+  }, []);
+
   return (
     <div className="grid col-span-1 h-screen items-end">
       <div className="mb-6">
         <ProfilePicture />
         <div className="bg-white justify-center rounded-b-3xl w-full">
-          <h2 className="text-center pt-6">Simon Neidig</h2>
+          <h2 className="text-center pt-6">{name}</h2>
           <div className="grid justify-center my-4 text-base">
             <Badge
-              text="Senior Consultant"
+              text={position}
               additionalClasses="bg-light-grey font-bold"
             />
           </div>
