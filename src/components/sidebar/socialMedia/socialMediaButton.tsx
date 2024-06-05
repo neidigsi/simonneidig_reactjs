@@ -4,13 +4,13 @@ import { useState } from "react";
 interface SocialMediaButtonObject {
   path: string;
   color: string;
-  link: string;
+  url: string;
 }
 
 export default function SocialMediaButton({
   path,
   color,
-  link,
+  url,
 }: Readonly<SocialMediaButtonObject>) {
   // This variable is true if the button is currently highlighted
   const [active, setActive] = useState(false);
@@ -30,7 +30,7 @@ export default function SocialMediaButton({
       className="btn-light-grey"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      onClick={() => openInNewTab(link)}
+      onClick={() => openInNewTab(url)}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
