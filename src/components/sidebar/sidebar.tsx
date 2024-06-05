@@ -1,15 +1,16 @@
-import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
-import Badge from "../general/badge";
-import PersonalInfo from "./personalInfo/personalInfo";
-import SocialMedia from "./socialMedia/socialMedia";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import Badge from "@/components/general/badge";
+import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
+import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
+import ProfilePicture from "./profilePicture";
 
 export default function Sidebar() {
   return (
     <div className="grid col-span-1 h-screen items-end">
       <div className="mb-6">
-        <div className="bg-primary">Sidebar</div>
-        <div className="bg-white grid justify-center rounded-b-3xl">
-          <h2 className="text-center mt-6">Simon Neidig</h2>
+        <ProfilePicture />
+        <div className="bg-white justify-center rounded-b-3xl w-full">
+          <h2 className="text-center pt-6">Simon Neidig</h2>
           <div className="grid justify-center my-4 text-base">
             <Badge
               text="Senior Consultant"
@@ -18,7 +19,7 @@ export default function Sidebar() {
           </div>
           <SocialMedia />
           <PersonalInfo />
-          <div className="grid justify-center my-10">
+          <div className="grid justify-center py-10">
             <button className="btn btn-active flex">
               <ArrowDownTrayIcon className="size-6 mr-2" /> Download CV
             </button>

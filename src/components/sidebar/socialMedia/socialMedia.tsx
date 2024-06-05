@@ -1,4 +1,4 @@
-import SocialMediaButton from "./socialMediaButton";
+import SocialMediaButton from "@/components/sidebar/socialMedia/socialMediaButton";
 
 export default function SocialMedia() {
   return (

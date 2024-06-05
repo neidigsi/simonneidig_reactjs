@@ -15,6 +15,12 @@ export default function SocialMediaButton({
   // This variable is true if the button is currently highlighted
   const [active, setActive] = useState(false);
 
+
+  /**
+   * This method opens a given link in a new tab.
+   *
+   * @param {string} url The internet address, which should be opened.
+   */
   const openInNewTab = (url: string) => {
     window.open(url, "_blank", "noreferrer");
   };
