@@ -1,5 +1,4 @@
 // Import external dependencies
-import { useEffect } from "react";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
 // Import internal dependencies
@@ -7,18 +6,11 @@ import Badge from "@/components/general/badge";
 import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
 import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
 import ProfilePicture from "@/components/sidebar/profilePicture";
-import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
+import { useAppSelector } from "@/store/hooks";
 
 export default function Sidebar() {
   const name = useAppSelector((state) => state.personalInfo.name);
   const position = useAppSelector((state) => state.personalInfo.position);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(loadPersonalInfo());
-  }, []);
 
   return (
     <div className="grid col-span-1 h-screen items-end">

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ErrorPage from "@/pages/errorPage";
 import Works from "@/pages/works";
 import Resume from "@/pages/resume";
