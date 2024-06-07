@@ -1,3 +1,5 @@
+"use client";
+
 // Import external dependencies
 import { Provider } from "react-redux";
 import { Montserrat_Alternates } from "next/font/google";
