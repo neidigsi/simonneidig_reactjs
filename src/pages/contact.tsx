@@ -1,3 +1,6 @@
+// Import internal dependencies
+import Layout from "@/app/layout";
+
 export default function Contact() {
-  return <div>Contact</div>;
+  return <Layout>Contact</Layout>;
 }

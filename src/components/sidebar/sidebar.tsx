@@ -1,3 +1,5 @@
+"use client";
+
 // Import external dependencies
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
@@ -13,7 +15,10 @@ export default function Sidebar() {
   const position = useAppSelector((state) => state.personalInfo.position);
 
   return (
-    <div className="grid col-span-1 h-screen items-end">
+    <div
+      className="grid col-span-1 h-screen items-end"
+      suppressHydrationWarning
+    >
       <div className="mb-6 drop-shadow-xl">
         <ProfilePicture />
         <div className="bg-white justify-center rounded-b-3xl w-full">

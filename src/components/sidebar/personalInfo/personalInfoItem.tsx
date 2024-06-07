@@ -11,13 +11,15 @@ export default function PersonalInfoItem({
   label,
   value,
   icon,
-}: PersonalInfoItemObject) {
+}: Readonly<PersonalInfoItemObject>) {
   return (
     <div className="grid grid-cols-4 w-full my-1 gap-2">
       <div className="grid col-span-1 items-center justify-items-center ">
         <div className=" bg-white text-primary rounded-lg drop-shadow-xl">
           <div className="m-3">
-            <div className="size-7"><Icon icon={icon} /></div>
+            <div className="size-7">
+              <Icon icon={icon} />
+            </div>
           </div>
         </div>
       </div>

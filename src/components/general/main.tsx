@@ -1,37 +1,37 @@
 "use client";
 
-// Import external dependencies
-import { useEffect } from "react";
+// Import internal dependencies
+import Loader from "@/components/general/loader";
+import { Montserrat_Alternates } from "next/font/google";
+import { Provider } from "react-redux";
 
 // Import internal dependencies
-import Sidebar from "@/components/sidebar/sidebar";
-import Router from "@/router/router";
-import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
-import Loader from "@/components/general/loader";
+import "@/assets/scss/main.scss";
+import { store } from "@/store/store";
+import Home from "@/pages/home";
+import Navigation from "../navigation/navigation";
+import Sidebar from "../sidebar/sidebar";
 
-export default function Main({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const loaded = useAppSelector((state) => state.personalInfo.loaded);
+const montserrat = Montserrat_Alternates({
+  weight: ["200", "700"],
+  subsets: ["latin"],
+});
 
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(loadPersonalInfo());
-  }, []);
-
+export default function Main() {
   return (
-    <div className="grid place-content-center bg-image">
-      {loaded ? (
-        <Router>{children}</Router>
-      ) : (
-        <div className="grid h-screen w-screen">
-          <Loader size={5} color="white" />
-        </div>
-      )}
-    </div>
+    <html lang="en">
+      <body className={montserrat.className}>
+        <Provider store={store}>
+          <div className="grid grid-cols-3 gap-8 max-w-[1350px] mx-8 w-screen">
+            <div className="col-span-1">
+              <Sidebar />
+            </div>
+            <div className="col-span-2">
+              <Navigation />
+            </div>
+          </div>
+        </Provider>
+      </body>
+    </html>
   );
 }

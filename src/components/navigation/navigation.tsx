@@ -1,15 +1,35 @@
-import { UserIcon } from "@heroicons/react/24/outline";
-import { NavLink } from "react-router-dom";
-import NavigationItem from "./navigationItem";
+// Import internal dependencies
+import { useActivePath } from "@/helpers/next";
+import NavigationItem from "@/components/navigation/navigationItem";
+
+type NavigationObject = {
+  path: string;
+  icon: string;
+  text: string;
+};
+
+const navigation: NavigationObject[] = [
+  { path: "/", icon: "UserIcon", text: "About" },
+  { path: "/resume", icon: "DocumentCheckIcon", text: "Resume" },
+  { path: "/works", icon: "BriefcaseIcon", text: "Works" },
+  { path: "/contact", icon: "EnvelopeIcon", text: "Contact" },
+];
 
 export default function Navigation() {
+  const checkActivePath = useActivePath();
+
   return (
     <div className="flex justify-end">
       <div className="grid grid-cols-4 gap-2 bg-white p-3 rounded-3xl drop-shadow-xl">
-        <NavigationItem text="About" path="/" icon="UserIcon" />
-        <NavigationItem text="Resume" path="/resume" icon="DocumentCheckIcon" />
-        <NavigationItem text="Works" path="/works" icon="BriefcaseIcon" />
-        <NavigationItem text="Contact" path="/contact" icon="EnvelopeIcon" />
+        {navigation.map(({ path, icon, text }) => (
+          <NavigationItem
+            key={text}
+            text={text}
+            path={path}
+            icon={icon}
+            active={checkActivePath(path)}
+          />
+        ))}
       </div>
     </div>
   );

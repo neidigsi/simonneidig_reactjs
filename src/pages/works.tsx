@@ -1,3 +1,6 @@
+// Import internal dependencies
+import Layout from "@/app/layout";
+
 export default function Works() {
-  return <div>Works</div>;
+  return <Layout>Works</Layout>;
 }
