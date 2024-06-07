@@ -1,4 +1,6 @@
 "use client";
+
+// Import external dependencies
 import { useState } from "react";
 
 interface SocialMediaButtonObject {

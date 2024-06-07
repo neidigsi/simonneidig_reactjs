@@ -21,6 +21,9 @@ const config: Config = {
         "light-grey": "#E8E8E8",
         "dark-grey": "#5F5F5F",
       },
+      animation: {
+        'loader': 'loading 0.5s infinite',
+      }
     },
   },
   plugins: [],
