@@ -21,7 +21,7 @@ export default function NavigationItem({
     <Link href={path}>
       <button className={active ? "nav-item nav-item-active" : "nav-item"}>
         <div className="grid justify-items-center gap-1">
-          <div className="size-6">
+          <div className="size-5">
             <Icon icon={icon} />
           </div>
           {text}

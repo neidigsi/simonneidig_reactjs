@@ -13,7 +13,7 @@ export default function PersonalInfoItem({
   icon,
 }: Readonly<PersonalInfoItemObject>) {
   return (
-    <div className="grid grid-cols-4 w-full my-1 gap-2">
+    <div className="grid grid-cols-4 w-full my-1 gap-2 ">
       <div className="grid col-span-1 items-center justify-items-center ">
         <div className=" bg-white text-primary rounded-lg drop-shadow-xl">
           <div className="m-3">
@@ -25,7 +25,7 @@ export default function PersonalInfoItem({
       </div>
       <div className="col-span-3 my-2">
         <div className="text-dark-grey col-span-4 text-sm">{label}</div>
-        <div className="">{value}</div>
+        <div className="text-base">{value}</div>
       </div>
     </div>
   );

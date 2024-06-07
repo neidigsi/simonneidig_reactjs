@@ -2,7 +2,7 @@
  * General button styling
  */
 .nav-item {
-  @apply rounded-lg size-[4.5rem] text-base items-center;
+  @apply rounded-lg size-[4rem] text-sm items-center;
 }
 
 // Active buttons should always have a gradient background
