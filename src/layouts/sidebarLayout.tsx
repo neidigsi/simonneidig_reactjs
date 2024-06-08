@@ -9,6 +9,7 @@ import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import Loader from "@/components/general/loader";
 import Navigation from "@/components/navigation/navigation";
+import Icon from "@/components/general/icon";
 
 export default function SidebarLayout({
   children,
@@ -30,9 +31,18 @@ export default function SidebarLayout({
           <div className="col-span-1">
             <Sidebar />
           </div>
-          <div className="col-span-2">
-            <Navigation />
-            {children}
+          <div className="col-span-2 p-10">
+            <div className="flex justify-end button-bar">
+              <button className="btn-white">
+                <div className="size-5">
+                  <Icon icon="SunIcon" />
+                </div>
+              </button>
+            </div>
+            <div className="main-section">
+              <Navigation />
+              {children}
+            </div>
           </div>
         </div>
       ) : (

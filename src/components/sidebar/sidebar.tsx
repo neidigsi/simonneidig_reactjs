@@ -19,7 +19,7 @@ export default function Sidebar() {
       <div className="mb-4 drop-shadow-xl">
         <ProfilePicture />
         <div className="bg-white justify-center rounded-b-2xl w-full">
-          <h2 className="text-center pt-4">{name}</h2>
+          <h2 className="text-center">{name}</h2>
           <div className="grid justify-center my-2 text-base">
             <Badge
               text={position}
