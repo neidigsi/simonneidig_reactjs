@@ -5,11 +5,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import educationReducer from "@/store/slices/educationSlice";
 import expertiseReducer from "@/store/slices/expertiseSlice";
 import personalInfoReducer from "@/store/slices/personalInfoSlice";
+import experienceReducer from "@/store/slices/experienceSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       education: educationReducer,
+      experience: experienceReducer,
       expertise: expertiseReducer,
       personalInfo: personalInfoReducer,
     },

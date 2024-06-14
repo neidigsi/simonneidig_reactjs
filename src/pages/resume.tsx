@@ -1,13 +1,14 @@
 // Import internal dependencies
 import Layout from "@/app/layout";
-import Card from "@/components/general/card";
+import StoreProvider from "@/app/storeProvider";
+import ResumeCard from "@/components/resume/resumeCard";
 
 export default function Resume() {
   return (
     <Layout>
-      <Card headline="Resume">
-        <div></div>
-      </Card>
+      <StoreProvider>
+        <ResumeCard />
+      </StoreProvider>
     </Layout>
   );
 }
