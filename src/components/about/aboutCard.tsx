@@ -1,9 +1,11 @@
+// Import external dependencies
+import { useEffect } from "react";
+
 // Import internal dependencies
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import Card from "@/components/general/card";
-import { useEffect } from "react";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
-import ExpertiseItem from "./expertiseItem";
+import ExpertiseItem from "@/components/about/expertiseItem";
 import { loadExpertises } from "@/store/slices/expertiseSlice";
 
 export default function AboutCard() {
@@ -31,11 +33,11 @@ export default function AboutCard() {
       <div className="text-base">
         <p dangerouslySetInnerHTML={{ __html: abstract }} />
         <h2>What I do!</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {expertises.map(({ index, expertise, description, icon }) => (
+        <div className="grid grid-cols-2 gap-4 pt-4">
+          {expertises.map(({ index, color, expertise, description, icon }) => (
             <ExpertiseItem
               key={index}
-              index={index}
+              color={color}
               expertise={expertise}
               description={description}
               icon={icon}

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface Expertise {
   index: number;
+  color: string;
   expertise: string;
   description: string;
   icon: string;
@@ -50,7 +51,19 @@ export const expertiseSlice = createSlice({
         },
       ];
 
-      resp.map((o, index) => ({ ...o, index: index }));
+      // Assign color to element
+      let j = 0;
+      for (let i = 0; i < resp.length; i++) {
+        j += 1;
+
+        if (j < 2) {
+          resp[i] = { ...resp[i], index: i, color: "secondary" };
+        } else {
+          j = j % 3;
+          resp[i] = { ...resp[i], index: i, color: "primary" };
+        }
+      }
+      console.log(resp)
       state.expertises = resp;
       state.loaded = true;
     },

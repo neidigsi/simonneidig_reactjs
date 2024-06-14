@@ -2,24 +2,22 @@
 import Icon from "@/components/general/icon";
 
 interface ExpertiseItemObject {
-  index: number;
+  color: string;
   expertise: string;
   description: string;
   icon: string;
 }
 
 export default function ExpertiseItem({
-  index,
+  color,
   expertise,
   description,
   icon,
 }: Readonly<ExpertiseItemObject>) {
-  console.log(index);
   return (
     <div
       className={
-        (index % 2 == 0 ? "bg-primary " : "bg-secondary ") +
-        "grid grid-cols-5 w-full rounded-2xl bg-opacity-20 py-5"
+        "grid grid-cols-5 w-full rounded-2xl bg-opacity-20 py-5 bg-" + color
       }
     >
       <div className="grid col-span-1 justify-items-center ">

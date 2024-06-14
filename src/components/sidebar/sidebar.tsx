@@ -17,7 +17,7 @@ export default function Sidebar() {
   return (
     <div className="grid col-span-1 h-screen items-end w-full">
       <div className="mb-4 drop-shadow-xl">
-        {/* <ProfilePicture /> */}
+        <ProfilePicture />
         <div className="bg-white justify-center rounded-b-2xl">
           <h2 className="text-center">{name}</h2>
           <div className="grid justify-center my-2 text-base">
