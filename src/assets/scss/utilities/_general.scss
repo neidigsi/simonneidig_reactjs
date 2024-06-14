@@ -1,11 +1,22 @@
 h1 {
-    @apply text-2xl font-bold;
+  @apply text-2xl font-bold;
 }
 
 h2 {
-    @apply text-xl font-bold;
+  @apply text-xl font-bold pt-4;
 }
 
 h3 {
-    @apply text-lg font-bold;
+  @apply text-lg font-bold;
+}
+
+.main-section {
+  padding-top: calc(
+    100vh - 604px /* Sidebar height */ - 1.25rem /* Dark mode button height */ -
+      1rem /* Dark mode button padding */ - 2rem /* Button padding top */
+  );
+}
+
+.button-bar {
+  padding-top: 2rem;
 }

@@ -2,17 +2,15 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     fontSize: {
-      sm: ["14px", "20px"],
-      base: ["14px", "20px"],
-      lg: ["20px", "28px"],
-      xl: ["24px", "32px"],
-      "2xl": ["32px", "40px"],
+      sm: "9pt",
+      base: "11pt",
+      lg: "11pt",
+      xl: "20pt",
+      "2xl": "25pt",
     },
     extend: {
       colors: {
@@ -22,8 +20,8 @@ const config: Config = {
         "dark-grey": "#5F5F5F",
       },
       animation: {
-        'loader': 'loading 0.5s infinite',
-      }
+        loader: "loading 0.5s infinite",
+      },
     },
   },
   plugins: [],

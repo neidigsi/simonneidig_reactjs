@@ -1,12 +1,9 @@
-"use client";
-
 // Import external dependencies
-import { Provider } from "react-redux";
 import { Montserrat_Alternates } from "next/font/google";
+import StoreProvider from "@/app/storeProvider";
 
 // Import internal dependencies
 import "@/assets/scss/main.scss";
-import { store } from "@/store/store";
 import SidebarLayout from "@/layouts/sidebarLayout";
 
 const montserrat = Montserrat_Alternates({
@@ -23,9 +20,9 @@ export default function Layout({
     <div
       className={"grid place-content-center bg-image " + montserrat.className}
     >
-      <Provider store={store}>
+      <StoreProvider>
         <SidebarLayout>{children}</SidebarLayout>
-      </Provider>
+      </StoreProvider>
     </div>
   );
 }

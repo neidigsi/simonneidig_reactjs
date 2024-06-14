@@ -15,15 +15,12 @@ export default function Sidebar() {
   const position = useAppSelector((state) => state.personalInfo.position);
 
   return (
-    <div
-      className="grid col-span-1 h-screen items-end"
-      suppressHydrationWarning
-    >
-      <div className="mb-6 drop-shadow-xl">
+    <div className="grid col-span-1 h-screen items-end w-full">
+      <div className="mb-4 drop-shadow-xl">
         <ProfilePicture />
-        <div className="bg-white justify-center rounded-b-3xl w-full">
-          <h2 className="text-center pt-6">{name}</h2>
-          <div className="grid justify-center my-4 text-base">
+        <div className="bg-white justify-center rounded-b-2xl">
+          <h2 className="text-center">{name}</h2>
+          <div className="grid justify-center my-2 text-base">
             <Badge
               text={position}
               additionalClasses="bg-light-grey font-bold"
@@ -31,7 +28,7 @@ export default function Sidebar() {
           </div>
           <SocialMedia />
           <PersonalInfo />
-          <div className="grid justify-center py-10">
+          <div className="grid justify-center pb-6">
             <button className="btn btn-active flex">
               <ArrowDownTrayIcon className="size-6 mr-2" /> Download CV
             </button>

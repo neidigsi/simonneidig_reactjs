@@ -41,7 +41,7 @@ export const personalInfoSlice = createSlice({
         name: "Simon Neidig",
         position: "Senior Consultant",
         abstract:
-          "During my time at TU Darmstadt, I learned theoretical and interdisciplinary principles from the fields of computer science, innovation management and entrepreneurship.\n\nWhile my studies had a very theoretical focus, working as a full-stack developer at OdiSys allowed me to enrich my theoretical knowledge with practical experience in the development, conception, design and cloud operations of software products. At SCHUMANN, I am continuously working on new angles to approach challenges in order to increase the effectiveness of my team.",
+          "During my time at TU Darmstadt, I learned theoretical and interdisciplinary principles from the fields of computer science, innovation management and entrepreneurship.<br/><br/>While my studies had a very theoretical focus, working as a full-stack developer at OdiSys allowed me to enrich my theoretical knowledge with practical experience in the development, conception, design and cloud operations of software products. At SCHUMANN, I am continuously working on new angles to approach challenges in order to increase the effectiveness of my team.",
         information: [
           {
             label: "Email",
