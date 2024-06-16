@@ -17,7 +17,7 @@ export default function ExpertiseItem({
   return (
     <div
       className={
-        "grid grid-cols-5 w-full rounded-2xl bg-opacity-20 py-5 bg-" + color
+        "grid grid-cols-5 w-full rounded-2xl bg-opacity-20 py-5 " + (color == "primary" ? "bg-primary" : "bg-secondary")
       }
     >
       <div className="grid col-span-1 justify-items-center ">

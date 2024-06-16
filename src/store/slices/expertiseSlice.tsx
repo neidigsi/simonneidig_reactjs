@@ -63,7 +63,7 @@ export const expertiseSlice = createSlice({
           resp[i] = { ...resp[i], index: i, color: "primary" };
         }
       }
-      console.log(resp)
+
       state.expertises = resp;
       state.loaded = true;
     },

@@ -32,7 +32,7 @@ export default function AboutCard() {
     <Card headline="About">
       <div className="text-base">
         <p dangerouslySetInnerHTML={{ __html: abstract }} />
-        <h2>What I do!</h2>
+        <h2 className=" pt-4">What I do!</h2>
         <div className="grid grid-cols-2 gap-4 pt-4">
           {expertises.map(({ index, color, expertise, description, icon }) => (
             <ExpertiseItem
