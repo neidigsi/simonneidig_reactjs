@@ -25,14 +25,14 @@ export default function SidebarLayout({
   return (
     <>
       {loaded ? (
-        <div className="max-w-(1350px) w-screen">
+        <div className="max-w-[1350px] w-screen">
           <div className="mx-8 grid gap-8 grid-cols-7">
             <div className="col-span-2">
               <Sidebar />
             </div>
             <div className="col-span-5">
                 <div className="flex justify-end button-bar">
-                  <button className="btn-white">
+                  <button className="btn bg-white">
                     <div className="size-5">
                       <Icon icon="SunIcon" />
                     </div>

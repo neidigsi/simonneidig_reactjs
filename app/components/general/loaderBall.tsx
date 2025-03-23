@@ -14,11 +14,11 @@ export default function LoaderBall({
   return (
     <div className="flex items-center justify-center space-x-2">
       <div
-        className="animate-loader"
+        className="animate-bounceSlow"
         style={{ animationDelay: animationDelay }}
       >
         <div
-          className={
+          className={ 
             "w-" +
             size +
             " h-" +

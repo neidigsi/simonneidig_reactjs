@@ -1,13 +1,13 @@
 :root {
-  --loading-time: "0.1";
+  --loading-time: 0.1;
 }
 
 .dot-loader {
-  animation: "bounce 1s infinite";
+  animation: "bounce '1s' infinite";
 }
 
 .dot-loader-second {
-  animation-delay: var(--loading-time)/3"s";
+  animation-delay: calc(0.1/3)"s";
 }
 
 @keyframes loading {

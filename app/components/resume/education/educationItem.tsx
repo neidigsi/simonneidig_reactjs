@@ -10,8 +10,8 @@ export default function EducationItem({
     <div className="pt-4">
       <div
         className={
-          "grid grid-cols-1 gap-2 w-full rounded-xl bg-opacity/20 p-5 " +
-          (education.index % 2 == 1 ? "bg-primary" : "bg-secondary")
+          "grid grid-cols-1 gap-2 w-full rounded-xl p-5 " +
+          (education.index % 2 == 1 ? "bg-primary/20" : "bg-secondary/20")
         }
       >
         <div className="text-sm text-dark-grey">

@@ -12,7 +12,7 @@ export default function PersonalInfo() {
           <div key={label}>
             <PersonalInfoItem label={label} value={value} icon={icon} />
             {index < information.length - 1 && (
-              <div className="bg-white h-(1px) mx-10" />
+              <div className="bg-white h-[1px] mx-10" />
             )}
           </div>
         ))}
