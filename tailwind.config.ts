@@ -1,8 +1,8 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx,css}",
   ],
   theme: {
     fontSize: {
@@ -13,12 +13,6 @@ const config: Config = {
       "2xl": "25pt",
     },
     extend: {
-      colors: {
-        primary: "#00BBAA",
-        secondary: "#1D63AB",
-        "light-grey": "#E8E8E8",
-        "dark-grey": "#5F5F5F",
-      },
       animation: {
         loader: "loading 0.5s infinite",
       },
@@ -26,4 +20,3 @@ const config: Config = {
   },
   plugins: [],
 };
-export default config;

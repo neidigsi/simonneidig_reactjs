@@ -1,0 +1,43 @@
+/**
+ * General button styling
+ */
+.btn {
+  @apply p-2 rounded-lg w-fit text-base items-center;
+}
+
+/* Active buttons should always have a gradient background */
+/*.btn--a {
+  @apply bg-gradient-to-r from-primary to-secondary text-white;
+}
+
+.btn:hover {
+  @apply btn-a;
+}*/
+
+/**
+ * Color btn classes
+ *
+.btn-primary {
+  @apply --btn;
+}
+
+.btn-secondary {
+  @apply --btn;
+}
+
+.btn-dark-grey {
+  @apply --btn;
+}
+
+.btn-light-grey {
+  @apply --btn --bg-light-grey;
+}
+
+.btn-black {
+  @apply --btn;
+}
+
+.btn-white {
+  @apply --btn --bg-white;
+}
+*/
