@@ -9,6 +9,7 @@ import {
   sendMessage,
 } from "@/store/slices/contactSlice";
 import Button from "../general/button";
+import TextareaInput from "../general/input/textareaInput";
 
 export default function ContactCard() {
   const name = useAppSelector((state) => state.contact.name);
@@ -35,10 +36,9 @@ export default function ContactCard() {
           value={email}
           onChange={(value: string) => dispatch(setEmail(value))}
         />
-        <TextInput
+        <TextareaInput
           id="txt-contact-message"
           label="Message"
-          type="textarea"
           value={message}
           onChange={(value: string) => dispatch(setMessage(value))}
         />

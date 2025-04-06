@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 
-interface TextInputProps {
+interface TextareaInputProps {
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -9,22 +9,20 @@ interface TextInputProps {
   type?: string;
 }
 
-export default function TextInput({
+export default function TextareaInput({
   label,
   value,
   onChange,
   id = 'text-input',
-  type = 'text',
-}: TextInputProps) {
+}: TextareaInputProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   const shouldFloat = isFocused || value.length > 0;
 
   return (
     <div className="relative w-full">
-      <input
+      <textarea
         id={id}
-        type={type}
         value={value}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
