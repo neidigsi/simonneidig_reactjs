@@ -10,15 +10,15 @@ export default function LoaderBall({
   color,
   darkColor,
   animationDelay,
-}: Readonly<LoaderBallObject>) {
+}: LoaderBallObject) {
   return (
     <div className="flex items-center justify-center space-x-2">
       <div
-        className="animate-bounceSlow"
+        className="dot-loader"
         style={{ animationDelay: animationDelay }}
       >
         <div
-          className={ 
+          className={
             "w-" +
             size +
             " h-" +
