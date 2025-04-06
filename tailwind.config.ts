@@ -1,8 +1,8 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx,css}",
   ],
   theme: {
     fontSize: {
@@ -13,17 +13,26 @@ const config: Config = {
       "2xl": "25pt",
     },
     extend: {
-      colors: {
-        primary: "#00BBAA",
-        secondary: "#1D63AB",
-        "light-grey": "#E8E8E8",
-        "dark-grey": "#5F5F5F",
-      },
       animation: {
         loader: "loading 0.5s infinite",
+        bounceSlow: "bounceCustom 1s infinite",
+      },
+      fontFamily: {
+        montserratAlt: ["'Montserrat Alternates'", "sans-serif"],
+      },
+      keyframes: {
+        bounceCustom: {
+          "0%, 100%": {
+            transform: "translateY(-50%)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
       },
     },
   },
   plugins: [],
 };
-export default config;

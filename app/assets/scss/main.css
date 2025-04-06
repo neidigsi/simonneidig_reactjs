@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #00BBAA;
+    --color-secondary: #1D63AB;
+    --color-light-grey: #E8E8E8;
+    --color-dark-grey: #A9A9A9;
+}
+
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+
+@import "./variables/_app";
+
+@import "./utilities/_background";
+@import "./utilities/_general";
+
+@import "./components/general/_badge";
+@import "./components/general/_button";
+@import "./components/general/_loading";
+@import "./components/navigation/_navigation";
+@import "./components/sidebar/_profilePicture";

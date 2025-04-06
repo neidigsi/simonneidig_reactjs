@@ -1,0 +1,7 @@
+
+
+
+
+.badge {
+    @apply flex w-fit text-center p-2 rounded-lg;
+}

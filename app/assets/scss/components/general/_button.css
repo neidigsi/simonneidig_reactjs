@@ -1,0 +1,19 @@
+/**
+ * General button styling
+ */
+.btn {
+  @apply p-2 rounded-lg w-fit text-base items-center;
+}
+
+/* Active buttons should always have a gradient background */
+.btn:hover {
+  @apply bg-gradient-to-r from-primary to-secondary text-white;
+}
+
+.btn-inverted {
+  @apply p-2 rounded-lg w-fit text-base items-center;
+}
+
+.btn-inverted:not(:hover) {
+  @apply bg-gradient-to-r from-primary to-secondary text-white;
+}
