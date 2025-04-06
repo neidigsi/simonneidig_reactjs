@@ -31,17 +31,22 @@ export default function SidebarLayout({
               <Sidebar />
             </div>
             <div className="col-span-5">
-                <div className="flex justify-end button-bar">
-                  <button className="btn bg-white">
-                    <div className="size-5">
-                      <Icon icon="SunIcon" />
-                    </div>
-                  </button>
-                </div>
-                <div className="main-section">
-                  <Navigation />
-                  {children}
-                </div>
+              <div className="flex justify-end button-bar">
+                <button className="btn bg-white mr-4">
+                  <div className="size-5">
+                    <Icon icon="FlagIcon" />
+                  </div>
+                </button>
+                <button className="btn bg-white">
+                  <div className="size-5">
+                    <Icon icon="SunIcon" />
+                  </div>
+                </button>
+              </div>
+              <div className="main-section">
+                <Navigation />
+                {children}
+              </div>
             </div>
           </div>
         </div>

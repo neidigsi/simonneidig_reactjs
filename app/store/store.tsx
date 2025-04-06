@@ -2,14 +2,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Import internal dependencies
+import contactReducer from "@/store/slices/contactSlice";
 import educationReducer from "@/store/slices/educationSlice";
+import experienceReducer from "@/store/slices/experienceSlice";
 import expertiseReducer from "@/store/slices/expertiseSlice";
 import personalInfoReducer from "@/store/slices/personalInfoSlice";
-import experienceReducer from "@/store/slices/experienceSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
+      contact: contactReducer,
       education: educationReducer,
       experience: experienceReducer,
       expertise: expertiseReducer,

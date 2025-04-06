@@ -1,0 +1,46 @@
+import React, { useState } from 'react';
+import clsx from 'clsx';
+
+interface TextareaInputProps {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  id?: string;
+  type?: string;
+}
+
+export default function TextareaInput({
+  label,
+  value,
+  onChange,
+  id = 'text-input',
+}: TextareaInputProps) {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const shouldFloat = isFocused || value.length > 0;
+
+  return (
+    <div className="relative w-full">
+      <textarea
+        id={id}
+        value={value}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        onChange={(e) => onChange(e.target.value)}
+        className="peer w-full border-0 border-b-2 border-light-grey bg-transparent px-0 pt-7 pb-2 text-base text-black placeholder-transparent focus:border-primary/20 focus:outline-none"
+        placeholder={label}
+      />
+      <label
+        htmlFor={id}
+        className={clsx(
+          'absolute left-0 top-2 text-sm text-black transition-all duration-200 ease-in-out',
+          shouldFloat
+            ? 'translate-y-0 scale-90'
+            : 'translate-y-6 scale-100'
+        )}
+      >
+        {label}
+      </label>
+    </div>
+  );
+}
