@@ -1,5 +1,7 @@
 // Import internal dependencies
 import PersonalInfoItem from "@/components/sidebar/personalInfo/personalInfoItem";
+
+// Import external dependencies
 import { useAppSelector } from "@/store/hooks";
 
 export default function PersonalInfo() {

@@ -1,12 +1,10 @@
-// Import external dependencies
-import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
-
 // Import internal dependencies
 import Badge from "@/components/general/badge";
 import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
 import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
 import ProfilePicture from "@/components/sidebar/profilePicture";
 import { useAppSelector } from "@/store/hooks";
+import Button from "../general/button";
 
 export default function Sidebar() {
   const name = useAppSelector((state) => state.personalInfo.name);
@@ -27,9 +25,7 @@ export default function Sidebar() {
           <SocialMedia />
           <PersonalInfo />
           <div className="grid justify-center pb-6">
-            <button className="btn-inverted flex">
-              <ArrowDownTrayIcon className="size-6 mr-2" /> Download CV
-            </button>
+            <Button text="Download CV" icon="ArrowDownTrayIcon" onClick={() => {}}/>
           </div>
         </div>
       </div>
