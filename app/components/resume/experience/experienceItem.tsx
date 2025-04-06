@@ -1,5 +1,5 @@
 // Import internal dependencies
-import { Experience } from "@/store/slices/experienceSlice";
+import type { Experience } from "@/store/slices/experienceSlice";
 
 export default function ExperienceItem({
   experience,

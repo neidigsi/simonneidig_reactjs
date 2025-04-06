@@ -1,5 +1,6 @@
 // Import internal dependencies
 import NavigationItem from "@/components/navigation/navigationItem";
+import { useLocation } from "react-router";
 
 type NavigationObject = {
   path: string;
@@ -15,6 +16,7 @@ const navigation: NavigationObject[] = [
 ];
 
 export default function Navigation() {
+  const location = useLocation();
 
   return (
     <div className="flex justify-end">
@@ -25,7 +27,7 @@ export default function Navigation() {
             text={text}
             path={path}
             icon={icon}
-            active={false}
+            active={location.pathname === path}
           />
         ))}
       </div>

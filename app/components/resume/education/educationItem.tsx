@@ -1,5 +1,5 @@
 // Import internal dependencies
-import { Education } from "@/store/slices/educationSlice";
+import type { Education } from "@/store/slices/educationSlice";
 
 export default function EducationItem({
   education,

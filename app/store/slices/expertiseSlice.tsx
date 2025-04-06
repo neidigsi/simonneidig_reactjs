@@ -1,7 +1,7 @@
 // Import external dependencies
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Expertise {
+export interface Expertise {
   index: number;
   color: string;
   expertise: string;

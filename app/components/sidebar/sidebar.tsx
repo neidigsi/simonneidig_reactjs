@@ -27,7 +27,7 @@ export default function Sidebar() {
           <SocialMedia />
           <PersonalInfo />
           <div className="grid justify-center pb-6">
-            <button className="btn flex">
+            <button className="btn-inverted flex">
               <ArrowDownTrayIcon className="size-6 mr-2" /> Download CV
             </button>
           </div>

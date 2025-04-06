@@ -86,7 +86,7 @@ export const personalInfoSlice = createSlice({
       state.abstract = resp.abstract;
       state.information = resp.information;
       state.socialMedia = resp.social_media;
-      state.loaded = false;
+      state.loaded = true;
     },
   },
 });

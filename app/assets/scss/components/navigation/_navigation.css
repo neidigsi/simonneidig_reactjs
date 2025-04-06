@@ -1,11 +1,15 @@
 /**
  * General button styling
  */
- .nav-item {
+.nav-item {
   @apply rounded-lg size-[4rem] text-sm items-center;
 }
 
 /* Active buttons should always have a gradient background */
 .nav-item:hover {
+  @apply bg-gradient-to-r from-primary to-secondary text-white;
+}
+
+.nav-item-active {
   @apply bg-gradient-to-r from-primary to-secondary text-white;
 }
