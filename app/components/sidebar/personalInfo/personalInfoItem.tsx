@@ -15,7 +15,7 @@ export default function PersonalInfoItem({
   return (
     <div className="grid grid-cols-4 w-full my-1 gap-2 ">
       <div className="grid col-span-1 items-center justify-items-center ">
-        <div className=" bg-white text-primary rounded-lg drop-shadow-xl">
+        <div className=" bg-white dark:bg-dark-mode-background text-primary rounded-lg drop-shadow-xl">
           <div className="m-3">
             <div className="size-7">
               <Icon icon={icon} />

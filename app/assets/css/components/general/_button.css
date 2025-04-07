@@ -5,6 +5,10 @@
   @apply p-2 rounded-lg w-fit text-base items-center;
 }
 
+.dark .btn {
+  @apply text-white;
+}
+
 /* Active buttons should always have a gradient background */
 .btn:hover {
   @apply bg-gradient-to-r from-primary to-secondary text-white;
@@ -16,8 +20,4 @@
 
 .btn-disabled {
   @apply p-2 rounded-lg w-fit text-base items-center text-dark-grey cursor-not-allowed;
-}
-
-.btn-inverted:not(:hover) {
-  @apply bg-gradient-to-r from-primary to-secondary text-white;
 }

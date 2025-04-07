@@ -19,7 +19,7 @@ export default function DarkModeToggl() {
   }, []);
 
   return (
-    <button className="btn bg-white dark:bg-dark-grey" onClick={() => dispatch(toggleDarkMode())}>
+    <button className="btn bg-white dark:bg-dark-mode-background" onClick={() => dispatch(toggleDarkMode())}>
       <div className="size-5">
         <Icon icon={isDarkModeEnabled ? "SunIcon" : "MoonIcon"} />
       </div>

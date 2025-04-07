@@ -20,7 +20,7 @@ export default function Navigation() {
 
   return (
     <div className="flex justify-end">
-      <div className="grid grid-cols-4 gap-2 bg-white p-2 rounded-2xl drop-shadow-xl">
+      <div className="grid grid-cols-4 gap-2 bg-white dark:bg-dark-mode-background p-2 rounded-2xl drop-shadow-xl">
         {navigation.map(({ path, icon, text }) => (
           <NavigationItem
             key={text}

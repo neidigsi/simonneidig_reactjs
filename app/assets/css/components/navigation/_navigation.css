@@ -5,6 +5,10 @@
   @apply rounded-lg size-[4rem] text-sm items-center;
 }
 
+.dark .nav-item {
+  @apply text-white;
+}
+
 /* Active buttons should always have a gradient background */
 .nav-item:hover {
   @apply bg-gradient-to-r from-primary to-secondary text-white;
