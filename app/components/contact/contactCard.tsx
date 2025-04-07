@@ -1,15 +1,17 @@
 // Import internal dependencies
 import Card from "@/components/general/card";
-import TextInput from "../general/input/textInput";
-import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import TextInput from "@/components/general/input/textInput";
 import {
   setName,
   setEmail,
   setMessage,
   sendMessage,
 } from "@/store/slices/contactSlice";
-import Button from "../general/button";
-import TextareaInput from "../general/input/textareaInput";
+import Button from "@/components/general/button";
+import TextareaInput from "@/components/general/input/textareaInput";
+
+// Import external dependencies
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
 
 export default function ContactCard() {
   const name = useAppSelector((state) => state.contact.name);

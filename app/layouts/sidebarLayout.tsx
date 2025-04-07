@@ -8,6 +8,7 @@ import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import Loader from "@/components/general/loader";
 import Navigation from "@/components/navigation/navigation";
 import Icon from "@/components/general/icon";
+import DarkModeToggl from "@/components/actionBar/darkModeToggl";
 
 export default function SidebarLayout({
   children,
@@ -37,11 +38,7 @@ export default function SidebarLayout({
                     <Icon icon="FlagIcon" />
                   </div>
                 </button>
-                <button className="btn bg-white">
-                  <div className="size-5">
-                    <Icon icon="SunIcon" />
-                  </div>
-                </button>
+                <DarkModeToggl />
               </div>
               <div className="main-section">
                 <Navigation />

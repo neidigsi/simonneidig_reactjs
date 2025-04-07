@@ -11,7 +11,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={"grid place-content-center bg-image"}>
+    <div className={"grid place-content-center bg-image bg-image-attributes dark:bg-image-dark"}>
       <StoreProvider>
         <SidebarLayout>
           <Outlet />

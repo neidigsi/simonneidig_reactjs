@@ -7,6 +7,7 @@ import educationReducer from "@/store/slices/educationSlice";
 import experienceReducer from "@/store/slices/experienceSlice";
 import expertiseReducer from "@/store/slices/expertiseSlice";
 import personalInfoReducer from "@/store/slices/personalInfoSlice";
+import settingsReducer from "@/store/slices/settingsSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -16,6 +17,7 @@ export const makeStore = () => {
       experience: experienceReducer,
       expertise: expertiseReducer,
       personalInfo: personalInfoReducer,
+      settings: settingsReducer,
     },
   });
 };
