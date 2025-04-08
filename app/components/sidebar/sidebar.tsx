@@ -19,7 +19,7 @@ export default function Sidebar() {
           <div className="grid justify-center my-2 text-base">
             <Badge
               text={position}
-              additionalClasses="bg-light-grey font-bold"
+              additionalClasses="bg-dark-grey/20 font-bold"
             />
           </div>
           <SocialMedia />

@@ -33,7 +33,7 @@ export default function SidebarLayout({
             </div>
             <div className="col-span-5">
               <div className="flex justify-end button-bar">
-                <button className="btn bg-white mr-4">
+                <button className="btn bg-white dark:bg-dark-mode-background mr-2">
                   <div className="size-5">
                     <Icon icon="FlagIcon" />
                   </div>
