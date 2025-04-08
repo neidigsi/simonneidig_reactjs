@@ -27,7 +27,7 @@ export default function SocialMediaButton({
 
   return (
     <button
-      className="btn bg-light-grey"
+      className="btn bg-dark-grey/20"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
       onClick={() => openInNewTab(url)}

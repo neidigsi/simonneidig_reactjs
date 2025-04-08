@@ -1,5 +1,12 @@
 .bg-image {
     background-image: url('../../images/background.jpg');
+}
+
+.bg-image-attributes {
     background-size: cover;
     background-attachment: fixed;
+}
+
+.dark .bg-image {
+    background-image: url('../../images/background-dark.jpg');
 }
