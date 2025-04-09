@@ -2,6 +2,7 @@
 import Icon from "@/components/general/icon";
 
 interface ExpertiseItemObject {
+  index: number;
   color: string;
   expertise: string;
   description: string;
@@ -9,6 +10,7 @@ interface ExpertiseItemObject {
 }
 
 export default function ExpertiseItem({
+  index,
   color,
   expertise,
   description,
@@ -17,7 +19,7 @@ export default function ExpertiseItem({
   return (
     <div
       className={
-        "grid grid-cols-5 w-full rounded-xl py-5 " + (color == "primary" ? "bg-primary/20" : "bg-secondary/20")
+        "grid grid-cols-5 w-full rounded-xl py-5 " + (color == "primary" ? "lg:bg-primary/20" : "lg:bg-secondary/20") + (index % 2 == 0 ? " bg-primary/20" : " bg-secondary/20")
       }
     >
       <div className="grid col-span-1 justify-items-center ">

@@ -1,5 +1,6 @@
 // Import external dependencies
 import { useState } from "react";
+import { useAppSelector } from "@/store/hooks";
 
 interface SocialMediaButtonObject {
   path: string;
@@ -14,6 +15,7 @@ export default function SocialMediaButton({
 }: Readonly<SocialMediaButtonObject>) {
   // This variable is true if the button is currently highlighted
   const [active, setActive] = useState(false);
+  const isDarkModeEnabled = useAppSelector((state) => state.settings.isDarkModeEnabled);
 
 
   /**
@@ -35,7 +37,7 @@ export default function SocialMediaButton({
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5"
-        fill={active ? "#fff" : "currentColor"}
+        fill={active || isDarkModeEnabled ? "#fff" : "currentColor"}
         style={{ color: color }}
         viewBox="0 0 24 24"
       >
