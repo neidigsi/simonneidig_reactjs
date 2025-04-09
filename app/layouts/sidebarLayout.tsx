@@ -27,11 +27,11 @@ export default function SidebarLayout({
     <>
       {loaded ? (
         <div className="max-w-[1350px] w-screen">
-          <div className="mx-8 grid gap-8 grid-cols-7">
-            <div className="col-span-2">
+          <div className="mx-8 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-8 xl:grid-cols-7">
+            <div className="col-span-1 md:col-span-1 lg:col-span-3 xl:col-span-2">
               <Sidebar />
             </div>
-            <div className="col-span-5">
+            <div className="col-span-1 md:col-span-1 lg:col-span-5 xl:col-span-5">
               <div className="flex justify-end button-bar">
                 <button className="btn bg-white dark:bg-dark-mode-background mr-2">
                   <div className="size-5">
