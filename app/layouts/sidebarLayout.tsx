@@ -7,9 +7,8 @@ import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import Loader from "@/components/general/loader";
 import Navigation from "@/components/navigation/navigation";
-import Icon from "@/components/general/icon";
 import DarkModeToggl from "@/components/actionBar/darkModeToggl";
-import { changeLanguage } from "i18next";
+import LanguageSwitcher from "@/components/actionBar/languageSwitcher";
 
 export default function SidebarLayout({
   children,
@@ -31,22 +30,14 @@ export default function SidebarLayout({
           <div className="mx-8 grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-8 xl:grid-cols-7">
             <div className="col-span-1 md:col-span-1 lg:col-span-3 xl:col-span-2">
               <div className="md:hidden flex justify-end button-bar">
-                <button className="btn bg-white dark:bg-dark-mode-background mr-2">
-                  <div className="size-5">
-                    <Icon icon="FlagIcon" />
-                  </div>
-                </button>
+                <LanguageSwitcher />
                 <DarkModeToggl />
               </div>
               <Sidebar />
             </div>
             <div className="col-span-1 md:col-span-1 lg:col-span-5 xl:col-span-5">
               <div className="hidden md:flex justify-end button-bar">
-                <button className="btn bg-white dark:bg-dark-mode-background mr-2" onClick={() => dispatch(changeLanguage("en"))}>
-                  <div className="size-5">
-                    <Icon icon="FlagIcon" />
-                  </div>
-                </button>
+                <LanguageSwitcher />
                 <DarkModeToggl />
               </div>
               <div className="main-section">
