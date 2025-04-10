@@ -9,6 +9,7 @@ import Loader from "@/components/general/loader";
 import Navigation from "@/components/navigation/navigation";
 import Icon from "@/components/general/icon";
 import DarkModeToggl from "@/components/actionBar/darkModeToggl";
+import { changeLanguage } from "i18next";
 
 export default function SidebarLayout({
   children,
@@ -41,7 +42,7 @@ export default function SidebarLayout({
             </div>
             <div className="col-span-1 md:col-span-1 lg:col-span-5 xl:col-span-5">
               <div className="hidden md:flex justify-end button-bar">
-                <button className="btn bg-white dark:bg-dark-mode-background mr-2">
+                <button className="btn bg-white dark:bg-dark-mode-background mr-2" onClick={() => dispatch(changeLanguage("en"))}>
                   <div className="size-5">
                     <Icon icon="FlagIcon" />
                   </div>
