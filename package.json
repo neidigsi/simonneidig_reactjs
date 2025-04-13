@@ -16,9 +16,12 @@
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/vite": "^4.0.15",
     "autoprefixer": "^10.4.21",
+    "i18next": "^24.2.3",
+    "i18next-browser-languagedetector": "^8.0.4",
     "isbot": "^5.1.17",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-i18next": "^15.4.1",
     "react-redux": "^9.2.0",
     "react-router": "^7.2.0",
     "webfontloader": "^1.6.28"

@@ -1,3 +1,6 @@
+// Import external dependencies
+import { useTranslation } from 'react-i18next';
+
 // Import internal dependencies
 import Badge from "@/components/general/badge";
 import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
@@ -9,6 +12,8 @@ import Button from "../general/button";
 export default function Sidebar() {
   const name = useAppSelector((state) => state.personalInfo.name);
   const position = useAppSelector((state) => state.personalInfo.position);
+
+  const { t } = useTranslation();
 
   return (
     <div className="grid col-span-1 h-screen items-end w-full">
@@ -25,7 +30,7 @@ export default function Sidebar() {
           <SocialMedia />
           <PersonalInfo />
           <div className="grid justify-center pb-6">
-            <Button text="Download CV" icon="ArrowDownTrayIcon" onClick={() => {}}/>
+            <Button text={t("sidebar.cv-button")} icon="ArrowDownTrayIcon" onClick={() => {}}/>
           </div>
         </div>
       </div>

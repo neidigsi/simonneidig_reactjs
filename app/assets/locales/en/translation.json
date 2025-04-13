@@ -1,0 +1,40 @@
+{
+  "main": {
+    "about": {
+      "title": "About",
+      "subtitle": "What I do!"
+    },
+    "resume": {
+      "title": "Resume",
+      "education": "Education",
+      "experience": "Experience",
+      "skills": "Skills",
+      "languages": "Languages"
+    },
+    "works": {
+      "title": "Works"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Would you like to get in touch with me? I look forward to your message!",
+      "form": {
+        "headline": "Form",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Submit"
+      }
+    }
+  },
+  "sidebar": {
+    "cv-button": "Download CV"
+  },
+  "navigation": {
+    "headlines": {
+      "home": "About",
+      "resume": "Resume",
+      "works": "Works",
+      "contact": "Contact"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 // Import external dependencies
 import { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 // Import internal dependencies
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -16,6 +17,8 @@ export default function AboutCard() {
   const expertises = useAppSelector((state) => state.expertise.expertises);
   const expertiseLoaded = useAppSelector((state) => state.expertise.loaded);
 
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -29,10 +32,10 @@ export default function AboutCard() {
   }, []);
 
   return (
-    <Card headline="About">
+    <Card headline={t("main.about.title")}>
       <div className="text-base">
         <p dangerouslySetInnerHTML={{ __html: abstract }} />
-        <h2 className=" pt-4">What I do!</h2>
+        <h2 className=" pt-4">{t("main.about.subtitle")}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">
           {expertises.map(({ index, color, expertise, description, icon }) => (
             <ExpertiseItem

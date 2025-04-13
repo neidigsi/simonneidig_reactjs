@@ -1,0 +1,40 @@
+{
+  "main": {
+    "about": {
+      "title": "Über mich",
+      "subtitle": "Was ich mache!"
+    },
+    "resume": {
+      "title": "Lebenslauf",
+      "education": "Ausbildung",
+      "experience": "Berufserfahrung",
+      "skills": "Fähigkeiten",
+      "languages": "Sprachen"
+    },
+    "works": {
+      "title": "Projekte"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Möchten Sie mit mir in Kontakt treten? Ich freue mich auf Ihre Nachricht!",
+      "form": {
+        "headline": "Kontaktformular",
+        "name": "Name",
+        "email": "E-Mail",
+        "message": "Nachricht",
+        "submit": "Absenden"
+      }
+    }
+  },
+  "sidebar": {
+    "cv-button": "Lebenslauf laden"
+  },
+  "navigation": {
+    "headlines": {
+      "home": "About",
+      "resume": "Resume",
+      "works": "Projekte",
+      "contact": "Kontakt"
+    }
+  }
+}

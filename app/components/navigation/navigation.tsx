@@ -1,35 +1,42 @@
+// Import external dependencies
+import { useTranslation } from 'react-i18next';
+
 // Import internal dependencies
 import NavigationItem from "@/components/navigation/navigationItem";
 import { useLocation } from "react-router";
 
-type NavigationObject = {
-  path: string;
-  icon: string;
-  text: string;
-};
-
-const navigation: NavigationObject[] = [
-  { path: "/", icon: "UserIcon", text: "About" },
-  { path: "/resume", icon: "DocumentCheckIcon", text: "Resume" },
-  { path: "/works", icon: "BriefcaseIcon", text: "Works" },
-  { path: "/contact", icon: "EnvelopeIcon", text: "Contact" },
-];
-
 export default function Navigation() {
   const location = useLocation();
+
+  const { t } = useTranslation();
 
   return (
     <div className="flex justify-end">
       <div className="grid grid-cols-4 gap-2 bg-white dark:bg-dark-mode-background p-2 rounded-2xl drop-shadow-xl">
-        {navigation.map(({ path, icon, text }) => (
           <NavigationItem
-            key={text}
-            text={text}
-            path={path}
-            icon={icon}
-            active={location.pathname === path}
+            text={t("navigation.headlines.home")}
+            path="/"
+            icon="UserIcon"
+            active={location.pathname === "/"}
           />
-        ))}
+          <NavigationItem
+            text={t("navigation.headlines.resume")}
+            path="/resume"
+            icon="DocumentCheckIcon"
+            active={location.pathname === "/resume"}
+          />
+          <NavigationItem
+            text={t("navigation.headlines.works")}
+            path="/works"
+            icon="BriefcaseIcon"
+            active={location.pathname === "/works"}
+          />
+          <NavigationItem
+            text={t("navigation.headlines.contact")}
+            path="/contact"
+            icon="EnvelopeIcon"
+            active={location.pathname === "/contact"}
+          />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 // Import external dependencies
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import Icon from "@/components/general/icon";
@@ -10,6 +11,8 @@ import EducationItem from "@/components/resume/education/educationItem";
 export default function EducationList() {
   const educations = useAppSelector((state) => state.education.educations);
   const loaded = useAppSelector((state) => state.education.loaded);
+
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
 
@@ -26,7 +29,7 @@ export default function EducationList() {
           <div className="size-7">
             <Icon icon="AcademicCapIcon" />
           </div>
-          <h2 className="pl-2">Education</h2>
+          <h2 className="pl-2">{t("main.resume.education")}</h2>
         </div>
         {educations.map((e) => (
           <EducationItem key={e.index} education={e} />

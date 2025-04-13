@@ -1,5 +1,6 @@
 // Import external dependencies
-import { createSlice } from "@reduxjs/toolkit";
+import i18n from "@/i18n";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 interface SettingsState {
   language: string;
@@ -40,10 +41,14 @@ export const settingsSlice = createSlice({
         localStorage.setItem("theme", "light");
       }
     },
+    changeLanguage: (state, action: PayloadAction<string>) => {
+      state.language = action.payload;
+      i18n.changeLanguage(action.payload); // Sprache ändern
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleDarkMode, initializeDarkMode } = settingsSlice.actions;
+export const { toggleDarkMode, initializeDarkMode, changeLanguage } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

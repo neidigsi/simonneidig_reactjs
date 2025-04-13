@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "./icon";
 
 interface ButtonProps {
+  id?: string;
   text: string;
   icon: any;
   onClick: () => void;
@@ -11,6 +12,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({
+  id="btn-default",
   text,
   icon,
   onClick,
@@ -20,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      id={id}
       className={`flex ${className} ${inverted ? "btn-inverted" : ""} ${disabled ? "btn-disabled" : "btn"}`}
       onClick={onClick}
       disabled={disabled}

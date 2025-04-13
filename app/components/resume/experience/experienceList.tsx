@@ -1,5 +1,6 @@
 // Import external dependencies
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import Icon from "@/components/general/icon";
@@ -10,6 +11,8 @@ import ExperienceItem from "@/components/resume/experience/experienceItem";
 export default function ExperienceList() {
   const experiences = useAppSelector((state) => state.experience.experiences);
   const loaded = useAppSelector((state) => state.experience.loaded);
+
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
 
@@ -26,7 +29,7 @@ export default function ExperienceList() {
           <div className="size-7">
             <Icon icon="BriefcaseIcon" />
           </div>
-          <h2 className="pl-2">Experience</h2>
+          <h2 className="pl-2">{t("main.resume.experience")}</h2>
         </div>
         {experiences.map((e) => (
           <ExperienceItem key={e.index} experience={e} />
