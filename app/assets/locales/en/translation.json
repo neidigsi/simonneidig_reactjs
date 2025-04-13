@@ -27,14 +27,11 @@
     }
   },
   "sidebar": {
-    "email": "Email",
-    "location": "Location",
-    "company": "Company",
     "cv-button": "Download CV"
   },
   "navigation": {
     "headlines": {
-      "about:": "About",
+      "home": "About",
       "resume": "Resume",
       "works": "Works",
       "contact": "Contact"

@@ -27,15 +27,12 @@
     }
   },
   "sidebar": {
-    "email": "E-Mail",
-    "location": "Standort",
-    "company": "Unternehmen",
     "cv-button": "Lebenslauf laden"
   },
   "navigation": {
     "headlines": {
-      "about:": "Über mich",
-      "resume": "Lebenslauf",
+      "home": "About",
+      "resume": "Resume",
       "works": "Projekte",
       "contact": "Kontakt"
     }

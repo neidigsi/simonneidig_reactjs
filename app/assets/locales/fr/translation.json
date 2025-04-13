@@ -27,14 +27,11 @@
     }
   },
   "sidebar": {
-    "email": "E-mail",
-    "location": "Emplacement",
-    "company": "Entreprise",
     "cv-button": "Télécharger le CV"
   },
   "navigation": {
     "headlines": {
-      "about:": "À propos",
+      "home": "À propos",
       "resume": "CV",
       "works": "Projets",
       "contact": "Contact"
