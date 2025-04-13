@@ -12,40 +12,43 @@ import TextareaInput from "@/components/general/input/textareaInput";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { useTranslation } from 'react-i18next';
 
 export default function ContactCard() {
   const name = useAppSelector((state) => state.contact.name);
   const email = useAppSelector((state) => state.contact.email);
   const message = useAppSelector((state) => state.contact.message);
 
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   return (
-    <Card headline="Contact">
-      Would you like to <b>get in touch</b> with me? I look forward to{" "}
-      <b>your message!</b>
+    <Card headline={t("main.contact.title")}>
+      {t("main.contact.description")}
       <div className="mt-4 grid grid-cols-1 gap-2 w-full rounded-xl p-5 bg-dark-grey/20 text-base">
-        <h2 className="text-lg">Form</h2>
+        <h2 className="text-lg">{t("main.contact.form.headline")}</h2>
         <TextInput
           id="txt-contact-name"
-          label="Name"
+          label={t("main.contact.form.name")}
           value={name}
           onChange={(value: string) => dispatch(setName(value))}
         />
         <TextInput
           id="txt-contact-email"
-          label="E-Mail"
+          label={t("main.contact.form.email")}
           value={email}
           onChange={(value: string) => dispatch(setEmail(value))}
         />
         <TextareaInput
           id="txt-contact-message"
-          label="Message"
+          label={t("main.contact.form.message")}
           value={message}
           onChange={(value: string) => dispatch(setMessage(value))}
         />
         <Button
-          text="Submit"
+          id="btn-contact-send"
+          text={t("main.contact.form.submit")}
           icon="PaperAirplaneIcon"
           className="mt-4"
           disabled={name.length === 0 || email.length === 0 || message.length === 0}

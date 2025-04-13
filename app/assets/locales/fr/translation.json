@@ -1,7 +1,43 @@
 {
   "main": {
     "about": {
-      "title": "À propos"
+      "title": "À propos",
+      "subtitle": "Ce que je fais !"
+    },
+    "resume": {
+      "title": "CV",
+      "education": "Éducation",
+      "experience": "Expérience",
+      "skills": "Compétences",
+      "languages": "Langues"
+    },
+    "works": {
+      "title": "Projets"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Souhaitez-vous entrer en contact avec moi ? J'attends votre message avec impatience !",
+      "form": {
+        "headline": "Formulaire de contact",
+        "name": "Nom",
+        "email": "E-mail",
+        "message": "Message",
+        "submit": "Envoyer"
+      }
+    }
+  },
+  "sidebar": {
+    "email": "E-mail",
+    "location": "Emplacement",
+    "company": "Entreprise",
+    "cv-button": "Télécharger le CV"
+  },
+  "navigation": {
+    "headlines": {
+      "about:": "À propos",
+      "resume": "CV",
+      "works": "Projets",
+      "contact": "Contact"
     }
   }
 }
