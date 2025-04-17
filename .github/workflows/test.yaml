@@ -38,9 +38,3 @@ jobs:
         with:
           name: test-results
           path: ./test-results/results.xml
-
-      # Publish test results to GitHub
-      - name: Publish test results
-        uses: actions/upload-test-report@v2
-        with:
-          report_paths: ./test-results/results.xml
