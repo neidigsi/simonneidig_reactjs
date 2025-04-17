@@ -3,6 +3,9 @@ import type { Config } from "jest";
 const config: Config = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
+  collectCoverage: true,
+  coverageDirectory: "coverage",
+  coverageReporters: ["text", "json", "lcov", "cobertura"],
   setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
@@ -11,6 +14,13 @@ const config: Config = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/app/$1",
   },
+  reporters: [
+    "default",
+    [
+      "jest-junit",
+      { outputDirectory: "./test-results", outputName: "results.xml" },
+    ],
+  ],
 };
 
 export default config;
