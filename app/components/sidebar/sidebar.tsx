@@ -7,7 +7,7 @@ import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
 import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
 import ProfilePicture from "@/components/sidebar/profilePicture";
 import { useAppSelector } from "@/store/hooks";
-import Button from "../general/button";
+import Button from "@/components/general/button/button";
 
 export default function Sidebar() {
   const name = useAppSelector((state) => state.personalInfo.name);
