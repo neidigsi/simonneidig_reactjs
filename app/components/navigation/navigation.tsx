@@ -5,6 +5,13 @@ import { useTranslation } from 'react-i18next';
 import NavigationItem from "@/components/navigation/navigationItem";
 import { useLocation } from "react-router";
 
+/**
+ * Navigation component that renders a navigation bar with multiple navigation items.
+ * The active navigation item is highlighted based on the current route.
+ *
+ * @author Simon Neidig <mail@simonneidig.de>
+ * @returns {JSX.Element} The rendered navigation component.
+ */
 export default function Navigation() {
   const location = useLocation();
 
