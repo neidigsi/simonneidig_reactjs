@@ -3,6 +3,9 @@ import type { Config } from "jest";
 const config: Config = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'cobertura'],
   setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",

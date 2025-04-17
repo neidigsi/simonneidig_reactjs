@@ -24,7 +24,7 @@ jobs:
 
       # Run tests and generate JUnit report
       - name: Run unit tests
-        run: npm test
+        run: npm run test -- --coverage
 
       # Upload test results as an artifact
       - name: Upload test results
@@ -32,3 +32,10 @@ jobs:
         with:
           name: test-results
           path: ./test-results/results.xml
+
+      # Upload coverage report as an artifact
+      - name: Upload coverage report (Cobertura XML)
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/cobertura-coverage.xml
