@@ -15,7 +15,7 @@ export default function TextInput({
   onChange,
   id = 'text-input',
   type = 'text',
-}: TextInputProps) {
+}: Readonly<TextInputProps>) {
   const [isFocused, setIsFocused] = useState(false);
 
   const shouldFloat = isFocused || value.length > 0;
