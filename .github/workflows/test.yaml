@@ -2,7 +2,6 @@ name: Run Unit Tests
 
 on:
   push:
-  pull_request:
 
 jobs:
   test:
@@ -22,11 +21,6 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: npm ci
-
-      # Configure jest-junit reporter
-      - name: Configure jest-junit
-        run: |
-          echo "module.exports = { reporters: ['default', ['jest-junit', { outputDirectory: './test-results', outputName: 'results.xml' }]] };" > jest.config.js
 
       # Run tests and generate JUnit report
       - name: Run unit tests
