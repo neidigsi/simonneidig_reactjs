@@ -23,6 +23,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Run tests
+      # Configure jest-junit reporter
+      - name: Configure jest-junit
+        run: |
+          echo "module.exports = { reporters: ['default', ['jest-junit', { outputDirectory: './test-results', outputName: 'results.xml' }]] };" > jest.config.js
+
+      # Run tests and generate JUnit report
       - name: Run unit tests
         run: npm test
+
+      # Upload test results as an artifact
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ./test-results/results.xml
+
+      # Publish test results to GitHub
+      - name: Publish test results
+        uses: actions/upload-test-report@v2
+        with:
+          report_paths: ./test-results/results.xml
