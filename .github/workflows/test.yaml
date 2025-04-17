@@ -39,3 +39,29 @@ jobs:
         with:
           name: coverage-report
           path: coverage/cobertura-coverage.xml
+
+      - name: Extract coverage from Cobertura XML
+        id: extract_coverage
+        run: |
+          COVERAGE=$(xmllint --xpath "string(//coverage/@line-rate)" coverage/cobertura-coverage.xml)
+          COVERAGE_PERCENT=$(awk "BEGIN { printf \"%.0f\", $COVERAGE * 100 }")
+          echo "coverage=${COVERAGE_PERCENT}" >> $GITHUB_OUTPUT
+
+      - name: Extract test count
+        id: extract_tests
+        run: |
+          TOTAL=$(jq '.numTotalTests' jest-report.json)
+          echo "total=${TOTAL}" >> $GITHUB_OUTPUT
+
+      - name: Create PR badge comment
+        run: |
+          echo "## ✅ Test & Coverage Report" > comment.md
+          echo "![Tests](https://img.shields.io/badge/tests-${{ steps.extract_tests.outputs.total }}-blue)" >> comment.md
+          echo "" >> comment.md
+          echo "![Coverage](https://img.shields.io/badge/coverage-${{ steps.extract_coverage.outputs.coverage }}%25-brightgreen)" >> comment.md
+
+      - name: Comment PR with badges
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: comment.md

@@ -4,8 +4,8 @@ const config: Config = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
   collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov', 'cobertura'],
+  coverageDirectory: "coverage",
+  coverageReporters: ["text", "json", "lcov", "cobertura"],
   setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
