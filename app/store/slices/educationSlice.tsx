@@ -60,7 +60,7 @@ export const educationSlice = createSlice({
           description:
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.",
           start: "2020-10-01T00:00:00.000Z",
-          end: "2022-09-31T00:00:00.000Z",
+          end: "2022-09-30T00:00:00.000Z",
           university: {
             name: "Technical University of Darmstadt",
             address: {
@@ -81,7 +81,7 @@ export const educationSlice = createSlice({
           description:
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores.",
           start: "2017-10-01T00:00:00.000Z",
-          end: "2020-09-31T00:00:00.000Z",
+          end: "2020-09-30T00:00:00.000Z",
           university: {
             name: "Technical University of Darmstadt",
             address: {

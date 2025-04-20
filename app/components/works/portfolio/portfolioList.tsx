@@ -4,14 +4,17 @@ import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { loadWorks } from "@/store/slices/worksSlice";
+import { loadWorks, filterWorks } from "@/store/slices/worksSlice";
 import PortfolioItem from "@/components/works/portfolio/portfolioItem";
 import Filter from "@/components/general/filter/filter";
 
 export default function PortfolioList() {
-  const portfolio = useAppSelector((state) => state.works.portfolio);
+  const filteredPortfolio = useAppSelector(
+    (state) => state.works.filteredPortfolio
+  );
   const loaded = useAppSelector((state) => state.works.loaded);
   const categories = useAppSelector((state) => state.works.categories);
+  const currentFilter = useAppSelector((state) => state.works.currentFilter);
 
   const { t } = useTranslation();
 
@@ -23,11 +26,19 @@ export default function PortfolioList() {
     }
   }, []);
 
+  const handleFilterChange = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(filterWorks(event.currentTarget.innerHTML));
+  };
+
   return (
     <div className="grid grid-cols-1">
-      <Filter items={categories} />
+      <Filter
+        currentFilter={currentFilter}
+        items={categories}
+        onClick={handleFilterChange}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">
-        {portfolio.map((e) => (
+        {filteredPortfolio.map((e) => (
           <PortfolioItem key={e.index} portfolio={e} />
         ))}
       </div>
