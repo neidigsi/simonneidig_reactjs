@@ -36,5 +36,10 @@
       "works": "Projets",
       "contact": "Contact"
     }
+  },
+  "footer": {
+    "imprint": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "copyright": "© Copyright"
   }
 }

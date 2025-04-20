@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 // Import internal dependencies
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import Card from "@/components/general/card";
+import Card from "@/components/general/card/card";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import ExpertiseItem from "@/components/about/expertiseItem";
 import { loadExpertises } from "@/store/slices/expertiseSlice";

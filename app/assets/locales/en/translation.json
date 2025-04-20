@@ -36,5 +36,10 @@
       "works": "Works",
       "contact": "Contact"
     }
+  },
+  "footer": {
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "copyright": "© Copyright"
   }
 }

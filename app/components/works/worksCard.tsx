@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next';
 
 // Import internal dependencies
-import Card from "@/components/general/card";
+import Card from "@/components/general/card/card";
 import PortfolioList from './portfolio/portfolioList';
 
 export default function WorksCard() {

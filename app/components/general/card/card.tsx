@@ -1,3 +1,6 @@
+// Import internal dependencies
+import Footer from "@/components/footer/footer";
+
 interface CardObject {
   headline: string;
   children: React.ReactNode;
@@ -20,6 +23,7 @@ export default function Card({ headline, children }: Readonly<CardObject>) {
         <div className="bg-gradient-to-r from-primary to-secondary w-48 h-0.5 rounded-lg"></div>
       </div>
       <div className="pt-5">{children}</div>
+      <Footer />
     </div>
   );
 }

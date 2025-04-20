@@ -8,10 +8,10 @@ export default function PortfolioItem({
 }>) {
   return (
     <div className="pt-4">
-      <div
+      <button
         onClick={() => window.open(portfolio.url, "_blank")}
         className={
-          "grid grid-cols-1 gap-2 w-full rounded-xl p-5 transition-transform transform hover:scale-105 " +
+          "grid grid-cols-1 gap-2 w-full rounded-xl p-5 text-start transition-transform transform hover:scale-105 " +
           +(portfolio.color == "primary"
             ? "lg:bg-primary/20"
             : "lg:bg-secondary/20") +
@@ -27,7 +27,7 @@ export default function PortfolioItem({
           {portfolio.categories.join(", ")}
         </div>
         <h3>{portfolio.title}</h3>
-      </div>
+      </button>
     </div>
   );
 }
