@@ -9,7 +9,7 @@ import PortfolioItem from "@/components/works/portfolio/portfolioItem";
 import Filter from "@/components/general/filter/filter";
 
 export default function PortfolioList() {
-  const educations = useAppSelector((state) => state.works.portfolio);
+  const portfolio = useAppSelector((state) => state.works.portfolio);
   const loaded = useAppSelector((state) => state.works.loaded);
   const categories = useAppSelector((state) => state.works.categories);
 
@@ -25,10 +25,12 @@ export default function PortfolioList() {
 
   return (
     <div className="grid grid-cols-1">
-        <Filter items={categories} />
-        {educations.map((e) => (
+      <Filter items={categories} />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">
+        {portfolio.map((e) => (
           <PortfolioItem key={e.index} portfolio={e} />
         ))}
+      </div>
     </div>
   );
 }

@@ -9,12 +9,24 @@ export default function PortfolioItem({
   return (
     <div className="pt-4">
       <div
+        onClick={() => window.open(portfolio.url, "_blank")}
         className={
-          "grid grid-cols-1 gap-2 w-full rounded-xl p-5 " +
-          (portfolio.index % 2 == 1 ? "bg-primary/20" : "bg-secondary/20")
+          "grid grid-cols-1 gap-2 w-full rounded-xl p-5 transition-transform transform hover:scale-105 " +
+          +(portfolio.color == "primary"
+            ? "lg:bg-primary/20"
+            : "lg:bg-secondary/20") +
+          (portfolio.index % 2 == 0 ? " bg-primary/20" : " bg-secondary/20")
         }
       >
-        <div className="text-base">{portfolio.categories.join(", ")}</div>
+        <img
+          src={portfolio.thumbnail}
+          alt={portfolio.title}
+          className="rounded-xl"
+        />
+        <div className="text-sm text-dark-grey">
+          {portfolio.categories.join(", ")}
+        </div>
+        <h3>{portfolio.title}</h3>
       </div>
     </div>
   );
