@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Sidebar from "@/components/sidebar/sidebar";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
-import Loader from "@/components/general/loader";
+import Loader from "@/components/general/loader/loader";
 import Navigation from "@/components/navigation/navigation";
 import DarkModeToggl from "@/components/actionBar/darkModeToggl";
 import LanguageSwitcher from "@/components/actionBar/languageSwitcher";

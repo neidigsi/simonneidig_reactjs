@@ -7,7 +7,7 @@ export default function EducationItem({
   education: Education;
 }>) {
   return (
-    <div className="pt-4">
+    <div className="pt-4 transition-transform transform hover:scale-105">
       <div
         className={
           "grid grid-cols-1 gap-2 w-full rounded-xl p-5 " +

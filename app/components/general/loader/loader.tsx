@@ -1,4 +1,4 @@
-import LoaderBall from "@/components/general/loaderBall";
+import LoaderBall from "@/components/general/loader/loaderBall";
 
 interface LoaderObject {
   size: number;

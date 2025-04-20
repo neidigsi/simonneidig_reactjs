@@ -10,7 +10,7 @@ export default function LoaderBall({
   color,
   darkColor,
   animationDelay,
-}: LoaderBallObject) {
+}: Readonly<LoaderBallObject>) {
   return (
     <div className="flex items-center justify-center space-x-2">
       <div
