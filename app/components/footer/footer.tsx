@@ -2,7 +2,7 @@
 import { useTranslation } from "react-i18next";
 import FooterItem from "./footerItem";
 
-export default function Footer() {
+export default function Page() {
   const { t } = useTranslation();
 
   return (

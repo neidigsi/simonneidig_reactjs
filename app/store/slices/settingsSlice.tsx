@@ -5,11 +5,13 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 interface SettingsState {
   language: string;
   isDarkModeEnabled: boolean;
+  backButtonEnabled: boolean;
 }
 
 const initialState: SettingsState = {
   language: "en",
   isDarkModeEnabled: false,
+  backButtonEnabled: false,
 };
 
 export const settingsSlice = createSlice({
@@ -18,8 +20,10 @@ export const settingsSlice = createSlice({
   reducers: {
     initializeDarkMode: (state) => {
       const storedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
       if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
         state.isDarkModeEnabled = true;
         document.documentElement.classList.add("dark");
@@ -27,7 +31,6 @@ export const settingsSlice = createSlice({
         state.isDarkModeEnabled = false;
         document.documentElement.classList.remove("dark");
       }
-  
     },
     // Toggle dark mode
     toggleDarkMode: (state) => {
@@ -43,12 +46,20 @@ export const settingsSlice = createSlice({
     },
     changeLanguage: (state, action: PayloadAction<string>) => {
       state.language = action.payload;
-      i18n.changeLanguage(action.payload); // Sprache ändern
+      i18n.changeLanguage(action.payload);
+    },
+    setBackButtonEnabled: (state, action: PayloadAction<boolean>) => {
+      state.backButtonEnabled = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleDarkMode, initializeDarkMode, changeLanguage } = settingsSlice.actions;
+export const {
+  toggleDarkMode,
+  initializeDarkMode,
+  changeLanguage,
+  setBackButtonEnabled,
+} = settingsSlice.actions;
 
 export default settingsSlice.reducer;
