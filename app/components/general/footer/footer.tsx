@@ -1,8 +1,11 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
-import FooterItem from "./footerItem";
 
-export default function Page() {
+// Import internal dependencies
+import FooterItem from "@/components/general/footer/footerItem";
+
+
+export default function Footer() {
   const { t } = useTranslation();
 
   return (
