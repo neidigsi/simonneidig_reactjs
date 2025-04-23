@@ -1,5 +1,5 @@
 // Import internal dependencies
-import Card from "@/components/general/card";
+import Card from "@/components/general/card/card";
 import TextInput from "@/components/general/input/textInput";
 import {
   setName,

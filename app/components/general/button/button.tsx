@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import Icon from "@/components/general/icon";
 
 interface ButtonProps {
@@ -25,7 +25,7 @@ interface ButtonProps {
  * @param {string} [props.className=""] - Additional CSS classes to apply to the button.
  * @returns {JSX.Element} The rendered button component.
  */
-const Button: React.FC<ButtonProps> = ({
+export default function Button({
   id = "btn-default",
   text,
   icon,
@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   inverted = false,
   disabled = false,
   className = "",
-}) => {
+}: Readonly<ButtonProps>): JSX.Element {
   return (
     <button
       id={id}
@@ -46,6 +46,4 @@ const Button: React.FC<ButtonProps> = ({
       <Icon icon={icon} className="size-5 mr-2" /> {text}
     </button>
   );
-};
-
-export default Button;
+}
