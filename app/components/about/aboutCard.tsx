@@ -37,12 +37,12 @@ export default function AboutCard() {
         <p dangerouslySetInnerHTML={{ __html: abstract }} />
         <h2 className=" pt-4">{t("main.about.subtitle")}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">
-          {expertises.map(({ index, color, expertise, description, icon }) => (
+          {expertises.map(({ index, color, title, description, icon }) => (
             <ExpertiseItem
               index={index}
               key={index}
               color={color}
-              expertise={expertise}
+              expertise={title}
               description={description}
               icon={icon}
             />
