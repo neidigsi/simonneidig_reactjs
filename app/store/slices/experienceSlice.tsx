@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { http } from "@/networking/httpRequest";
 
 export interface Experience {
-  index: number;
+  id: number;
   title: string;
   extract: string;
   description: string;
@@ -41,10 +41,7 @@ const initialState: ExperienceState = {
 
 export const loadExperiences = createAsyncThunk(
   "expertise/loadExperiences",
-  async (
-    { language }: { language: string },
-    thunkAPI
-  ) => {
+  async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
       path: "/experience",
@@ -67,7 +64,7 @@ export const experienceSlice = createSlice({
       .addCase(loadExperiences.pending, (state) => {
         state.loaded = false;
       })
-      .addCase('i18n/changeLanguage', (state) => {
+      .addCase("i18n/changeLanguage", (state) => {
         state.experiences = [];
         state.loaded = false;
       });

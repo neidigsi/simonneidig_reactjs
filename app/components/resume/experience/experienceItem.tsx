@@ -22,13 +22,15 @@ export default function ExperienceItem({
             : new Date(experience.end_date).getFullYear()}
         </div>
         <h3>{experience.title}</h3>
-        <div className="text-base">
-          {experience.company.name}
-          {" | "}
-          {experience.company.address.city}
-          {", "}
-          {experience.company.address.country}
-        </div>
+        {experience.company != undefined && (
+          <div className="text-base">
+            {experience.company.name}
+            {" | "}
+            {experience.company.address.city}
+            {", "}
+            {experience.company.address.country}
+          </div>
+        )}
       </div>
     </div>
   );

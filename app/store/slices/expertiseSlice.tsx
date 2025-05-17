@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { http } from "@/networking/httpRequest";
 
 export interface Expertise {
-  index: number;
+  id: number;
   color: string;
   title: string;
   description: string;
