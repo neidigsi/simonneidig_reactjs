@@ -1,6 +1,8 @@
 // Import external dependencies
-import { http } from "@/networking/httpRequest";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+// Import internal dependencies
+import { http } from "@/networking/httpRequest";
 
 export interface Expertise {
   index: number;
@@ -22,10 +24,11 @@ const initialState: ExpertiseState = {
 
 export const loadExpertises = createAsyncThunk(
   "expertise/loadExpertises",
-  async () => {
+  async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
       path: "/expertise",
+      language: language,
     });
     // Assign color to element
     let respData = resp.data;
@@ -54,6 +57,10 @@ export const expertiseSlice = createSlice({
         state.loaded = true;
       })
       .addCase(loadExpertises.pending, (state) => {
+        state.loaded = false;
+      })
+      .addCase("i18n/changeLanguage", (state) => {
+        state.expertises = [];
         state.loaded = false;
       });
   },

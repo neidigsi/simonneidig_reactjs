@@ -11,6 +11,7 @@ import ExperienceItem from "@/components/resume/experience/experienceItem";
 export default function ExperienceList() {
   const experiences = useAppSelector((state) => state.experience.experiences);
   const loaded = useAppSelector((state) => state.experience.loaded);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
 
@@ -18,9 +19,9 @@ export default function ExperienceList() {
 
   useEffect(() => {
     if (!loaded) {
-      dispatch(loadExperiences());
+      dispatch(loadExperiences({ language: language }));
     }
-  }, []);
+  });
 
   return (
     <div className="grid grid-cols-1">

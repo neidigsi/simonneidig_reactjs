@@ -14,6 +14,7 @@ interface Request {
   path: string;
   body?: string;
   responseType?: string;
+  language?: string; // optionales Feld für Sprache
 }
 
 /**
@@ -26,13 +27,17 @@ export async function http({
   path,
   body = undefined,
   responseType = undefined,
+  language = undefined,
 }: Request): Promise<any> {
-  console.log("HTTP request", method, path, body);
-  let config = {};
+  let config: any = {
+    headers: {},
+  };
+
+  if (language !== undefined) {
+    config.headers["Accept-Language"] = language;
+  }
   if (responseType !== undefined) {
-    config = {
-      responseType: responseType,
-    };
+    config.responseType = responseType;
   }
 
   // Prefix path with proxy base URL
@@ -42,9 +47,9 @@ export async function http({
   if (method === "GET") {
     response = await axios.get(url, config);
   } else if (method === "PUT") {
-    response = await axios.put(url, body);
+    response = await axios.put(url, body, config);
   } else if (method === "POST") {
-    response = await axios.post(url, body);
+    response = await axios.post(url, body, config);
   }
 
   return response;

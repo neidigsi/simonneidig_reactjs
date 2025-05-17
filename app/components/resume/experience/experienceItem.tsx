@@ -15,11 +15,11 @@ export default function ExperienceItem({
         }
       >
         <div className="text-sm text-dark-grey">
-          {new Date(experience.start).getFullYear()}
+          {new Date(experience.start_date).getFullYear()}
           {" - "}
-          {experience.end > "3"
+          {experience.end_date > "3"
             ? "present"
-            : new Date(experience.end).getFullYear()}
+            : new Date(experience.end_date).getFullYear()}
         </div>
         <h3>{experience.title}</h3>
         <div className="text-base">

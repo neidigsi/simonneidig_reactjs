@@ -1,5 +1,6 @@
 // Import external dependencies
 import { useEffect } from "react";
+import i18n from "i18next";
 
 // Import internal dependencies
 import Sidebar from "@/components/sidebar/sidebar";
@@ -9,6 +10,7 @@ import Loader from "@/components/general/loader/loader";
 import Navigation from "@/components/navigation/navigation";
 import DarkModeToggl from "@/components/actionBar/darkModeToggl";
 import LanguageSwitcher from "@/components/actionBar/languageSwitcher";
+import { changeLanguage } from "@/store/slices/settingsSlice";
 
 export default function SidebarLayout({
   children,
@@ -21,6 +23,7 @@ export default function SidebarLayout({
 
   useEffect(() => {
     dispatch(loadPersonalInfo());
+    dispatch(changeLanguage(i18n.language));
   }, []);
 
   return (

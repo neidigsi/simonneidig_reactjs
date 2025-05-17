@@ -16,6 +16,7 @@ export default function AboutCard() {
   );
   const expertises = useAppSelector((state) => state.expertise.expertises);
   const expertiseLoaded = useAppSelector((state) => state.expertise.loaded);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
 
@@ -27,9 +28,9 @@ export default function AboutCard() {
     }
 
     if (!expertiseLoaded) {
-      dispatch(loadExpertises());
+      dispatch(loadExpertises({ language: language }));
     }
-  }, []);
+  });
 
   return (
     <Card headline={t("main.about.title")}>
