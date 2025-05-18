@@ -20,6 +20,7 @@ export default function LanguageSwitcher() {
 
   const handleChange = (lang: string) => {
     dispatch(changeLanguage(lang));
+    dispatch({ type: "i18n/changeLanguage" });
     setOpen(false);
   };
 
@@ -34,7 +35,7 @@ export default function LanguageSwitcher() {
               key={lang.code}
               onClick={() => handleChange(lang.code)}
               className="btn bg-white dark:bg-dark-mode-background mr-2 transition"
-              title={lang.label}
+              title={lang.code}
             >
               <div className="size-5">{lang.flag}</div>
             </button>

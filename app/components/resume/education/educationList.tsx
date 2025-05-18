@@ -11,6 +11,7 @@ import EducationItem from "@/components/resume/education/educationItem";
 export default function EducationList() {
   const educations = useAppSelector((state) => state.education.educations);
   const loaded = useAppSelector((state) => state.education.loaded);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
 
@@ -18,9 +19,9 @@ export default function EducationList() {
 
   useEffect(() => {
     if (!loaded) {
-      dispatch(loadEducations());
+      dispatch(loadEducations({language: language}));
     }
-  }, []);
+  });
 
   return (
     <div className="grid grid-cols-1">
@@ -31,8 +32,8 @@ export default function EducationList() {
           </div>
           <h2 className="pl-2">{t("main.resume.education")}</h2>
         </div>
-        {educations.map((e) => (
-          <EducationItem key={e.index} education={e} />
+        {educations.map((e, index) => (
+          <EducationItem key={e.id} index={index} education={e} />
         ))}
       </div>
     </div>

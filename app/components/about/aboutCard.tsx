@@ -1,6 +1,6 @@
 // Import external dependencies
 import { useEffect } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -10,12 +10,13 @@ import ExpertiseItem from "@/components/about/expertiseItem";
 import { loadExpertises } from "@/store/slices/expertiseSlice";
 
 export default function AboutCard() {
-  const abstract = useAppSelector((state) => state.personalInfo.abstract);
+  const abstract = useAppSelector((state) => state.personalDetails.abstract);
   const personalInfoLoaded = useAppSelector(
     (state) => state.personalInfo.loaded
   );
   const expertises = useAppSelector((state) => state.expertise.expertises);
   const expertiseLoaded = useAppSelector((state) => state.expertise.loaded);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
 
@@ -23,13 +24,13 @@ export default function AboutCard() {
 
   useEffect(() => {
     if (!personalInfoLoaded) {
-      dispatch(loadPersonalInfo());
+      dispatch(loadPersonalInfo({ language: language }));
     }
 
     if (!expertiseLoaded) {
-      dispatch(loadExpertises());
+      dispatch(loadExpertises({ language: language }));
     }
-  }, []);
+  });
 
   return (
     <Card headline={t("main.about.title")}>
@@ -37,12 +38,12 @@ export default function AboutCard() {
         <p dangerouslySetInnerHTML={{ __html: abstract }} />
         <h2 className=" pt-4">{t("main.about.subtitle")}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">
-          {expertises.map(({ index, color, expertise, description, icon }) => (
+          {expertises.map(({ index, color, title, description, icon }) => (
             <ExpertiseItem
               index={index}
               key={index}
               color={color}
-              expertise={expertise}
+              expertise={title}
               description={description}
               icon={icon}
             />

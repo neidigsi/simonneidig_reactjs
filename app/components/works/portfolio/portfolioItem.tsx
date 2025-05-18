@@ -2,8 +2,10 @@
 import type { Portfolio } from "@/store/slices/worksSlice";
 
 export default function PortfolioItem({
+  index,
   portfolio,
 }: Readonly<{
+  index: number;
   portfolio: Portfolio;
 }>) {
   return (
@@ -15,7 +17,7 @@ export default function PortfolioItem({
           +(portfolio.color == "primary"
             ? "lg:bg-primary/20"
             : "lg:bg-secondary/20") +
-          (portfolio.index % 2 == 0 ? " bg-primary/20" : " bg-secondary/20")
+          (index % 2 == 0 ? " bg-primary/20" : " bg-secondary/20")
         }
       >
         <img
@@ -24,7 +26,7 @@ export default function PortfolioItem({
           className="rounded-xl"
         />
         <div className="text-sm text-dark-grey">
-          {portfolio.categories.join(", ")}
+          {portfolio.categories.map((cat: any) => cat?.name).filter(Boolean).join(", ")}
         </div>
         <h3>{portfolio.title}</h3>
       </button>

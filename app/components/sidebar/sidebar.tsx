@@ -1,19 +1,31 @@
 // Import external dependencies
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 // Import internal dependencies
 import Badge from "@/components/general/badge";
 import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
 import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
 import ProfilePicture from "@/components/sidebar/profilePicture";
-import { useAppSelector } from "@/store/hooks";
 import Button from "@/components/general/button/button";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { loadPersonalDetails } from "@/store/slices/personalDetailsSlice";
 
 export default function Sidebar() {
-  const name = useAppSelector((state) => state.personalInfo.name);
-  const position = useAppSelector((state) => state.personalInfo.position);
+  const name = useAppSelector((state) => state.personalDetails.name);
+  const position = useAppSelector((state) => state.personalDetails.position);
+  const loaded = useAppSelector((state) => state.personalDetails.loaded);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!loaded) {
+      dispatch(loadPersonalDetails({ language: language }));
+    }
+  });
 
   return (
     <div className="grid col-span-1 h-screen items-end w-full">
@@ -30,7 +42,11 @@ export default function Sidebar() {
           <SocialMedia />
           <PersonalInfo />
           <div className="grid justify-center pb-6">
-            <Button text={t("sidebar.cv-button")} icon="ArrowDownTrayIcon" onClick={() => {}}/>
+            <Button
+              text={t("sidebar.cv-button")}
+              icon="ArrowDownTrayIcon"
+              onClick={() => {}}
+            />
           </div>
         </div>
       </div>

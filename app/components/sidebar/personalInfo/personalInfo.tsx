@@ -1,11 +1,23 @@
+// Import external dependencies
+import { useEffect } from "react";
+
 // Import internal dependencies
 import PersonalInfoItem from "@/components/sidebar/personalInfo/personalInfoItem";
-
-// Import external dependencies
-import { useAppSelector } from "@/store/hooks";
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 
 export default function PersonalInfo() {
   const information = useAppSelector((state) => state.personalInfo.information);
+  const loaded = useAppSelector((state) => state.personalInfo.loaded);
+  const language = useAppSelector((state) => state.settings.language);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!loaded) {
+      dispatch(loadPersonalInfo({ language: language }));
+    }
+  });
 
   return (
     <div className="flex bg-dark-grey/20 justify-center m-6 rounded-xl">
