@@ -23,7 +23,7 @@ export default function Filter({
 }: Readonly<FilterProps>) {
 
   return (
-    <div className="flex items-end justify-end space-x-6">
+    <div className="flex flex-wrap items-end justify-end gap-x-6 gap-y-2">
       {items.map((i) => (
         <FilterItem
           key={i}

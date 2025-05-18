@@ -1,11 +1,11 @@
 // Import external dependencies
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import i18n from "i18next";
+import { useLocation } from "react-router";
 
 // Import internal dependencies
 import Sidebar from "@/components/sidebar/sidebar";
-import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import Loader from "@/components/general/loader/loader";
+import { useAppDispatch } from "@/store/hooks";
 import Navigation from "@/components/navigation/navigation";
 import DarkModeToggl from "@/components/actionBar/darkModeToggl";
 import LanguageSwitcher from "@/components/actionBar/languageSwitcher";
@@ -17,10 +17,31 @@ export default function SidebarLayout({
   children: React.ReactNode;
 }>) {
   const dispatch = useAppDispatch();
+  const navRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const prevPathRef = useRef(location.pathname);
 
   useEffect(() => {
     dispatch(changeLanguage(i18n.language));
   }, []);
+
+  useEffect(() => {
+    // Only scroll on small screens and if route changed
+    const mdBreakpoint =
+      parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--tw-breakpoint-md"
+        )
+      ) || 768;
+    if (
+      prevPathRef.current !== location.pathname &&
+      window.innerWidth < mdBreakpoint &&
+      navRef.current
+    ) {
+      navRef.current.scrollIntoView({ behavior: "auto", block: "start" });
+    }
+    prevPathRef.current = location.pathname;
+  }, [location.pathname]);
 
   return (
     <div className="max-w-[1350px] w-screen">
@@ -38,7 +59,7 @@ export default function SidebarLayout({
             <DarkModeToggl />
           </div>
           <div className="main-section">
-            <Navigation />
+            <Navigation navRef={navRef} />
             {children}
           </div>
         </div>

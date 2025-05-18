@@ -3,6 +3,7 @@
  */
 .nav-item {
   @apply rounded-lg size-[4rem] text-sm items-center;
+  cursor: pointer;
 }
 
 .dark .nav-item {
@@ -16,4 +17,5 @@
 
 .nav-item-active {
   @apply bg-gradient-to-r from-primary to-secondary text-white;
+  cursor: default;
 }

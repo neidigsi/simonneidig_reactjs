@@ -20,14 +20,20 @@ export default function NavigationItem({
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  /**
+   * Handles the click event on the navigation item.
+   * It disables the back button and navigates to the specified path.
+   */
   const handleClick = () => {
-    navigate(path);
-    dispatch(setBackButtonEnabled(false));
+    if (!active) {
+      dispatch(setBackButtonEnabled(false));
+      navigate(path);
+    }
   };
 
   return (
     <button
-      className={active ? "nav-item active" : "nav-item"}
+      className={active ? "nav-item nav-item-active active" : "nav-item"}
       onClick={handleClick}
     >
       <div className="grid justify-items-center gap-1">
