@@ -1,13 +1,20 @@
 // Import external dependencies
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+
+// Import internal dependencies
+import { http } from "@/networking/httpRequest";
 
 export interface Portfolio {
-  index: number;
+  id: number;
   color: string;
   title: string;
   url: string;
-  categories: string[];
+  categories: Category[];
   thumbnail: string;
+}
+
+interface Category {
+  name: string;
 }
 
 interface WorksState {
@@ -26,6 +33,18 @@ const initialState: WorksState = {
   categories: [],
 };
 
+export const loadWorks = createAsyncThunk(
+  "expertise/loadWorks",
+  async ({ language }: { language: string }) => {
+    const resp = await http({
+      method: "GET",
+      path: "/work",
+      language: language,
+    });
+    return resp.data;
+  }
+);
+
 export const worksSlice = createSlice({
   name: "works",
   initialState: initialState,
@@ -36,53 +55,59 @@ export const worksSlice = createSlice({
         state.filteredPortfolio = state.portfolio;
       } else {
         state.filteredPortfolio = state.portfolio.filter((item) =>
-          item.categories.includes(action.payload)
+          Array.isArray(item.categories)
+            ? item.categories.some((cat) => cat?.name === action.payload)
+            : false
         );
       }
     },
-    loadWorks: (state) => {
-      let resp = [
-        {
-          index: 1,
-          title: "Musikverein 1914 Münster e. V.",
-          url: "https://mvm1914.de",
-          categories: ["WordPress", "Operations"],
-          thumbnail: "/images/mvm1914.png",
-        },
-        {
-          index: 2,
-          title: "Personal Website",
-          url: "https://simon-neidig.de",
-          categories: ["Web Development", "UI/UX", "Operations"],
-          thumbnail: "/images/personalWebsite.png",
-        },
-      ];
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadWorks.fulfilled, (state, action) => {
+        let resp = action.payload;
+        // Create a new array with map instead of direct mutation
+        let j = 0;
+        const coloredResp = resp.map((item: any, i: number) => {
+          j += 1;
+          const color = j < 2 ? "secondary" : "primary";
+          if (j >= 2) j = j % 3;
+          return { ...item, index: i, color };
+        });
 
-      // Assign color to element
-      let j = 0;
-      for (let i = 0; i < resp.length; i++) {
-        j += 1;
+        state.portfolio = coloredResp;
+        state.filteredPortfolio = coloredResp;
 
-        if (j < 2) {
-          resp[i] = { ...resp[i], index: i, color: "secondary" };
-        } else {
-          j = j % 3;
-          resp[i] = { ...resp[i], index: i, color: "primary" };
-        }
-      }
+        // Extract category names efficiently
+        const categoryNames: string[] = Array.from(
+          new Set(
+            coloredResp.flatMap((item: { categories: { name: string }[] }) =>
+              Array.isArray(item.categories)
+                ? item.categories.map((cat) => cat?.name ?? "")
+                : []
+            )
+          )
+        ).filter(Boolean) as string[];
 
-      state.portfolio = resp;
-      state.filteredPortfolio = resp;
-      state.categories = Array.from(
-        new Set(resp.flatMap((item) => item.categories))
-      );
-      state.categories.push("All");
-      state.categories.sort((a, b) => a.localeCompare(b));
-      state.loaded = true;
-    },
+        categoryNames.push("All");
+        categoryNames.sort((a, b) => a.localeCompare(b));
+        state.categories = categoryNames;
+        state.loaded = true;
+      })
+      .addCase(loadWorks.pending, (state) => {
+        state.loaded = false;
+      })
+      .addCase("i18n/changeLanguage", (state) => {
+        // Reset state to initial values on language change
+        state.loaded = initialState.loaded;
+        state.currentFilter = initialState.currentFilter;
+        state.portfolio = initialState.portfolio;
+        state.filteredPortfolio = initialState.filteredPortfolio;
+        state.categories = initialState.categories;
+      });
   },
 });
 
-export const { loadWorks, filterWorks } = worksSlice.actions;
+export const { filterWorks } = worksSlice.actions;
 
 export default worksSlice.reducer;
