@@ -12,7 +12,7 @@ const PROXY_BASE_URL = "http://127.0.0.1:8000";
 interface Request {
   method: string;
   path: string;
-  body?: string;
+  body?: any;
   responseType?: string;
   language?: string; // optionales Feld für Sprache
 }

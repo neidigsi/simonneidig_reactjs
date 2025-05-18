@@ -32,8 +32,8 @@ export default function ExperienceList() {
           </div>
           <h2 className="pl-2">{t("main.resume.experience")}</h2>
         </div>
-        {experiences.map((e) => (
-          <ExperienceItem key={e.id} experience={e} />
+        {experiences.map((e, index) => (
+          <ExperienceItem index={index} key={e.id} experience={e} />
         ))}
       </div>
     </div>

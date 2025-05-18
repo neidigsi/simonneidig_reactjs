@@ -26,7 +26,7 @@ const initialState: EducationState = {
 };
 
 export const loadEducations = createAsyncThunk(
-  "expertise/loadE",
+  "expertise/loadEucations",
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",

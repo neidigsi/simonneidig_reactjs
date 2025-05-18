@@ -12,12 +12,13 @@ import TextareaInput from "@/components/general/input/textareaInput";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export default function ContactCard() {
   const name = useAppSelector((state) => state.contact.name);
   const email = useAppSelector((state) => state.contact.email);
   const message = useAppSelector((state) => state.contact.message);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
 
@@ -51,8 +52,10 @@ export default function ContactCard() {
           text={t("main.contact.form.submit")}
           icon="PaperAirplaneIcon"
           className="mt-4"
-          disabled={name.length === 0 || email.length === 0 || message.length === 0}
-          onClick={() => dispatch(sendMessage())}
+          disabled={
+            name.length === 0 || email.length === 0 || message.length === 0
+          }
+          onClick={() => dispatch(sendMessage({ language: language }))}
         />
       </div>
     </Card>
