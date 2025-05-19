@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 // Import internal dependencies
 import FooterItem from "@/components/general/footer/footerItem";
 
-
 export default function Footer() {
   const { t } = useTranslation();
 
@@ -13,8 +12,8 @@ export default function Footer() {
       <FooterItem
         text={t("footer.copyright") + " " + new Date().getFullYear()}
       />
-      <FooterItem text={t("footer.imprint")} path="/imprint" />
-      <FooterItem text={t("footer.privacy")} path="/privacy" />
+      <FooterItem text={t("footer.imprint")} path="/page/imprint" />
+      <FooterItem text={t("footer.privacy")} path="/page/privacy" />
     </div>
   );
 }

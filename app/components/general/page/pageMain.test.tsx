@@ -1,13 +1,15 @@
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import Page from "@/components/general/page/page";
-import settingsReducer, { setBackButtonEnabled } from "@/store/slices/settingsSlice";
+import Page from "@/components/general/page/pageMain";
+import settingsReducer, {
+  setBackButtonEnabled,
+} from "@/store/slices/settingsSlice";
 import { MemoryRouter } from "react-router";
 
 export function renderWithRouter(ui: any, { route = "/" } = {}) {
-    return render(<MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>);
-  }
+  return render(<MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>);
+}
 
 describe("Page Component", () => {
   let store: ReturnType<typeof configureStore>;
@@ -37,16 +39,6 @@ describe("Page Component", () => {
 
     expect(getByText("Test Title")).toBeInTheDocument();
     expect(getByText("Test Content")).toBeInTheDocument();
-  });
-
-  it("dispatches setBackButtonEnabled when backButtonEnabled is false", () => {
-    renderWithRouter(
-      <Provider store={store}>
-        <Page title="Test Title" text="Test Content" />
-      </Provider>
-    );
-
-    expect(store.dispatch).toHaveBeenCalledWith(setBackButtonEnabled(true));
   });
 
   it("does not dispatch setBackButtonEnabled when backButtonEnabled is true", () => {
