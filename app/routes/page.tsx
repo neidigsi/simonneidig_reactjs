@@ -57,5 +57,5 @@ export default function Page(): JSX.Element {
   }, [path, dispatch]);
 
   // Render the page content
-  return <PageMain title={title} text={html} />;
+  return <PageMain title={title} text={html} loaded={loaded} />;
 }

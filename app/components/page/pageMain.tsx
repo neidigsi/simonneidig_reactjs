@@ -1,5 +1,5 @@
 // Import external dependencies
-import { JSX, } from "react";
+import { JSX } from "react";
 
 // Import internal dependencies
 import Card from "@/components/general/card/card";
@@ -7,6 +7,7 @@ import Card from "@/components/general/card/card";
 interface PageProps {
   title: string;
   text: string;
+  loaded?: boolean;
 }
 
 /**
@@ -27,9 +28,10 @@ interface PageProps {
 export default function PageMain({
   title,
   text,
+  loaded = true,
 }: Readonly<PageProps>): JSX.Element {
   return (
-    <Card headline={title}>
+    <Card headline={title} loaded={loaded}>
       <div className="text-base">
         <p dangerouslySetInnerHTML={{ __html: text }} />
       </div>

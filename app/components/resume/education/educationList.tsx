@@ -1,27 +1,15 @@
 // Import external dependencies
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import Icon from "@/components/general/icon";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { loadEducations } from "@/store/slices/educationSlice";
+import { useAppSelector } from "@/store/hooks";
 import EducationItem from "@/components/resume/education/educationItem";
 
 export default function EducationList() {
   const educations = useAppSelector((state) => state.education.educations);
-  const loaded = useAppSelector((state) => state.education.loaded);
-  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (!loaded) {
-      dispatch(loadEducations({language: language}));
-    }
-  });
 
   return (
     <div className="grid grid-cols-1">
