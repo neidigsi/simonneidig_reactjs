@@ -19,7 +19,11 @@
 }
 
 .btn-inverted:hover {
-  @apply bg-gradient-to-r from-transparent to-transparent;
+  @apply bg-gradient-to-r from-transparent to-transparent text-black;
+}
+
+.dark .btn-inverted:hover {
+  @apply text-white
 }
 
 .btn-disabled {
