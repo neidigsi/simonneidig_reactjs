@@ -41,5 +41,16 @@
     "imprint": "Imprint",
     "privacy": "Privacy Policy",
     "copyright": "© Copyright"
+  },
+  "error": {
+    "not-found": {
+      "title": "Oops, nothing here",
+      "description": "The page you are looking for was moved, removed, renamed or might never existed.",
+      "button": "Back to home"
+    },
+    "server-error": {
+      "title": "Server Error",
+      "description": "An unexpected error occurred. Please try again later."
+    }
   }
 }

@@ -41,5 +41,16 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "copyright": "© Copyright"
+  },
+  "error": {
+    "not-found": {
+      "title": "Ups, nichts gefunden",
+      "description": "Die Seite, die Sie suchen, wurde verschoben, entfernt, umbenannt oder hat möglicherweise nie existiert.",
+      "button": "Zurück zur Startseite"
+    },
+    "server-error": {
+      "title": "Serverfehler",
+      "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+    }
   }
 }

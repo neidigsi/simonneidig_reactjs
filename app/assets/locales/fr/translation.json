@@ -41,5 +41,16 @@
     "imprint": "Mentions légales",
     "privacy": "Politique de confidentialité",
     "copyright": "© Copyright"
+  },
+  "error": {
+    "not-found": {
+      "title": "Oups, rien ici",
+      "description": "La page que vous recherchez a été déplacée, supprimée, renommée ou n'a peut-être jamais existé.",
+      "button": "Retour à l'accueil"
+    },
+    "server-error": {
+      "title": "Erreur serveur",
+      "description": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard."
+    }
   }
 }
