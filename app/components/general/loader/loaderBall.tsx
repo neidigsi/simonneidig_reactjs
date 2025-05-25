@@ -13,10 +13,7 @@ export default function LoaderBall({
 }: Readonly<LoaderBallObject>) {
   return (
     <div className="flex items-center justify-center space-x-2">
-      <div
-        className="dot-loader"
-        style={{ animationDelay: animationDelay }}
-      >
+      <div className="dot-loader" style={{ animationDelay: animationDelay }}>
         <div
           className={
             "w-" +

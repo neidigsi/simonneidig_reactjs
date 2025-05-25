@@ -1,9 +1,13 @@
+// Import external dependencies
+import { JSX } from "react";
+
 // Import internal dependencies
 import Footer from "@/components/general/footer/footer";
-import { JSX } from "react";
+import Loader from "@/components/general/loader/loader";
 
 interface CardObject {
   headline: string;
+  loaded?: boolean;
   children: React.ReactNode;
 }
 
@@ -18,6 +22,7 @@ interface CardObject {
  */
 export default function Card({
   headline,
+  loaded = true,
   children,
 }: Readonly<CardObject>): JSX.Element {
   return (
@@ -26,7 +31,15 @@ export default function Card({
         <h1 className="pr-5">{headline}</h1>
         <div className="bg-gradient-to-r from-primary to-secondary w-48 h-0.5 rounded-lg"></div>
       </div>
-      <div className="pt-5">{children}</div>
+      <div className="pt-5">
+        {loaded ? (
+          children
+        ) : (
+          <div className="grid h-71 place-items-center">
+            <Loader size={5} color="secondary" darkColor="white" />
+          </div>
+        )}
+      </div>
       <Footer />
     </div>
   );
