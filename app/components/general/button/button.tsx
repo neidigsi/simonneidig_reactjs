@@ -37,9 +37,10 @@ export default function Button({
   return (
     <button
       id={id}
-      className={`flex ${className} ${inverted ? "btn-inverted" : ""} ${
-        disabled ? "btn-disabled" : "btn"
-      }`}
+      className={`flex 
+        ${className} 
+        ${inverted ? "btn-inverted" : "btn"}
+      ${disabled && "btn-disabled"}`}
       onClick={onClick}
       disabled={disabled}
     >

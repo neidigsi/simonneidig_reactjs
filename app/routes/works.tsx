@@ -1,7 +1,17 @@
+// Import external dependencies
+import { useTranslation } from 'react-i18next';
+
 // Import internal dependencies
-import WorksCard from "@/components/works/worksCard";
+import Card from "@/components/general/card/card";
+import PortfolioList from '@/components/works/portfolio/portfolioList';
 import "@/assets/css/main.css";
 
 export default function Works() {
-  return <WorksCard />;
+  const { t } = useTranslation();
+
+  return (
+    <Card headline={t("main.works.title")}>
+      <PortfolioList />
+    </Card>
+  );
 }

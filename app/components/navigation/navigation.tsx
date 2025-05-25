@@ -1,7 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router";
-import { JSX, RefObject, useRef, useEffect } from "react";
+import { JSX } from "react";
 
 // Import internal dependencies
 import NavigationItem from "@/components/navigation/navigationItem";

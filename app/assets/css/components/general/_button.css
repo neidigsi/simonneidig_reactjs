@@ -15,7 +15,15 @@
 }
 
 .btn-inverted {
-  @apply p-2 rounded-lg w-fit text-base items-center;
+  @apply p-2 rounded-lg w-fit text-base items-center bg-gradient-to-r from-primary to-secondary text-white;
+}
+
+.btn-inverted:hover {
+  @apply bg-gradient-to-r from-transparent to-transparent text-black;
+}
+
+.dark .btn-inverted:hover {
+  @apply text-white
 }
 
 .btn-disabled {
