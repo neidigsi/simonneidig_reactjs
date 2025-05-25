@@ -1,10 +1,8 @@
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import Page from "@/components/general/page/pageMain";
-import settingsReducer, {
-  setBackButtonEnabled,
-} from "@/store/slices/settingsSlice";
+import Page from "@/components/page/pageMain";
+import settingsReducer from "@/store/slices/settingsSlice";
 import { MemoryRouter } from "react-router";
 
 export function renderWithRouter(ui: any, { route = "/" } = {}) {
