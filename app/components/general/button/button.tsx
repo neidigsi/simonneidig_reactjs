@@ -14,7 +14,7 @@ interface ButtonProps {
 /**
  * Button component that renders a customizable button with an optional icon.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  * @param {Object} props - The properties object.
  * @param {string} [props.id="btn-default"] - The unique ID for the button.
  * @param {string} props.text - The text to display inside the button.

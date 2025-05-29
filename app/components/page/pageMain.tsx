@@ -19,7 +19,7 @@ interface PageProps {
  * The component uses the `Card` component to display the content in a styled card format.
  * A page component is typically used to display information or content that is not part of the main navigation.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  * @param {string} title - The headline of the page.
  * @param {string} text - The HTML content to display as the page text.
  *

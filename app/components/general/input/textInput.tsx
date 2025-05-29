@@ -12,7 +12,7 @@ interface TextInputProps {
 /**
  * TextInput component that renders a styled text input with a floating label.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  * @param {Object} props - The properties object.
  * @param {string} props.label - The label text for the text input.
  * @param {string} props.value - The current value of the text input.

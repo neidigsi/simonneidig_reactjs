@@ -1,6 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
+import { JSX } from "react";
 
 // Import internal dependencies
 import "@/assets/css/main.css";
@@ -8,12 +9,31 @@ import { useAppSelector } from "@/store/hooks";
 import Card from "@/components/general/card/card";
 import Button from "@/components/general/button/button";
 
-export default function Error404() {
+/**
+ * Error404 Component
+ *
+ * This component displays a 404 error page when a user navigates to a non-existent route.
+ * It adapts the displayed image based on the current dark mode setting.
+ *
+ * Features:
+ * - Shows a localized headline and description for the 404 error.
+ * - Displays a themed image (dark/light) depending on dark mode.
+ * - Provides a button to navigate back to the home page.
+ *
+ * Usage:
+ * <Error404 />
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @returns {JSX.Element} The rendered Error404 component.
+ */
+export default function Error404(): JSX.Element {
   const isDarkModeEnabled = useAppSelector(
     (state) => state.settings.isDarkModeEnabled
   );
 
   const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   return (

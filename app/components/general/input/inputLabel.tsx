@@ -11,7 +11,7 @@ interface InputLabelProps {
  * InputLabel component that renders a floating label for an input field.
  * The component is used by all input components to provide a consistent label style.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  * @param {Object} props - The properties object.
  * @param {string} props.htmlFor - The ID of the input element this label is associated with.
  * @param {boolean} props.shouldFloat - Determines whether the label should float above the input.

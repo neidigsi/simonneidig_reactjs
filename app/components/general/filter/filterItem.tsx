@@ -4,7 +4,7 @@
  * This component renders a single filter item as a clickable element.
  * When hovered, the cursor changes to a pointer, and the text color changes to "text-primary".
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  * @param {string} item - The text to display for the filter item.
  */
 export default function FilterItem({
