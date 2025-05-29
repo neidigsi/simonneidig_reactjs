@@ -10,7 +10,7 @@ interface ContactState {
   name: string;
   email: string;
   message: string;
-  sent: boolean;
+  sentSuccessfully: boolean;
 }
 
 const initialState: ContactState = {
@@ -18,7 +18,7 @@ const initialState: ContactState = {
   name: "",
   email: "",
   message: "",
-  sent: false,
+  sentSuccessfully: false,
 };
 
 export const sendMessage = createAsyncThunk(
@@ -39,7 +39,7 @@ export const sendMessage = createAsyncThunk(
       language: language,
     });
 
-    return resp.data;
+    return resp;
   }
 );
 
@@ -65,11 +65,19 @@ export const contactSlice = createSlice({
     setMessage: (state, action: PayloadAction<string>) => {
       state.message = action.payload;
     },
+    // Reset the contact state
+    resetContact: (state) => {
+      state.name = "";
+      state.email = "";
+      state.message = "";
+      state.sentSuccessfully = false;
+    }
   },
   extraReducers: (builder) => {
     builder
       .addCase(sendMessage.fulfilled, (state, action) => {
-        state.sent = true;
+        console.log(action.payload);
+        state.sentSuccessfully = true;
         state.loaded = true;
       })
       .addCase(sendMessage.pending, (state) => {
@@ -79,6 +87,6 @@ export const contactSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setName, setEmail, setMessage } = contactSlice.actions;
+export const { setName, setEmail, setMessage, resetContact } = contactSlice.actions;
 
 export default contactSlice.reducer;

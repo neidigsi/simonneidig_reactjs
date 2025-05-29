@@ -26,7 +26,7 @@ import "@/assets/css/main.css";
  * - Used for routes like `/page/:path` (e.g., `/page/imprint`, `/page/privacy`).
  * - The content is fetched via the `loadPage` thunk and rendered using the `PageMain` component.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  *
  * @returns {JSX.Element} The rendered Page component.
  */

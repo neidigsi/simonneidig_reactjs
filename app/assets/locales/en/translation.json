@@ -23,6 +23,12 @@
         "email": "Email",
         "message": "Message",
         "submit": "Submit"
+      },
+      "confirmation": {
+        "headline": "Thank you",
+        "message": "Your message has been successfully sent. I will get back to you as soon as possible.",
+        "return-home": "Back to home",
+        "return-to-contact": "Back to contact form"
       }
     }
   },

@@ -12,7 +12,7 @@ interface TextareaInputProps {
 /**
  * TextareaInput component that renders a styled textarea with a floating label.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  * @param {Object} props - The properties object.
  * @param {string} props.label - The label text for the textarea.
  * @param {string} props.value - The current value of the textarea.
