@@ -1,11 +1,11 @@
 # Production Dockerfile for React/Vite SSR app
 
 # Build stage: install dependencies and build the app
-FROM node:22-alpine as build
+FROM node:22-alpine AS build
 WORKDIR /app
-# Install dependencies (production only)
+# Install ALL dependencies (including dev) for build tools
 COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev || npm install --omit=dev
+RUN npm ci || npm install
 # Copy all source files
 COPY . .
 # Build the SSR app
