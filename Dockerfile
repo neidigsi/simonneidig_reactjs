@@ -1,22 +1,17 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
+# production Dockerfile for React/Vite app
+FROM node:20-alpine as build
 WORKDIR /app
-RUN npm ci
-
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
-WORKDIR /app
-RUN npm ci --omit=dev
-
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm ci --omit=dev || npm install --omit=dev
+COPY . .
 RUN npm run build
 
 FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
 WORKDIR /app
-CMD ["npm", "run", "start"]
+COPY --from=build /app/build ./build
+COPY --from=build /app/public ./public
+COPY package.json ./
+COPY package-lock.json* ./
+RUN npm ci --omit=dev || npm install --omit=dev
+EXPOSE 3000
+CMD ["npx", "react-router-serve", "./build/server/index.js"]
