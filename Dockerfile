@@ -1,22 +1,27 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
-WORKDIR /app
-RUN npm ci
+# Production Dockerfile for React/Vite SSR app
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
+# Build stage: install dependencies and build the app
+FROM node:22-alpine as build
 WORKDIR /app
-RUN npm ci --omit=dev
-
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+# Install dependencies (production only)
+COPY package.json package-lock.json* ./
+RUN npm ci --omit=dev || npm install --omit=dev
+# Copy all source files
+COPY . .
+# Build the SSR app
 RUN npm run build
 
-FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+# Runtime stage: only production files and dependencies
+FROM node:22-alpine
 WORKDIR /app
-CMD ["npm", "run", "start"]
+# Copy built app and public assets from build stage
+COPY --from=build /app/build ./build
+COPY --from=build /app/public ./public
+# Copy package files and install only production dependencies
+COPY package.json ./
+COPY package-lock.json* ./
+RUN npm ci --omit=dev || npm install --omit=dev
+# Expose SSR server port
+EXPOSE 3000
+# Start the SSR server
+CMD ["npx", "react-router-serve", "./build/server/index.js"]
