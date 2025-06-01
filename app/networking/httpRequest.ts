@@ -7,7 +7,7 @@ import axios from "axios";
  * @author Simon Neidig <mail@simon-neidig.de>
  */
 
-const PROXY_BASE_URL = "http://127.0.0.1:8000";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 interface Request {
   method: string;
@@ -41,7 +41,7 @@ export async function http({
   }
 
   // Prefix path with proxy base URL
-  const url = `${PROXY_BASE_URL}${path}`;
+  const url = `${BACKEND_URL}${path}`;
 
   let response;
   if (method === "GET") {
