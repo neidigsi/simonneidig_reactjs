@@ -5,13 +5,13 @@ import StoreProvider from "@/store/storeProvider";
 import SidebarLayout from "@/layouts/sidebarLayout";
 import { Outlet } from "react-router";
 
-export default function Layout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Layout() {
   return (
-    <div className={"grid place-content-center bg-image bg-image-attributes dark:bg-image-dark"}>
+    <div
+      className={
+        "grid place-content-center bg-image bg-image-attributes dark:bg-image-dark"
+      }
+    >
       <StoreProvider>
         <SidebarLayout>
           <Outlet />
