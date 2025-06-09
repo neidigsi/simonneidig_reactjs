@@ -56,7 +56,8 @@
     },
     "server-error": {
       "title": "Serverfehler",
-      "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+      "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+      "button": "Zurück zur Startseite"
     }
   }
 }

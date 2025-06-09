@@ -5,6 +5,7 @@ import {
   setEmail,
   setMessage,
   sendMessage,
+  resetContact,
 } from "@/store/slices/contactSlice";
 import Button from "@/components/general/button/button";
 import TextareaInput from "@/components/general/input/textareaInput";
@@ -12,7 +13,9 @@ import TextareaInput from "@/components/general/input/textareaInput";
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useTranslation } from "react-i18next";
-import { JSX } from "react";
+import { JSX, useEffect } from "react";
+import { useNavigate } from "react-router";
+
 
 /**
  * ContactForm Component
@@ -38,10 +41,21 @@ export default function ContactForm(): JSX.Element {
   const email = useAppSelector((state) => state.contact.email);
   const message = useAppSelector((state) => state.contact.message);
   const language = useAppSelector((state) => state.settings.language);
+  const loaded = useAppSelector((state) => state.contact.loaded);
+  const successful = useAppSelector((state) => state.contact.sentSuccessfully);
+
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (loaded && !successful) {
+      navigate("/error");
+      dispatch(resetContact())
+    }
+  });  
 
   return (
     <>
