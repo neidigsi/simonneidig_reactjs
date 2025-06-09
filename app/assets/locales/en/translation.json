@@ -56,7 +56,8 @@
     },
     "server-error": {
       "title": "Server Error",
-      "description": "An unexpected error occurred. Please try again later."
+      "description": "An unexpected error occurred. Please try again later.",
+      "button": "Back to home"
     }
   }
 }

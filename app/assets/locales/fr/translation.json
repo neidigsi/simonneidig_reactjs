@@ -56,7 +56,8 @@
     },
     "server-error": {
       "title": "Erreur serveur",
-      "description": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard."
+      "description": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.",
+      "button": "Retour à l'accueil"
     }
   }
 }

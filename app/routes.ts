@@ -13,5 +13,6 @@ export default [
     route("works", "routes/works.tsx"),
     route("page/:path", "routes/page.tsx"),
     route("*", "routes/error404.tsx"),
+    route("error", "routes/error500.tsx"),
   ]),
 ] satisfies RouteConfig;

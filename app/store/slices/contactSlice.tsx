@@ -14,7 +14,7 @@ interface ContactState {
 }
 
 const initialState: ContactState = {
-  loaded: true,
+  loaded: false,
   name: "",
   email: "",
   message: "",
@@ -71,17 +71,21 @@ export const contactSlice = createSlice({
       state.email = "";
       state.message = "";
       state.sentSuccessfully = false;
+      state.loaded = false;
     }
   },
   extraReducers: (builder) => {
     builder
       .addCase(sendMessage.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.sentSuccessfully = true;
         state.loaded = true;
       })
       .addCase(sendMessage.pending, (state) => {
         state.loaded = false;
+      })
+      .addCase(sendMessage.rejected, (state, action) => {
+        state.loaded = true;
+        state.sentSuccessfully = false;
       });
   },
 });

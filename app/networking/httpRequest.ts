@@ -4,7 +4,7 @@ import axios from "axios";
  * This file implements all connections to the restful-api.
  * It uses cookies to store the credentials and renews the token if it is expired.
  *
- * @author Simon Neidig <mail@simon-neidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  */
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -20,7 +20,7 @@ interface Request {
 /**
  * This method is used for all http-requests to the restful-api.
  *
- * @author Simon Neidig <mail@simon-neidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
  */
 export async function http({
   method,
