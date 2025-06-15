@@ -10,7 +10,7 @@ export interface Portfolio {
   title: string;
   url: string;
   categories: Category[];
-  thumbnail: string;
+  thumbnail_id: number;
 }
 
 interface Category {

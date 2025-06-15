@@ -21,7 +21,7 @@ export default function PortfolioItem({
         }
       >
         <img
-          src={portfolio.thumbnail}
+          src={`${import.meta.env.VITE_BACKEND_URL}/image/${portfolio.thumbnail_id}`}
           alt={portfolio.title}
           className="rounded-xl"
         />
