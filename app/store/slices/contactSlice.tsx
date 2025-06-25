@@ -30,7 +30,7 @@ export const sendMessage = createAsyncThunk(
     const state = getState() as { contact: ContactState };
     const resp = await http({
       method: "POST",
-      path: "/contact",
+      path: "/contact/",
       body: JSON.stringify({
         name: state.contact.name,
         email: state.contact.email,

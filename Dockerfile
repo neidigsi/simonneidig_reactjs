@@ -15,7 +15,7 @@ COPY . .
 RUN mv .env.example .env
 
 # Set VITE_BACKEND_URL to /api before build
-ENV VITE_BACKEND_URL=https://simon-neidig.eu/api
+ENV VITE_BACKEND_URL=/api
 
 # Build the SSR app
 RUN npm run build

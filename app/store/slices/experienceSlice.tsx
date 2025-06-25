@@ -44,7 +44,7 @@ export const loadExperiences = createAsyncThunk(
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/experience",
+      path: "/experience/",
       language: language,
     });
     return resp.data;
