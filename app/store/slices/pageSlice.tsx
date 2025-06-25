@@ -21,7 +21,7 @@ export const loadPage = createAsyncThunk(
   async ({ language, path }: { language: string; path: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/page/" + path + "/",
+      path: "/page/" + path,
       language: language,
     });
     return resp.data;
