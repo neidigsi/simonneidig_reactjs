@@ -26,7 +26,7 @@ export const loadSocialMedia = createAsyncThunk(
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/social-media",
+      path: "/social-media/",
       language: language,
     });
     return resp.data;

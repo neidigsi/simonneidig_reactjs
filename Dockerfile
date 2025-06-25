@@ -12,9 +12,10 @@ RUN npm ci || npm install
 
 # Copy all source files
 COPY . .
+RUN mv .env.example .env
 
 # Set VITE_BACKEND_URL to /api before build
-RUN sed -i 's/^VITE_BACKEND_URL=.*/VITE_BACKEND_URL=\/api/' .env || echo 'VITE_BACKEND_URL=/api' >> .env
+ENV VITE_BACKEND_URL=/api
 
 # Build the SSR app
 RUN npm run build

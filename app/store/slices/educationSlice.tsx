@@ -30,7 +30,7 @@ export const loadEducations = createAsyncThunk(
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/education",
+      path: "/education/",
       language: language,
     });
     return resp.data;

@@ -23,7 +23,7 @@ export const loadPersonalDetails = createAsyncThunk(
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/personal-details",
+      path: "/personal-details/",
       language: language,
     });
     return resp.data;

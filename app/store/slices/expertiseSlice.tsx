@@ -27,7 +27,7 @@ export const loadExpertises = createAsyncThunk(
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/expertise",
+      path: "/expertise/",
       language: language,
     });
     // Assign color to element

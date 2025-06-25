@@ -38,7 +38,7 @@ export const loadWorks = createAsyncThunk(
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",
-      path: "/work",
+      path: "/work/",
       language: language,
     });
     return resp.data;
