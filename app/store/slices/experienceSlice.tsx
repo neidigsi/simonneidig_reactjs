@@ -58,7 +58,9 @@ export const experienceSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadExperiences.fulfilled, (state, action) => {
-        state.experiences = action.payload;
+        state.experiences = [...action.payload].sort(
+          (a, b) => new Date(b.start_date).getTime() - new Date(a.start_date).getTime()
+        );
         state.loaded = true;
       })
       .addCase(loadExperiences.pending, (state) => {

@@ -44,7 +44,9 @@ export const educationSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadEducations.fulfilled, (state, action) => {
-        state.educations = action.payload;
+        state.educations = [...action.payload].sort(
+          (a, b) => new Date(b.start_date).getTime() - new Date(a.start_date).getTime()
+        );
         state.loaded = true;
       })
       .addCase(loadEducations.pending, (state) => {
