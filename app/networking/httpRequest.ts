@@ -41,7 +41,7 @@ export async function http({
   }
 
   // Prefix path with proxy base URL
-  const url = `/api${path}`;
+  const url = `/asdf${path}`;
 
   let response;
   if (method === "GET") {
