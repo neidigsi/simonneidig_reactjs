@@ -27,6 +27,7 @@ export default function Resume() {
     if (!educationLoaded) {
       dispatch(loadEducations({ language: language }));
     }
+    document.title = t("main.resume.title") + " | Simon Neidig";
   });
 
   return (

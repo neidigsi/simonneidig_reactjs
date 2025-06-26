@@ -1,7 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { JSX } from "react";
+import { JSX, useEffect } from "react";
 
 // Import internal dependencies
 import "@/assets/css/main.css";
@@ -35,6 +35,10 @@ export default function Error404(): JSX.Element {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "404 | Simon Neidig";
+  });
 
   return (
     <Card headline={t("error.not-found.title")}>

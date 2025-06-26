@@ -20,6 +20,7 @@ export default function Works() {
     if (!loaded) {
       dispatch(loadWorks({ language: language }));
     }
+    document.title = t("main.works.title") + " | Simon Neidig";
   });
 
   return (
