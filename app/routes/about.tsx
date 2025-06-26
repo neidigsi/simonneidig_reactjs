@@ -25,6 +25,8 @@ export default function About() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    document.title = t("main.about.title") + " | Simon Neidig";
+
     if (!personalInfoLoaded) {
       dispatch(loadPersonalInfo({ language: language }));
     }

@@ -48,6 +48,8 @@ export default function Page(): JSX.Element {
       dispatch(loadPage({ language: language, path: path ?? "" }));
     }
     dispatch(setBackButtonEnabled(true));
+
+    document.title = title + " | Simon Neidig";
   }, [loaded, dispatch, language, path]);
 
   // Reset page state and enable back button when path changes

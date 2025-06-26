@@ -1,5 +1,5 @@
 // Import external dependencies
-import { JSX } from "react";
+import { JSX, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
@@ -34,6 +34,10 @@ export default function Contact(): JSX.Element {
   );
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = t("main.contact.title") + " | Simon Neidig";
+  })
 
   return (
     <Card headline={t("main.contact.title")}>
