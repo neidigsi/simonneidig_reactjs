@@ -9,6 +9,7 @@ interface PersonalDetailsState {
   name: string;
   position: string;
   abstract: string;
+  profilePictureId: number | undefined;
 }
 
 const initialState: PersonalDetailsState = {
@@ -16,6 +17,7 @@ const initialState: PersonalDetailsState = {
   name: "",
   position: "",
   abstract: "",
+  profilePictureId: undefined,
 };
 
 export const loadPersonalDetails = createAsyncThunk(
@@ -40,6 +42,7 @@ export const personalDetailsSlice = createSlice({
         state.name = action.payload.name;
         state.position = action.payload.position;
         state.abstract = action.payload.abstract;
+        state.profilePictureId = action.payload.profile_picture_id;
         state.loaded = true;
       })
       .addCase(loadPersonalDetails.pending, (state) => {

@@ -26,4 +26,3 @@ body {
 @import "./components/general/_input";
 @import "./components/general/_loading";
 @import "./components/navigation/_navigation";
-@import "./components/sidebar/_profilePicture";
