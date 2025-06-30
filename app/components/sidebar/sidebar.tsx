@@ -1,6 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 // Import internal dependencies
 import Badge from "@/components/general/badge";
@@ -16,6 +17,8 @@ export default function Sidebar() {
   const position = useAppSelector((state) => state.personalDetails.position);
   const loaded = useAppSelector((state) => state.personalDetails.loaded);
   const language = useAppSelector((state) => state.settings.language);
+
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
 
@@ -43,9 +46,9 @@ export default function Sidebar() {
           <PersonalInfo />
           <div className="grid justify-center pb-6">
             <Button
-              text={t("sidebar.cv-button")}
-              icon="ArrowDownTrayIcon"
-              onClick={() => {}}
+              text={t("sidebar.button")}
+              icon="EnvelopeIcon"
+              onClick={() => navigate("/contact")}
             />
           </div>
         </div>
