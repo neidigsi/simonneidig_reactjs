@@ -31,7 +31,7 @@ export default function ExpertiseItem({
       </div>
       <div className="col-span-4 pr-5">
         <h3 className="pb-3">{expertise}</h3>
-        <div className="text-base">{description}</div>
+        <div className="text-base hyphens-auto">{description}</div>
       </div>
     </div>
   );

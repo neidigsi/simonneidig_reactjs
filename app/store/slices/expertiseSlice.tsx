@@ -10,6 +10,7 @@ export interface Expertise {
   title: string;
   description: string;
   icon: string;
+  sort: number;
 }
 
 interface ExpertiseState {
@@ -32,6 +33,10 @@ export const loadExpertises = createAsyncThunk(
     });
     // Assign color to element
     let respData = resp.data;
+
+    // Sort respData by 'sort' ascending
+    respData.sort((a: any, b: any) => a.sort - b.sort);
+
     let j = 0;
     for (let i = 0; i < respData.length; i++) {
       j += 1;

@@ -23,7 +23,7 @@ export default function EducationItem({
             ? "present"
             : new Date(education.end_date).getFullYear()}
         </div>
-        <h3>{education.course_of_study}</h3>
+        <h3>{education.degree + " " + education.course_of_study}</h3>
         {education.university != undefined && (
           <div className="text-base">
             {education.university.name}
