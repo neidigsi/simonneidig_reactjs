@@ -7,6 +7,7 @@ import type { Institution } from "@/store/slices/experienceSlice";
 
 export interface Education {
   id: number;
+  degree: string;
   course_of_study: string;
   extract: string;
   description: string;
