@@ -20,7 +20,7 @@ export default function PersonalInfo() {
   });
 
   return (
-    <div className="flex bg-dark-grey/20 justify-center m-6 rounded-xl">
+    <div className="flex bg-dark-grey/20 justify-center m-4 md:m-6 rounded-xl">
       <div className="m-5 w-full">
         {information.map(({ label, value, icon }: any, index: number) => (
           <div key={label}>
