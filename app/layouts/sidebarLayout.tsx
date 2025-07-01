@@ -123,7 +123,7 @@ export default function SidebarLayout({
       {personalDetailsLoaded && personalInfoLoaded && socialMediaLoaded ? (
         // Main layout grid, only rendered when all data is loaded
         <div className="max-w-[1350px] w-screen">
-          <div className="mx-8 grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-8 xl:grid-cols-7">
+          <div className="mx-4 md:mx-8 grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-8 xl:grid-cols-7">
             {/* Sidebar section */}
             <div className="col-span-1 md:col-span-1 lg:col-span-3 xl:col-span-2">
               {/* Action bar for small screens */}

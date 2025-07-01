@@ -32,7 +32,7 @@ export default function Sidebar() {
 
   return (
     <div className="grid col-span-1 h-screen items-end w-full">
-      <div className="mb-4 drop-shadow-xl">
+      <div className="md:mb-4 drop-shadow-xl">
         <ProfilePicture />
         <div className="bg-white dark:bg-dark-mode-background dark:text-white justify-center rounded-b-2xl">
           <h2 className="text-center pt-4">{name}</h2>

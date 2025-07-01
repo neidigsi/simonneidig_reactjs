@@ -26,7 +26,7 @@ export default function Card({
   children,
 }: Readonly<CardObject>): JSX.Element {
   return (
-    <div className="w-full h-fit bg-white dark:bg-dark-mode-background dark:text-white rounded-2xl drop-shadow-xl p-8 my-8">
+    <div className="w-full h-fit bg-white dark:bg-dark-mode-background dark:text-white rounded-2xl drop-shadow-xl p-4 md:p-8 my-4 md:my-8">
       <div className="flex pt-5 items-center">
         <h1 className="pr-5">{headline}</h1>
         <div className="bg-gradient-to-r from-primary to-secondary w-48 h-0.5 rounded-lg"></div>
