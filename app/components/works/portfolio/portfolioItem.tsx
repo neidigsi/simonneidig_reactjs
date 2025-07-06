@@ -9,7 +9,7 @@ export default function PortfolioItem({
   portfolio: Portfolio;
 }>) {
   return (
-    <div className="pt-4">
+    <div>
       <button
         onClick={() => window.open(portfolio.url, "_blank")}
         className={
@@ -21,12 +21,17 @@ export default function PortfolioItem({
         }
       >
         <img
-          src={`${import.meta.env.VITE_BACKEND_URL}/image/${portfolio.thumbnail_id}`}
+          src={`${import.meta.env.VITE_BACKEND_URL}/image/${
+            portfolio.thumbnail_id
+          }`}
           alt={portfolio.title}
           className="rounded-xl"
         />
         <div className="text-sm text-dark-grey">
-          {portfolio.categories.map((cat: any) => cat?.name).filter(Boolean).join(", ")}
+          {portfolio.categories
+            .map((cat: any) => cat?.name)
+            .filter(Boolean)
+            .join(", ")}
         </div>
         <h3>{portfolio.title}</h3>
       </button>

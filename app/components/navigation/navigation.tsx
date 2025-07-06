@@ -34,7 +34,7 @@ export default function Navigation({
   return (
     <div
       ref={navRef}
-      className="flex justify-between items-center sticky top-5 md:top-0 z-50 bg-inherit md:static md:z-auto"
+      className="flex justify-between items-center sticky top-4 md:top-0 z-50 bg-inherit md:static md:z-auto"
     >
       <div className="flex justify-start">
         {backButtonEnabled && (

@@ -44,7 +44,7 @@ export default function Sidebar() {
           </div>
           <SocialMedia />
           <PersonalInfo />
-          <div className="grid justify-center pb-6">
+          <div className="grid justify-center pb-4 md:pb-6">
             <Button
               text={t("sidebar.button")}
               icon="EnvelopeIcon"

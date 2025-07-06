@@ -8,7 +8,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-center relative mt-8 gap-4">
+    <div className="flex justify-center relative mt-4 md:mt-8 gap-4">
       <FooterItem
         text={t("footer.copyright") + " " + new Date().getFullYear()}
       />
