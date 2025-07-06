@@ -33,8 +33,12 @@ import { useNavigate } from "react-router";
  * <ContactForm />
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none - This component does not accept any props. All state is managed via Redux.
  * 
- * @returns {JSX.Element} The rendered SendingConfirmation component.
+ * @returns {JSX.Element} Renders a localized contact form with fields for name, email, and message.
+ * The form uses controlled inputs, disables the submit button until all fields are filled,
+ * and dispatches a sendMessage action on submit. If sending fails, the user is redirected to an error page.
  */
 export default function ContactForm(): JSX.Element {
   const name = useAppSelector((state) => state.contact.name);

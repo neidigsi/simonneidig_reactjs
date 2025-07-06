@@ -21,6 +21,7 @@ import Button from "@/components/general/button/button";
  * - Button to navigate back to the home page
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @returns {JSX.Element} The rendered Error500 component
  */
 export default function Error500(): JSX.Element {

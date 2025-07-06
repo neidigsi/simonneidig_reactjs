@@ -20,6 +20,9 @@ import "@/assets/css/main.css";
  * - Displays a localized contact form for user input.
  * - Shows a confirmation message after successful submission.
  * - Uses Redux state to determine which view to render.
+ * - Sets the page title dynamically based on the current language.
+ * - Utilizes Tailwind CSS for layout and styling.
+ * - Integrates with Redux for state management and i18n for translations.
  *
  * Usage:
  * <Contact />

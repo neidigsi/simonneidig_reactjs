@@ -8,6 +8,20 @@ interface SocialMediaButtonObject {
   url: string;
 }
 
+/**
+ * SocialMediaButton Component
+ *
+ * Renders a social media icon button that opens the given URL in a new tab.
+ * Highlights the icon on hover or when dark mode is enabled.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {string} path - The SVG path for the icon.
+ * @param {string} color - The color for the icon.
+ * @param {string} url - The URL to open when the button is clicked.
+ *
+ * @returns {JSX.Element} The rendered social media button component.
+ */
 export default function SocialMediaButton({
   path,
   color,

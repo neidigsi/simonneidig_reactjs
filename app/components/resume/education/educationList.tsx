@@ -6,6 +6,18 @@ import Icon from "@/components/general/icon";
 import { useAppSelector } from "@/store/hooks";
 import EducationItem from "@/components/resume/education/educationItem";
 
+/**
+ * EducationList Component
+ *
+ * Displays a list of education entries using the EducationItem component.
+ * Shows a section headline and an icon.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none
+ *
+ * @returns {JSX.Element} The rendered education list component.
+ */
 export default function EducationList() {
   const educations = useAppSelector((state) => state.education.educations);
 

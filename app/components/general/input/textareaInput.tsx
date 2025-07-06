@@ -13,11 +13,13 @@ interface TextareaInputProps {
  * TextareaInput component that renders a styled textarea with a floating label.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {Object} props - The properties object.
  * @param {string} props.label - The label text for the textarea.
  * @param {string} props.value - The current value of the textarea.
  * @param {(value: string) => void} props.onChange - The function to call when the value changes.
  * @param {string} [props.id="text-input"] - The unique ID for the textarea.
+ * 
  * @returns {JSX.Element} The rendered textarea input component.
  */
 export default function TextareaInput({

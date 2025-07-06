@@ -20,6 +20,7 @@ interface PageProps {
  * A page component is typically used to display information or content that is not part of the main navigation.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {string} title - The headline of the page.
  * @param {string} text - The HTML content to display as the page text.
  *

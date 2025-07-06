@@ -1,11 +1,15 @@
 /**
  * FilterItem Component
  *
- * This component renders a single filter item as a clickable element.
- * When hovered, the cursor changes to a pointer, and the text color changes to "text-primary".
+ * Renders a single filter item as a button. Highlights the item if active and calls onClick when clicked.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ *
  * @param {string} item - The text to display for the filter item.
+ * @param {boolean} active - Whether the filter item is currently active.
+ * @param {function} onClick - The click handler for the filter item.
+ *
+ * @returns {JSX.Element} The rendered filter item component.
  */
 export default function FilterItem({
   item,

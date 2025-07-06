@@ -12,6 +12,18 @@ import Button from "@/components/general/button/button";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { loadPersonalDetails } from "@/store/slices/personalDetailsSlice";
 
+/**
+ * Sidebar Component
+ *
+ * Displays the sidebar with profile picture, name, position, social media links, personal info, and a contact button.
+ * Loads personal details from the store if not already loaded.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none
+ *
+ * @returns {JSX.Element} The rendered sidebar component.
+ */
 export default function Sidebar() {
   const name = useAppSelector((state) => state.personalDetails.name);
   const position = useAppSelector((state) => state.personalDetails.position);

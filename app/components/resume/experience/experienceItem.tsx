@@ -1,6 +1,20 @@
 // Import internal dependencies
 import type { Experience } from "@/store/slices/experienceSlice";
 
+/**
+ * ExperienceItem Component
+ *
+ * Displays a single work experience entry with title, company, and dates.
+ * Alternates background color based on index for visual distinction.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {Object} props - The properties object.
+ * @param {number} props.index - The index of the experience item in the list.
+ * @param {Experience} props.experience - The experience data to display.
+ *
+ * @returns {JSX.Element} The rendered experience item component.
+ */
 export default function ExperienceItem({
   index,
   experience,

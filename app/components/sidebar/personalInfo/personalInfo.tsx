@@ -6,6 +6,16 @@ import PersonalInfoItem from "@/components/sidebar/personalInfo/personalInfoItem
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 
+/**
+ * PersonalInfo Component
+ *
+ * Renders a list of personal information items using the PersonalInfoItem component.
+ * Displays each item with a divider except for the last one.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @returns {JSX.Element} The rendered personal info list component.
+ */
 export default function PersonalInfo() {
   const information = useAppSelector((state) => state.personalInfo.information);
   const loaded = useAppSelector((state) => state.personalInfo.loaded);

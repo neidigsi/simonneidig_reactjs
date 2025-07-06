@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
  * The active navigation item is highlighted based on the current route.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @returns {JSX.Element} The rendered navigation component.
  */
 export default function Navigation({

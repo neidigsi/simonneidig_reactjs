@@ -14,6 +14,7 @@ interface FilterProps {
  * Each item is displayed using the `FilterItem` component.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {string[]} items - An array of strings representing the filter items to display.
  */
 export default function Filter({

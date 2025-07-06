@@ -11,6 +11,20 @@ import EducationList from "@/components/resume/education/educationList";
 import ExperienceList from "@/components/resume/experience/experienceList";
 import "@/assets/css/main.css";
 
+/**
+ * Resume Page Component
+ *
+ * This component displays the resume page, showing both work experience and education in a responsive grid layout.
+ * It loads experience and education data from the Redux store, triggering asynchronous fetches if the data is not yet loaded.
+ * The page title is set dynamically based on the current language.
+ * The ExperienceList and EducationList components are rendered side by side on large screens and stacked on small screens.
+ * Tailwind CSS is used for layout and styling.
+ * Integrates with Redux for state management and i18n for translations.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @returns {JSX.Element} The rendered Resume page.
+ */
 export default function Resume() {
   const experiencesLoaded = useAppSelector((state) => state.experience.loaded);
   const educationLoaded = useAppSelector((state) => state.education.loaded);
