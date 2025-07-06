@@ -11,6 +11,19 @@ import { loadExpertises } from "@/store/slices/expertiseSlice";
 import "@/assets/css/main.css";
 import "@/i18n";
 
+/**
+ * About Page Component
+ *
+ * This component displays the "About" page, including a personal abstract and a list of expertises.
+ * It loads personal information and expertise data from the Redux store, triggering asynchronous fetches if needed.
+ * The abstract is rendered as HTML, and the expertises are shown in a responsive grid using the ExpertiseItem component.
+ * The page title is set dynamically based on the current language.
+ * Tailwind CSS is used for layout and styling.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @returns {JSX.Element} The rendered About page.
+ */
 export default function About() {
   const abstract = useAppSelector((state) => state.personalDetails.abstract);
   const personalInfoLoaded = useAppSelector(

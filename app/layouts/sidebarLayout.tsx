@@ -36,6 +36,7 @@ import Loader from "@/components/general/loader/loader";
  * </SidebarLayout>
  * 
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {children} React.ReactNode - The main content to display in the layout.
 
  */

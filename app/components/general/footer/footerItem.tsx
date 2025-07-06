@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
  * If a path is provided, the button becomes clickable and changes its text color on hover.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {string} text - The text to display on the button.
  * @param {string} [path] - The optional path to navigate to when the button is clicked.
  *

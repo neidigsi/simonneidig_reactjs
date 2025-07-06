@@ -11,6 +11,21 @@ interface NavigationItem {
   active: boolean;
 }
 
+/**
+ * NavigationItem Component
+ *
+ * Renders a single navigation item with an icon and label.
+ * Highlights the item if active and navigates to the specified path on click.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {string} text - The label for the navigation item.
+ * @param {string} path - The path to navigate to when clicked.
+ * @param {string} icon - The icon name to display.
+ * @param {boolean} active - Whether the navigation item is currently active.
+ *
+ * @returns {JSX.Element} The rendered navigation item component.
+ */
 export default function NavigationItem({
   text,
   path,

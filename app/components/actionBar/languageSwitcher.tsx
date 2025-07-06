@@ -12,6 +12,24 @@ const languages = [
   { code: "fr", flag: "🇫🇷" },
 ];
 
+/**
+ * LanguageSwitcher Component
+ *
+ * This component provides a button group for switching the application's language.
+ * When the main button is clicked, a list of available languages (represented by flags) is shown,
+ * excluding the currently active language. Selecting a language updates the Redux store,
+ * triggers a language change event, and closes the selection menu.
+ * The component uses Tailwind CSS for styling and adapts to dark mode.
+ * It is intended for use in the application's action bar or header.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none - This component does not accept any props.
+ *
+ * @returns {JSX.Element} A language switcher button group that allows the user to change the application's language. 
+ * The currently active language is hidden from the selection. When the main button is clicked, a list of available languages (with flags) is shown, 
+ * and selecting a language updates the Redux store and triggers a language change event.
+ */
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const language = useAppSelector((state) => state.settings.language);

@@ -13,11 +13,13 @@ interface TextInputProps {
  * TextInput component that renders a styled text input with a floating label.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {Object} props - The properties object.
  * @param {string} props.label - The label text for the text input.
  * @param {string} props.value - The current value of the text input.
  * @param {(value: string) => void} props.onChange - The function to call when the value changes.
  * @param {string} [props.id="text-input"] - The unique ID for the text input.
+ * 
  * @returns {JSX.Element} The rendered text input input component.
  */
 export default function TextInput({

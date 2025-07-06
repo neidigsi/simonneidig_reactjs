@@ -4,6 +4,18 @@ import { filterWorks } from "@/store/slices/worksSlice";
 import PortfolioItem from "@/components/works/portfolio/portfolioItem";
 import Filter from "@/components/general/filter/filter";
 
+/**
+ * PortfolioList Component
+ *
+ * Displays a list of portfolio items with filter functionality.
+ * Renders a filter bar and a grid of PortfolioItem components based on the selected filter.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none
+ *
+ * @returns {JSX.Element} The rendered portfolio list component.
+ */
 export default function PortfolioList() {
   const filteredPortfolio = useAppSelector(
     (state) => state.works.filteredPortfolio

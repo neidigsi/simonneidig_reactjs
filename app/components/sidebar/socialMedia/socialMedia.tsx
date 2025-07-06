@@ -6,6 +6,18 @@ import SocialMediaButton from "@/components/sidebar/socialMedia/socialMediaButto
 import { loadSocialMedia } from "@/store/slices/socialMediaSlice";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 
+/**
+ * SocialMedia Component
+ *
+ * Displays a row of social media buttons for each social media entry in the store.
+ * Loads social media data if not already loaded.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none
+ *
+ * @returns {JSX.Element} The rendered social media component.
+ */
 export default function SocialMedia() {
   const socialMedia = useAppSelector((state) => state.socialMedia.socialMedia);
   const loaded = useAppSelector((state) => state.socialMedia.loaded);

@@ -1,6 +1,20 @@
 // Import internal dependencies
 import type { Education } from "@/store/slices/educationSlice";
 
+/**
+ * EducationItem Component
+ *
+ * Displays a single education entry with degree, course of study, university, and dates.
+ * Alternates background color based on index for visual distinction.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {Object} props - The properties object.
+ * @param {number} props.index - The index of the education item in the list.
+ * @param {Education} props.education - The education data to display.
+ *
+ * @returns {JSX.Element} The rendered education item component.
+ */
 export default function EducationItem({
   index,
   education,

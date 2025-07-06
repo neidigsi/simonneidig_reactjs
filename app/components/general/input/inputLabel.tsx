@@ -8,14 +8,17 @@ interface InputLabelProps {
 }
 
 /**
- * InputLabel component that renders a floating label for an input field.
- * The component is used by all input components to provide a consistent label style.
+ * InputLabel Component
+ *
+ * Renders a floating label for an input or textarea field.
+ * The label floats above the input when focused or when the input has content.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
- * @param {Object} props - The properties object.
- * @param {string} props.htmlFor - The ID of the input element this label is associated with.
- * @param {boolean} props.shouldFloat - Determines whether the label should float above the input.
- * @param {string} props.label - The text to display as the label.
+ *
+ * @param {string} htmlFor - The ID of the input element this label is associated with.
+ * @param {boolean} shouldFloat - Determines whether the label should float above the input.
+ * @param {string} label - The text to display as the label.
+ *
  * @returns {JSX.Element} The rendered label component.
  */
 export default function InputLabel({

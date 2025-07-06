@@ -1,6 +1,20 @@
 // Import internal dependencies
 import type { Portfolio } from "@/store/slices/worksSlice";
 
+/**
+ * PortfolioItem Component
+ *
+ * Renders a single portfolio entry as a clickable card, displaying a thumbnail, categories, and title.
+ * Opens the portfolio URL in a new tab when clicked. Alternates background color for visual distinction.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {Object} props - The properties object.
+ * @param {number} props.index - The index of the portfolio item in the list.
+ * @param {Portfolio} props.portfolio - The portfolio data to display.
+ *
+ * @returns {JSX.Element} The rendered portfolio item component.
+ */
 export default function PortfolioItem({
   index,
   portfolio,

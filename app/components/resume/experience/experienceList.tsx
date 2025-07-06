@@ -6,6 +6,18 @@ import Icon from "@/components/general/icon";
 import { useAppSelector } from "@/store/hooks";
 import ExperienceItem from "@/components/resume/experience/experienceItem";
 
+/**
+ * ExperienceList Component
+ *
+ * Displays a list of work experience entries using the ExperienceItem component.
+ * Shows a section headline and an icon.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none
+ *
+ * @returns {JSX.Element} The rendered experience list component.
+ */
 export default function ExperienceList() {
   const experiences = useAppSelector((state) => state.experience.experiences);
 
