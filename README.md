@@ -1,4 +1,4 @@
-# ReactJs Frontend for simon-neidig.eu
+# ReactJs Frontend of Personal Website
 
 This repository contains the frontend for the website [https://simon-neidig.eu](https://simon-neidig.eu), built with React, React Redux, React Router, Tailwind CSS, and Vite.
 
