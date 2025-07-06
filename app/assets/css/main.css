@@ -16,8 +16,6 @@ body {
     font-family: 'Montserrat Alternates', sans-serif;
   }
 
-@import "./variables/_app";
-
 @import "./utilities/_background";
 @import "./utilities/_general";
 
