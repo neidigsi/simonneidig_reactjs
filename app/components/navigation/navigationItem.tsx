@@ -48,6 +48,9 @@ export default function NavigationItem({
 
   return (
     <button
+      id={`navigation-item-${text}`}
+      type="button"
+      aria-label={text}
       className={active ? "nav-item nav-item-active active" : "nav-item"}
       onClick={handleClick}
     >

@@ -2,7 +2,7 @@
 import Icon from "@/components/general/icon";
 import {
   initializeDarkMode,
-  toggleDarkMode
+  toggleDarkMode,
 } from "@/store/slices/settingsSlice";
 
 // Import external dependencies
@@ -25,16 +25,24 @@ import { useEffect } from "react";
  * @returns {JSX.Element} A button that toggles dark mode. The button displays a sun or moon icon depending on the current theme. On mount, it initializes the dark mode state from the store.
  */
 export default function DarkModeToggl() {
-  const isDarkModeEnabled = useAppSelector((state) => state.settings.isDarkModeEnabled);
+  const isDarkModeEnabled = useAppSelector(
+    (state) => state.settings.isDarkModeEnabled
+  );
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(initializeDarkMode())
+    dispatch(initializeDarkMode());
   }, []);
 
   return (
-    <button className="btn bg-white dark:bg-dark-mode-background" onClick={() => dispatch(toggleDarkMode())}>
+    <button
+      id="dark-mode-toggle"
+      type="button"
+      aria-label={"Toggle dark mode"}
+      className="btn bg-white dark:bg-dark-mode-background"
+      onClick={() => dispatch(toggleDarkMode())}
+    >
       <div className="size-5">
         <Icon icon={isDarkModeEnabled ? "SunIcon" : "MoonIcon"} />
       </div>
