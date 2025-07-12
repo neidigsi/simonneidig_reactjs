@@ -49,7 +49,7 @@ export default function SocialMediaButton({
       id={`social-media-button-${id}`}
       type="button"
       aria-label={`Open ${id} in a new tab`}
-      className="btn bg-dark-grey/20"
+      className="btn bg-dark-grey/15"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
       onClick={() => openInNewTab(url)}
