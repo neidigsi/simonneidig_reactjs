@@ -41,6 +41,9 @@ export default function Navigation({
         {backButtonEnabled && (
           <div className="bg-white dark:bg-dark-mode-background p-2 rounded-2xl drop-shadow-xl">
             <button
+              id="navigation-back-button"
+              type="button"
+              aria-label={t("navigation.backButton")}
               className="nav-item"
               onClick={() => {
                 dispatch(setBackButtonEnabled(false));
