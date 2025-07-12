@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAppSelector } from "@/store/hooks";
 
 interface SocialMediaButtonObject {
+  id: string;
   path: string;
   color: string;
   url: string;
@@ -16,6 +17,7 @@ interface SocialMediaButtonObject {
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
  *
+ * @param {string} id - The unique identifier for the button.
  * @param {string} path - The SVG path for the icon.
  * @param {string} color - The color for the icon.
  * @param {string} url - The URL to open when the button is clicked.
@@ -23,6 +25,7 @@ interface SocialMediaButtonObject {
  * @returns {JSX.Element} The rendered social media button component.
  */
 export default function SocialMediaButton({
+  id,
   path,
   color,
   url,
@@ -43,6 +46,9 @@ export default function SocialMediaButton({
 
   return (
     <button
+      id={`social-media-button-${id}`}
+      type="button"
+      aria-label={`Open ${id} in a new tab`}
       className="btn bg-dark-grey/20"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}

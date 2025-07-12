@@ -34,7 +34,7 @@ export default function SocialMedia() {
   return (
     <div className="flex justify-center gap-2">
       {socialMedia.map(({ name, color, path, url }: any) => (
-        <SocialMediaButton key={name} color={color} path={path} url={url} />
+        <SocialMediaButton id={name} key={name} color={color} path={path} url={url} />
       ))}
     </div>
   );
