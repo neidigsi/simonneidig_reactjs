@@ -59,6 +59,9 @@ export default function LanguageSwitcher() {
             </button>
           ))}
       <button
+        id="language-switcher-button"
+        type="button"
+        aria-label="Switch language"
         className={`btn bg-white dark:bg-dark-mode-background mr-2 ${
           open ? " active" : ""
         }`}
