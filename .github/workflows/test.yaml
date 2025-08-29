@@ -69,7 +69,7 @@ jobs:
           echo "![Coverage](https://img.shields.io/badge/coverage-${{ steps.extract_coverage.outputs.coverage }}%25-brightgreen)" >> comment.md
 
       - name: Comment PR with badges
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body-path: comment.md
