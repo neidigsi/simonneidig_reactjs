@@ -7,6 +7,21 @@ interface PersonalInfoItemObject {
   icon: string;
 }
 
+/**
+ * PersonalInfoItem Component
+ *
+ * Renders a single personal information item with an icon, label, and value.
+ * The icon is displayed in a styled box, and the label/value are shown next to it.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {Object} props - The properties object.
+ * @param {string} props.label - The label for the information.
+ * @param {string} props.value - The value of the information.
+ * @param {string} props.icon - The icon name to display.
+ *
+ * @returns {JSX.Element} The rendered personal info item component.
+ */
 export default function PersonalInfoItem({
   label,
   value,

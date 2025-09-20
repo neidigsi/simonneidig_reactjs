@@ -14,7 +14,8 @@ interface ButtonProps {
 /**
  * Button component that renders a customizable button with an optional icon.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @param {Object} props - The properties object.
  * @param {string} [props.id="btn-default"] - The unique ID for the button.
  * @param {string} props.text - The text to display inside the button.
@@ -23,6 +24,7 @@ interface ButtonProps {
  * @param {boolean} [props.inverted=false] - Whether the button should use inverted styles.
  * @param {boolean} [props.disabled=false] - Whether the button should be disabled.
  * @param {string} [props.className=""] - Additional CSS classes to apply to the button.
+ * 
  * @returns {JSX.Element} The rendered button component.
  */
 export default function Button({
@@ -37,9 +39,10 @@ export default function Button({
   return (
     <button
       id={id}
-      className={`flex ${className} ${inverted ? "btn-inverted" : ""} ${
-        disabled ? "btn-disabled" : "btn"
-      }`}
+      className={`flex 
+        ${className} 
+        ${inverted ? "btn-inverted" : "btn"}
+      ${disabled && "btn-disabled"}`}
       onClick={onClick}
       disabled={disabled}
     >

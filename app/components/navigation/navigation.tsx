@@ -1,6 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router";
+import { JSX } from "react";
 
 // Import internal dependencies
 import NavigationItem from "@/components/navigation/navigationItem";
@@ -12,10 +13,15 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
  * Navigation component that renders a navigation bar with multiple navigation items.
  * The active navigation item is highlighted based on the current route.
  *
- * @author Simon Neidig <mail@simonneidig.de>
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ * 
  * @returns {JSX.Element} The rendered navigation component.
  */
-export default function Navigation() {
+export default function Navigation({
+  navRef,
+}: {
+  readonly navRef: React.RefObject<HTMLDivElement | null>;
+}): JSX.Element {
   const backButtonEnabled = useAppSelector(
     (state) => state.settings.backButtonEnabled
   );
@@ -27,11 +33,17 @@ export default function Navigation() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-between items-center">
+    <div
+      ref={navRef}
+      className="flex justify-between items-center sticky top-4 md:top-0 z-50 bg-inherit md:static md:z-auto"
+    >
       <div className="flex justify-start">
         {backButtonEnabled && (
           <div className="bg-white dark:bg-dark-mode-background p-2 rounded-2xl drop-shadow-xl">
             <button
+              id="navigation-back-button"
+              type="button"
+              aria-label={t("navigation.backButton")}
               className="nav-item"
               onClick={() => {
                 dispatch(setBackButtonEnabled(false));

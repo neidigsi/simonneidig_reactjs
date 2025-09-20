@@ -1,22 +1,50 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
-WORKDIR /app
-RUN npm ci
+# Production Dockerfile for React/Vite SSR app
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
-WORKDIR /app
-RUN npm ci --omit=dev
+# Build stage: install dependencies and build the app
+FROM node:24-alpine AS build
 
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
+# Set working directory
 WORKDIR /app
+
+# Install ALL dependencies (including dev) for build tools
+COPY package.json package-lock.json* ./
+RUN npm ci || npm install
+
+# Copy all source files
+COPY . .
+RUN mv .env.example .env
+
+# Set VITE_BACKEND_URL to /api before build
+ENV VITE_BACKEND_URL=/api
+
+# Build the SSR app
 RUN npm run build
 
-FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+
+# Runtime stage: only production files and dependencies
+FROM node:24-alpine
+
+# Set working directory
 WORKDIR /app
-CMD ["npm", "run", "start"]
+
+# Install nginx
+RUN apk add --no-cache nginx
+
+# Copy built app and public assets from build stage
+COPY --from=build /app/build ./build
+COPY --from=build /app/public ./public
+
+# Copy package files and install only production dependencies
+COPY package.json ./
+COPY package-lock.json* ./
+RUN npm ci --omit=dev || npm install --omit=dev
+
+# Copy nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose SSR server port
+EXPOSE 3000
+EXPOSE 80
+
+# Start the SSR server
+CMD ["/bin/sh", "-c", "npx react-router-serve ./build/server/index.js & nginx -g 'daemon off;'"]

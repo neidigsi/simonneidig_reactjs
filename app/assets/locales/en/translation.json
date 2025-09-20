@@ -23,11 +23,17 @@
         "email": "Email",
         "message": "Message",
         "submit": "Submit"
+      },
+      "confirmation": {
+        "headline": "Thank you",
+        "message": "Your message has been successfully sent. I will get back to you as soon as possible.",
+        "return-home": "Back to home",
+        "return-to-contact": "Back to contact form"
       }
     }
   },
   "sidebar": {
-    "cv-button": "Download CV"
+    "button": "Contact me"
   },
   "navigation": {
     "headlines": {
@@ -41,5 +47,17 @@
     "imprint": "Imprint",
     "privacy": "Privacy Policy",
     "copyright": "© Copyright"
+  },
+  "error": {
+    "not-found": {
+      "title": "Oops, nothing here",
+      "description": "The page you are looking for was moved, removed, renamed or might never existed.",
+      "button": "Back to home"
+    },
+    "server-error": {
+      "title": "Server Error",
+      "description": "An unexpected error occurred. Please try again later.",
+      "button": "Back to home"
+    }
   }
 }

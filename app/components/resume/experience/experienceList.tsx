@@ -1,26 +1,27 @@
 // Import external dependencies
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import Icon from "@/components/general/icon";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { loadExperiences } from "@/store/slices/experienceSlice";
+import { useAppSelector } from "@/store/hooks";
 import ExperienceItem from "@/components/resume/experience/experienceItem";
 
+/**
+ * ExperienceList Component
+ *
+ * Displays a list of work experience entries using the ExperienceItem component.
+ * Shows a section headline and an icon.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param none
+ *
+ * @returns {JSX.Element} The rendered experience list component.
+ */
 export default function ExperienceList() {
   const experiences = useAppSelector((state) => state.experience.experiences);
-  const loaded = useAppSelector((state) => state.experience.loaded);
 
   const { t } = useTranslation();
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    if (!loaded) {
-      dispatch(loadExperiences());
-    }
-  }, []);
 
   return (
     <div className="grid grid-cols-1">
@@ -31,8 +32,8 @@ export default function ExperienceList() {
           </div>
           <h2 className="pl-2">{t("main.resume.experience")}</h2>
         </div>
-        {experiences.map((e) => (
-          <ExperienceItem key={e.index} experience={e} />
+        {experiences.map((e, index) => (
+          <ExperienceItem index={index} key={e.id} experience={e} />
         ))}
       </div>
     </div>

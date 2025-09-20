@@ -3,12 +3,29 @@ import { useState } from "react";
 import { useAppSelector } from "@/store/hooks";
 
 interface SocialMediaButtonObject {
+  id: string;
   path: string;
   color: string;
   url: string;
 }
 
+/**
+ * SocialMediaButton Component
+ *
+ * Renders a social media icon button that opens the given URL in a new tab.
+ * Highlights the icon on hover or when dark mode is enabled.
+ *
+ * @author Simon Neidig <mail@simon-neidig.eu>
+ *
+ * @param {string} id - The unique identifier for the button.
+ * @param {string} path - The SVG path for the icon.
+ * @param {string} color - The color for the icon.
+ * @param {string} url - The URL to open when the button is clicked.
+ *
+ * @returns {JSX.Element} The rendered social media button component.
+ */
 export default function SocialMediaButton({
+  id,
   path,
   color,
   url,
@@ -29,7 +46,10 @@ export default function SocialMediaButton({
 
   return (
     <button
-      className="btn bg-dark-grey/20"
+      id={`social-media-button-${id}`}
+      type="button"
+      aria-label={`Open ${id} in a new tab`}
+      className="btn bg-dark-grey/15"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
       onClick={() => openInNewTab(url)}

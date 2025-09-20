@@ -14,7 +14,7 @@ jobs:
     steps:
       # Check out the repository
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Install xmllint for test export
       - name: Install xmllint
@@ -22,7 +22,7 @@ jobs:
 
       # Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
 
@@ -69,7 +69,7 @@ jobs:
           echo "![Coverage](https://img.shields.io/badge/coverage-${{ steps.extract_coverage.outputs.coverage }}%25-brightgreen)" >> comment.md
 
       - name: Comment PR with badges
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body-path: comment.md
