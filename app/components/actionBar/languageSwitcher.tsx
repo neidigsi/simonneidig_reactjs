@@ -1,10 +1,11 @@
-// Import external dependencies
-import { useState } from "react";
-
 // Import internal dependencies
 import Icon from "@/components/general/icon";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { changeLanguage } from "@/store/slices/settingsSlice";
+
+// Import external dependencies
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const languages = [
   { code: "en", flag: "🇬🇧" },
@@ -34,6 +35,8 @@ export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const language = useAppSelector((state) => state.settings.language);
 
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   const handleChange = (lang: string) => {
@@ -53,7 +56,7 @@ export default function LanguageSwitcher() {
               key={lang.code}
               onClick={() => handleChange(lang.code)}
               className="btn bg-white dark:bg-dark-mode-background mr-2 transition"
-              title={lang.code}
+              title={t("header.actionbar.language." + lang.code)}
             >
               <div className="size-5">{lang.flag}</div>
             </button>
@@ -62,6 +65,7 @@ export default function LanguageSwitcher() {
         id="language-switcher-button"
         type="button"
         aria-label="Switch language"
+        title={t("header.actionbar.language.title")}
         className={`btn bg-white dark:bg-dark-mode-background mr-2 ${
           open ? " active" : ""
         }`}

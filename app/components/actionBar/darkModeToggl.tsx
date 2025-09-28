@@ -7,6 +7,7 @@ import {
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
+import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 
 /**
@@ -29,6 +30,8 @@ export default function DarkModeToggl() {
     (state) => state.settings.isDarkModeEnabled
   );
 
+  const { t } = useTranslation();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -40,6 +43,7 @@ export default function DarkModeToggl() {
       id="dark-mode-toggle"
       type="button"
       aria-label={"Toggle dark mode"}
+      title={isDarkModeEnabled ? t("header.actionbar.dark-mode.light") : t("header.actionbar.dark-mode.dark")}
       className="btn bg-white dark:bg-dark-mode-background"
       onClick={() => dispatch(toggleDarkMode())}
     >

@@ -43,6 +43,20 @@
       "contact": "Kontakt"
     }
   },
+  "header": {
+    "actionbar": {
+      "dark-mode": {
+        "light": "Wechsel zu Lightmode",
+        "dark": "Wechsel zu Darkmode"
+      },
+      "language": {
+        "title": "Sprache wechseln",
+        "de": "Deutsch",
+        "en": "Englisch",
+        "fr": "Französisch"
+      }
+    }
+  },
   "footer": {
     "imprint": "Impressum",
     "privacy": "Datenschutz",
