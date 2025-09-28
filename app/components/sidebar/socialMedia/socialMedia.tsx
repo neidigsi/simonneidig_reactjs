@@ -29,10 +29,10 @@ export default function SocialMedia() {
     if (!loaded) {
       dispatch(loadSocialMedia({ language: language }));
     }
-  });
+  }, [loaded, language, dispatch]);
 
   return (
-    <div className="flex justify-center gap-2">
+    <div className="flex flex-wrap justify-center gap-2 mx-2 md:mx-4">
       {socialMedia.map(({ name, color, path, url }: any) => (
         <SocialMediaButton id={name} key={name} color={color} path={path} url={url} />
       ))}
