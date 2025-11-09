@@ -35,6 +35,15 @@
   "sidebar": {
     "button": "Contactez-moi"
   },
+  "login": {
+    "title": "Connexion",
+    "description": "Veuillez entrer vos identifiants pour vous connecter.",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "submit": "Connexion",
+    "forgot-password": "Mot de passe oublié ?",
+    "register": "S'inscrire"
+  },
   "navigation": {
     "headlines": {
       "home": "À propos",

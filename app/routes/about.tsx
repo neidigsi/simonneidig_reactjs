@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import Card from "@/components/general/card/card";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
-import ExpertiseItem from "@/components/about/expertiseItem";
+import ExpertiseItem from "@/components/routes/about/expertiseItem";
 import { loadExpertises } from "@/store/slices/expertiseSlice";
 import "@/assets/css/main.css";
 import "@/i18n";

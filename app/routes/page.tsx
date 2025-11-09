@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadPage, resetPage } from "@/store/slices/pageSlice";
 import { setBackButtonEnabled } from "@/store/slices/settingsSlice";
-import PageMain from "@/components/page/pageMain";
+import PageMain from "@/components/routes/page/pageMain";
 import "@/assets/css/main.css";
 
 /**

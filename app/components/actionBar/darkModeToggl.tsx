@@ -3,12 +3,12 @@ import {
   initializeDarkMode,
   toggleDarkMode,
 } from "@/store/slices/settingsSlice";
+import SmallButton from "@/components/general/buttons/smallButton";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import SmallButton from "../general/buttons/smallButton";
 
 /**
  * DarkModeToggl Component

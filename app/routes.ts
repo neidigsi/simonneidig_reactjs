@@ -15,4 +15,7 @@ export default [
     route("*", "routes/error404.tsx"),
     route("error", "routes/error500.tsx"),
   ]),
+  layout("layouts/loginLayout.tsx", [
+    route("login", "routes/login.tsx"),
+  ]),
 ] satisfies RouteConfig;

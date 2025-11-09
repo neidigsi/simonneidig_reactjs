@@ -1,25 +1,35 @@
 // Import internal dependencies
-import Icon from "@/components/general/icon";
-import { login, logout } from "@/store/slices/userSlice";
+import SmallButton from "@/components/general/buttons/smallButton";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
-import SmallButton from "../general/buttons/smallButton";
+import { useNavigate } from "react-router";
+
 
 /**
- * Login Button Component
+ * LoginButton Component
  *
+ * This component renders a small button that allows the user to log in or log out.
+ * The button's text and icon dynamically change based on the user's login state.
+ *
+ * Features:
+ * - Displays "Login" or "Logout" text and corresponding icons based on the `loggedIn` state.
+ * - Navigates to the login page when clicked.
+ * - Uses Redux for state management and i18n for translations.
+ *
+ * Usage:
+ * - Place this component in the action bar or header to provide login/logout functionality.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
  *
- * @param none - This component does not accept any props.
- *
- * @returns {JSX.Element}
+ * @returns {JSX.Element} The rendered LoginButton component.
  */
 export default function LoginButton() {
   const loggedIn = useAppSelector((state) => state.user.loggedIn);
+
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
 
@@ -40,7 +50,7 @@ export default function LoginButton() {
           ? "ArrowRightEndOnRectangleIcon"
           : "ArrowStartEndOnRectangleIcon"
       }
-      onClick={() => dispatch(login())}
+      onClick={() => dispatch(() => navigate("/login"))}
     />
   );
 }

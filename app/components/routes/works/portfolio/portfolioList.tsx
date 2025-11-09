@@ -1,7 +1,7 @@
 // Import internal dependencies
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { filterWorks } from "@/store/slices/worksSlice";
-import PortfolioItem from "@/components/works/portfolio/portfolioItem";
+import PortfolioItem from "@/components/routes/works/portfolio/portfolioItem";
 import Filter from "@/components/general/filter/filter";
 
 /**

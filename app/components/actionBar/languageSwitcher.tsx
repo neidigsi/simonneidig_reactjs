@@ -1,12 +1,13 @@
 // Import internal dependencies
-import Icon from "@/components/general/icon";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { changeLanguage } from "@/store/slices/settingsSlice";
+import SmallButton from "@/components/general/buttons/smallButton";
+
 
 // Import external dependencies
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import SmallButton from "../general/buttons/smallButton";
+
 
 const languages = [
   { code: "en", flag: "🇬🇧" },

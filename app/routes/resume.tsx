@@ -7,8 +7,8 @@ import Card from "@/components/general/card/card";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadExperiences } from "@/store/slices/experienceSlice";
 import { loadEducations } from "@/store/slices/educationSlice";
-import EducationList from "@/components/resume/education/educationList";
-import ExperienceList from "@/components/resume/experience/experienceList";
+import EducationList from "@/components/routes/resume/education/educationList";
+import ExperienceList from "@/components/routes/resume/experience/experienceList";
 import "@/assets/css/main.css";
 
 /**
