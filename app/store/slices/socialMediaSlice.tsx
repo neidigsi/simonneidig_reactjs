@@ -22,7 +22,7 @@ const initialState: SocialMediaState = {
 };
 
 export const loadSocialMedia = createAsyncThunk(
-  "expertise/loadSocialMedia",
+  "socialMedia/loadSocialMedia",
   async ({ language }: { language: string }) => {
     const resp = await http({
       method: "GET",

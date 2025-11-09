@@ -45,6 +45,10 @@
   },
   "header": {
     "actionbar": {
+      "login": {
+        "login": "Connexion",
+        "logout": "Déconnexion"
+      },
       "dark-mode": {
         "light": "Passer en mode clair",
         "dark": "Passer en mode sombre"

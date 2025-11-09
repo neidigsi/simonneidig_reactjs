@@ -15,6 +15,7 @@ import { loadPersonalDetails } from "@/store/slices/personalDetailsSlice";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import { loadSocialMedia } from "@/store/slices/socialMediaSlice";
 import Loader from "@/components/general/loader/loader";
+import LoginButton from "@/components/actionBar/loginButton";
 
 /**
  * SidebarLayout Component
@@ -131,6 +132,7 @@ export default function SidebarLayout({
               <div className="md:hidden flex justify-end button-bar">
                 <LanguageSwitcher />
                 <DarkModeToggl />
+                <LoginButton />
               </div>
               <Sidebar />
             </div>
@@ -140,6 +142,7 @@ export default function SidebarLayout({
               <div className="hidden md:flex justify-end button-bar">
                 <LanguageSwitcher />
                 <DarkModeToggl />
+                <LoginButton />
               </div>
               <div className="main-section">
                 <Navigation navRef={navRef} />

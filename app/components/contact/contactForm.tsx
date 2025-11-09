@@ -7,7 +7,7 @@ import {
   sendMessage,
   resetContact,
 } from "@/store/slices/contactSlice";
-import Button from "@/components/general/button/button";
+import Button from "@/components/general/buttons/button";
 import TextareaInput from "@/components/general/input/textareaInput";
 
 // Import external dependencies

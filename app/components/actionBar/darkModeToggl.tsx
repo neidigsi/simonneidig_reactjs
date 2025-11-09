@@ -1,5 +1,4 @@
 // Import internal dependencies
-import Icon from "@/components/general/icon";
 import {
   initializeDarkMode,
   toggleDarkMode,
@@ -9,6 +8,7 @@ import {
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+import SmallButton from "../general/buttons/smallButton";
 
 /**
  * DarkModeToggl Component
@@ -39,17 +39,15 @@ export default function DarkModeToggl() {
   }, []);
 
   return (
-    <button
-      id="dark-mode-toggle"
-      type="button"
-      aria-label={"Toggle dark mode"}
-      title={isDarkModeEnabled ? t("header.actionbar.dark-mode.light") : t("header.actionbar.dark-mode.dark")}
-      className="btn bg-white dark:bg-dark-mode-background"
+    <SmallButton
+      id="sm-btn-dark-mode-toggle"
+      title={
+        isDarkModeEnabled
+          ? t("header.actionbar.dark-mode.light")
+          : t("header.actionbar.dark-mode.dark")
+      }
+      icon={isDarkModeEnabled ? "SunIcon" : "MoonIcon"}
       onClick={() => dispatch(toggleDarkMode())}
-    >
-      <div className="size-5">
-        <Icon icon={isDarkModeEnabled ? "SunIcon" : "MoonIcon"} />
-      </div>
-    </button>
+    />
   );
 }

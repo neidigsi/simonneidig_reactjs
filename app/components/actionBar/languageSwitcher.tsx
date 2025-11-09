@@ -6,6 +6,7 @@ import { changeLanguage } from "@/store/slices/settingsSlice";
 // Import external dependencies
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import SmallButton from "../general/buttons/smallButton";
 
 const languages = [
   { code: "en", flag: "🇬🇧" },
@@ -52,29 +53,21 @@ export default function LanguageSwitcher() {
           .reverse()
           .filter((lang) => lang.code !== language)
           .map((lang) => (
-            <button
+            <SmallButton
               key={lang.code}
-              onClick={() => handleChange(lang.code)}
-              className="btn bg-white dark:bg-dark-mode-background mr-2 transition"
+              id={"sm-btn-lang-" + lang.code}
               title={t("header.actionbar.language." + lang.code)}
-            >
-              <div className="size-5">{lang.flag}</div>
-            </button>
+              children={<div className="size-5">{lang.flag}</div>}
+              onClick={() => handleChange(lang.code)}
+            />
           ))}
-      <button
-        id="language-switcher-button"
-        type="button"
-        aria-label="Switch language"
+    <SmallButton
+        id="sm-btn-language-switcher-button"
         title={t("header.actionbar.language.title")}
-        className={`btn bg-white dark:bg-dark-mode-background mr-2 ${
-          open ? " active" : ""
-        }`}
-        onClick={() => setOpen(!open)}
-      >
-        <div className="size-5">
-          <Icon icon="FlagIcon" />
-        </div>
-      </button>
+        className={open ? " active" : ""}
+        icon={"FlagIcon"}
+        onClick={() => setOpen(!open)}/>    
+      
     </div>
   );
 }

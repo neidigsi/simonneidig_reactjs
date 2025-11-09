@@ -11,6 +11,7 @@ import personalDetailsReducer from "@/store/slices/personalDetailsSlice";
 import personalInfoReducer from "@/store/slices/personalInfoSlice";
 import settingsReducer from "@/store/slices/settingsSlice";
 import socialMediaReducer from "@/store/slices/socialMediaSlice";
+import userReducer from "@/store/slices/userSlice";
 import worksReducer from "@/store/slices/worksSlice";
 
 export const makeStore = () => {
@@ -25,6 +26,7 @@ export const makeStore = () => {
       personalInfo: personalInfoReducer,
       settings: settingsReducer,
       socialMedia: socialMediaReducer,
+      user: userReducer,
       works: worksReducer,
     },
   });

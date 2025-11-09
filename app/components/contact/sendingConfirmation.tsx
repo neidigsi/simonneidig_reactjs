@@ -1,6 +1,6 @@
 // Import internal dependencies
 import { resetContact } from "@/store/slices/contactSlice";
-import Button from "@/components/general/button/button";
+import Button from "@/components/general/buttons/button";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";

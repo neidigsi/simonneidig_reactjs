@@ -6,7 +6,7 @@ import { JSX, useEffect } from "react";
 // Import internal dependencies
 import "@/assets/css/main.css";
 import Card from "@/components/general/card/card";
-import Button from "@/components/general/button/button";
+import Button from "@/components/general/buttons/button";
 
 /**
  * Error500 Component

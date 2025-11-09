@@ -45,6 +45,10 @@
   },
   "header": {
     "actionbar": {
+      "login": {
+        "login": "Login",
+        "logout": "Logout"
+      },
       "dark-mode": {
         "light": "Switch to light mode",
         "dark": "Switch to dark mode"

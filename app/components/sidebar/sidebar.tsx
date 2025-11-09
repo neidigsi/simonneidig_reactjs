@@ -8,7 +8,7 @@ import Badge from "@/components/general/badge";
 import PersonalInfo from "@/components/sidebar/personalInfo/personalInfo";
 import SocialMedia from "@/components/sidebar/socialMedia/socialMedia";
 import ProfilePicture from "@/components/sidebar/profilePicture";
-import Button from "@/components/general/button/button";
+import Button from "@/components/general/buttons/button";
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { loadPersonalDetails } from "@/store/slices/personalDetailsSlice";
 
