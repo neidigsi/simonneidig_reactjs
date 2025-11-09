@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadWorks } from "@/store/slices/worksSlice";
 import Card from "@/components/general/card/card";
-import PortfolioList from "@/components/works/portfolio/portfolioList";
+import PortfolioList from "@/components/routes/works/portfolio/portfolioList";
 import "@/assets/css/main.css";
 
 /**

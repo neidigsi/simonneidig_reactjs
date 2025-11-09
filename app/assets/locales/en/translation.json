@@ -35,6 +35,15 @@
   "sidebar": {
     "button": "Contact me"
   },
+  "login": {
+    "title": "Sign In",
+    "description": "Please enter your credentials to sign in.",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign In",
+    "forgot-password": "Forgot your password?",
+    "register": "Register"
+  },
   "navigation": {
     "headlines": {
       "home": "About",
@@ -45,6 +54,10 @@
   },
   "header": {
     "actionbar": {
+      "login": {
+        "login": "Sign In",
+        "logout": "Sign Out"
+      },
       "dark-mode": {
         "light": "Switch to light mode",
         "dark": "Switch to dark mode"

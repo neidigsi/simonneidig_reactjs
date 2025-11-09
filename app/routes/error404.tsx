@@ -7,7 +7,7 @@ import { JSX, useEffect } from "react";
 import "@/assets/css/main.css";
 import { useAppSelector } from "@/store/hooks";
 import Card from "@/components/general/card/card";
-import Button from "@/components/general/button/button";
+import Button from "@/components/general/buttons/button";
 
 /**
  * Error404 Component

@@ -2,7 +2,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 
 // Import internal dependencies
-import Button from "@/components/general/button/button";
+import Button from "@/components/general/buttons/button";
 
 // Mocking the Icon component to avoid rendering it during tests
 jest.mock("@/components/general/icon", () => {

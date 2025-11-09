@@ -22,12 +22,14 @@ const Icon: FC<{ icon: string; className?: string }> = ({
   // @ts-ignore
   const TheIcon: JSX.Element = icons[icon];
 
-  return (
-    <>
-      {/* @ts-ignore */}
-      <TheIcon className={className} />
-    </>
-  );
+  if (!TheIcon) {
+    console.error(`Icon "${icon}" not found. Using fallback icon.`);
+    return (
+      <HeroIcons.QuestionMarkCircleIcon className={className} />
+    );
+  }
+
+  return <TheIcon className={className} />;
 };
 
 export default Icon;

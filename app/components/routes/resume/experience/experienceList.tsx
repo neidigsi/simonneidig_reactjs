@@ -4,22 +4,22 @@ import { useTranslation } from "react-i18next";
 // Import internal dependencies
 import Icon from "@/components/general/icon";
 import { useAppSelector } from "@/store/hooks";
-import EducationItem from "@/components/resume/education/educationItem";
+import ExperienceItem from "@/components/routes/resume/experience/experienceItem";
 
 /**
- * EducationList Component
+ * ExperienceList Component
  *
- * Displays a list of education entries using the EducationItem component.
+ * Displays a list of work experience entries using the ExperienceItem component.
  * Shows a section headline and an icon.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
  *
  * @param none
  *
- * @returns {JSX.Element} The rendered education list component.
+ * @returns {JSX.Element} The rendered experience list component.
  */
-export default function EducationList() {
-  const educations = useAppSelector((state) => state.education.educations);
+export default function ExperienceList() {
+  const experiences = useAppSelector((state) => state.experience.experiences);
 
   const { t } = useTranslation();
 
@@ -28,12 +28,12 @@ export default function EducationList() {
       <div className="pt-4">
         <div className="flex items-center">
           <div className="size-7">
-            <Icon icon="AcademicCapIcon" />
+            <Icon icon="BriefcaseIcon" />
           </div>
-          <h2 className="pl-2">{t("main.resume.education")}</h2>
+          <h2 className="pl-2">{t("main.resume.experience")}</h2>
         </div>
-        {educations.map((e, index) => (
-          <EducationItem key={e.id} index={index} education={e} />
+        {experiences.map((e, index) => (
+          <ExperienceItem index={index} key={e.id} experience={e} />
         ))}
       </div>
     </div>

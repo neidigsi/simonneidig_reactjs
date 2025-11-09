@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 
 // Import internal dependencies
 import { useAppSelector } from "@/store/hooks";
-import ContactForm from "@/components/contact/contactForm";
-import SendingConfirmation from "@/components/contact/sendingConfirmation";
+import ContactForm from "@/components/routes/contact/contactForm";
+import SendingConfirmation from "@/components/routes/contact/sendingConfirmation";
 import Card from "@/components/general/card/card";
 import "@/assets/css/main.css";
 

@@ -1,3 +1,5 @@
+import TextButton from "../buttons/textButton";
+
 /**
  * FilterItem Component
  *
@@ -17,13 +19,11 @@ export default function FilterItem({
   onClick,
 }: Readonly<{ item: string; active: boolean; onClick: React.MouseEventHandler<HTMLButtonElement> }>) {
   return (
-    <button
-      className={`hover:cursor-pointer hover:text-primary ${
-        active ? "text-primary" : "text-black dark:text-white"
-      }`}
+    <TextButton
+      id={`txt-btn-filter-item-${item}`}
+      text={item}
+      active={active}
       onClick={onClick}
-    >
-      {item}
-    </button>
+    />
   );
 }

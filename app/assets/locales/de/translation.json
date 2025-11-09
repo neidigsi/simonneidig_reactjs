@@ -35,6 +35,15 @@
   "sidebar": {
     "button": "Kontakt aufnehmen"
   },
+  "login": {
+    "title": "Anmelden",
+    "description": "Bitte geben Sie Ihre Zugangsdaten ein, um sich anzumelden.",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "submit": "Anmelden",
+    "forgot-password": "Passwort vergessen?",
+    "register": "Registrieren"
+  },
   "navigation": {
     "headlines": {
       "home": "About",
@@ -45,6 +54,10 @@
   },
   "header": {
     "actionbar": {
+      "login": {
+        "login": "Anmelden",
+        "logout": "Abmelden"
+      },
       "dark-mode": {
         "light": "Wechsel zu Lightmode",
         "dark": "Wechsel zu Darkmode"
