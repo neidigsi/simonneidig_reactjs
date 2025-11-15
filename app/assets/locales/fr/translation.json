@@ -38,11 +38,22 @@
   "login": {
     "title": "Connexion",
     "description": "Veuillez entrer vos identifiants pour vous connecter.",
-    "username": "Nom d'utilisateur",
+    "email": "E-Mail",
     "password": "Mot de passe",
     "submit": "Connexion",
     "forgot-password": "Mot de passe oublié ?",
     "register": "S'inscrire"
+  },
+  "register": {
+    "title": "S'inscrire",
+    "description": "Veuillez entrer vos informations pour créer un compte.",
+    "first-name": "Prénom",
+    "last-name": "Nom de famille",
+    "email": "E-Mail",
+    "password": "Mot de passe",
+    "confirm-password": "Confirmer le mot de passe",
+    "submit": "S'inscrire",
+    "already-have-account": "Vous avez déjà un compte ?"
   },
   "navigation": {
     "headlines": {
