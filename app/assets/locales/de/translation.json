@@ -38,11 +38,22 @@
   "login": {
     "title": "Anmelden",
     "description": "Bitte geben Sie Ihre Zugangsdaten ein, um sich anzumelden.",
-    "username": "Benutzername",
+    "email": "E-Mail",
     "password": "Passwort",
     "submit": "Anmelden",
     "forgot-password": "Passwort vergessen?",
     "register": "Registrieren"
+  },
+  "register": {
+    "title": "Registrieren",
+    "description": "Bitte geben Sie Ihre Daten ein, um ein Konto zu erstellen.",
+    "first-name": "Vorname",
+    "last-name": "Nachname",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirm-password": "Passwort bestätigen",
+    "submit": "Registrieren",
+    "already-have-account": "Haben Sie bereits ein Konto?"
   },
   "navigation": {
     "headlines": {
