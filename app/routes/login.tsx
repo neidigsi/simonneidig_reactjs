@@ -1,5 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 // Import internal dependencies
 import Card from "@/components/general/card/card";
@@ -32,12 +34,18 @@ import TextButton from "@/components/general/buttons/textButton";
 export default function Login() {
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = t("login.title") + " | Simon Neidig";
+  });
+
   return (
-    <Card headline="Login" footer={false} className="max-w-sm">
+    <Card headline={t("login.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("login.description")}</div>
       <TextInput
-        id="input-username"
-        label={t("login.username")}
+        id="input-email"
+        label={t("login.email")}
         value=""
         onChange={() => {}}
       />
@@ -72,7 +80,7 @@ export default function Login() {
           text={t("login.register")}
           icon="UserPlusIcon"
           className="text-dark-grey"
-          onClick={() => {}}
+          onClick={() => navigate("/register")}
         />
       </div>
     </Card>

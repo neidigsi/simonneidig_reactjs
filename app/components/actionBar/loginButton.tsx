@@ -33,7 +33,6 @@ export default function LoginButton() {
 
   const { t } = useTranslation();
 
-  const dispatch = useAppDispatch();
 
   useEffect(() => {}, []);
 
@@ -50,7 +49,7 @@ export default function LoginButton() {
           ? "ArrowRightEndOnRectangleIcon"
           : "ArrowStartEndOnRectangleIcon"
       }
-      onClick={() => dispatch(() => navigate("/login"))}
+      onClick={() => navigate("/login")}
     />
   );
 }
