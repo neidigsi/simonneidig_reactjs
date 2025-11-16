@@ -44,7 +44,7 @@ export default function Button({
             ? "bg-linear-to-r from-primary to-secondary text-white dark:text-black"
             : "text-black dark:text-white"
         }
-        ${disabled && "p-2 rounded-lg text-base items-center text-dark-grey cursor-not-allowed"}`}
+        ${disabled && "p-2 rounded-lg text-base items-center text-dark-grey cursor-not-allowed opacity-50"}`}
       onClick={onClick}
       disabled={disabled}
       onMouseEnter={() => setIsHovered(true)}

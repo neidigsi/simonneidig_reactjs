@@ -43,7 +43,8 @@
     "password": "Password",
     "submit": "Sign In",
     "forgot-password": "Forgot your password?",
-    "register": "Register"
+    "register": "Register",
+    "invalid-credentials": "Invalid credentials. Please try again."
   },
   "register": {
     "title": "Register",

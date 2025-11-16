@@ -37,6 +37,9 @@ export default function Login() {
   const email = useAppSelector((state) => state.user.user.email);
   const password = useAppSelector((state) => state.user.user.password);
   const loaded = useAppSelector((state) => state.user.loaded);
+  const loggedIn = useAppSelector((state) => state.user.loggedIn);
+  const error = useAppSelector((state) => state.user.error);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
 
@@ -48,9 +51,22 @@ export default function Login() {
     document.title = t("login.title") + " | Simon Neidig";
   });
 
+  // Navigiere zur Hauptseite wenn erfolgreich angemeldet
+  useEffect(() => {
+    if (loggedIn && loaded) {
+      navigate("/");
+    }
+  }, [loggedIn, loaded, navigate]);
+
   return (
     <Card headline={t("login.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("login.description")}</div>
+      {error.active && (
+        <div className="mb-4 p-3 rounded text-sm bg-red-500/20 text-red-600">
+          {error.code === "LOGIN_BAD_CREDENTIALS" &&
+            t("login.invalid-credentials")}
+        </div>
+      )}
       <TextInput
         id="input-email"
         label={t("login.email")}
@@ -72,7 +88,7 @@ export default function Login() {
           onClick={() => {}}
         />
       </div>
-      <div className="justify-center mt-4 w-full">
+      <div className="mt-4 w-full">
         <Button
           id="btn-login-submit"
           text={t("login.submit")}
@@ -81,10 +97,10 @@ export default function Login() {
           disabled={!loaded || email.length === 0 || password.length === 0}
           className="mt-4 w-full"
           inverted={true}
-          onClick={() => dispatch(login())}
+          onClick={() => dispatch(login({ language: language }))}
         />
       </div>
-      <div className="justify-center mt-4 w-full">
+      <div className="mt-4 w-full">
         <Button
           id="btn-login-register"
           text={t("login.register")}

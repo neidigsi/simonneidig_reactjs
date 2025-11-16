@@ -43,7 +43,8 @@
     "password": "Mot de passe",
     "submit": "Connexion",
     "forgot-password": "Mot de passe oublié ?",
-    "register": "S'inscrire"
+    "register": "S'inscrire",
+    "invalid-credentials": "Identifiants invalides. Veuillez réessayer."
   },
   "register": {
     "title": "S'inscrire",

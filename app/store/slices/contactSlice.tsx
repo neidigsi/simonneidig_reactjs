@@ -22,7 +22,7 @@ const initialState: ContactState = {
 };
 
 export const sendMessage = createAsyncThunk(
-  "expertise/sendMessage",
+  "contact/sendMessage",
   async ({ language }: { language: string }, { getState }) => {
     const state = getState() as { contact: ContactState };
     const resp = await http({

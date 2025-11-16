@@ -12,16 +12,27 @@ interface User {
   repeatPassword: string;
 }
 
+interface Error {
+  active: boolean;
+  code: string;
+}
+
 interface UserState {
   loaded: boolean;
   loggedIn: boolean;
-  jwt?: string;
+  error: Error;
+  jwt: string;
   user: User;
 }
 
 const initialState: UserState = {
   loaded: true,
-  loggedIn: true,
+  loggedIn: false,
+  jwt: "",
+  error: {
+    active: false,
+    message: "",
+  },
   user: {
     firstName: "",
     lastName: "",
@@ -33,29 +44,46 @@ const initialState: UserState = {
 
 export const login = createAsyncThunk(
   "user/login",
-  async ({}, { getState }) => {
-    const state = getState() as { user: UserState };
-    const resp = await http({
-      method: "POST",
-      path: "/auth/jwt/login/",
-      body: JSON.stringify({
-        username: state.user.user.email,
-        password: state.user.user.password,
-      }),
-    });
-    return resp.data;
+  async ({ language }: { language: string }, { getState, rejectWithValue }) => {
+    try {
+      const state = getState() as { user: UserState };
+
+      // Format body as application/x-www-form-urlencoded
+      const body = new URLSearchParams();
+      body.append("username", state.user.user.email);
+      body.append("password", state.user.user.password);
+
+      const resp = await http({
+        method: "POST",
+        path: "/auth/jwt/login",
+        body: body.toString(),
+        language: language,
+      });
+
+      return resp;
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.detail || error.message || "Login failed";
+      return rejectWithValue(errorMessage);
+    }
   }
 );
 
 export const logout = createAsyncThunk(
   "user/logout",
-  async ({ language }: { language: string }) => {
-    const resp = await http({
-      method: "POST",
-      path: "/auth/jwt/logout/",
-      language: language,
-    });
-    return resp.data;
+  async ({ language, jwt }: { language: string, jwt: string}, { rejectWithValue }) => {
+    try {
+      console.log("Logging out with JWT:", jwt);
+      const resp = await http({
+        method: "POST",
+        path: "/auth/jwt/logout",
+        language: language,
+        jwt: jwt,
+      });
+      return resp.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || "Logout failed");
+    }
   }
 );
 
@@ -83,25 +111,46 @@ export const userSlice = createSlice({
     setRepeatPassword: (state, action: PayloadAction<string>) => {
       state.user.repeatPassword = action.payload;
     },
+    // Reset error
+    resetError: (state) => {
+      state.error.active = false;
+      state.error.code = "";
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, action) => {
-        state.jwt = action.payload.access_token;
-        state.loaded = true;
-        state.loggedIn = true;
+        if (action.payload.status === 200) {
+          console.log("Login successful, received JWT:", action.payload.data.access_token);
+          state.jwt = action.payload.data.access_token;
+          state.loaded = true;
+          state.loggedIn = true;
+          state.error.active = false;
+          state.error.code = "";
+        }
       })
       .addCase(login.pending, (state) => {
         state.loaded = false;
+        state.error.active = false;
       })
-      .addCase("i18n/changeLanguage", (state) => {})
+      .addCase(login.rejected, (state, action) => {
+        state.loaded = true;
+        state.loggedIn = false;
+        state.error.active = true;
+        state.error.code = action.payload as string;
+      })
       .addCase(logout.fulfilled, (state, action) => {
-        state.jwt = action.payload.access_token;
+        state.jwt = "";
         state.loaded = true;
         state.loggedIn = false;
       })
       .addCase(logout.pending, (state) => {
         state.loaded = false;
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loaded = true;
+        state.error.active = true;
+        state.error.code = action.payload as string;
       });
   },
 });
@@ -113,6 +162,7 @@ export const {
   setEmail,
   setPassword,
   setRepeatPassword,
+  resetError,
 } = userSlice.actions;
 
 export default userSlice.reducer;

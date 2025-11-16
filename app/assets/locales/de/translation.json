@@ -43,7 +43,8 @@
     "password": "Passwort",
     "submit": "Anmelden",
     "forgot-password": "Passwort vergessen?",
-    "register": "Registrieren"
+    "register": "Registrieren",
+    "invalid-credentials": "Ungültige Anmeldedaten. Bitte versuchen Sie es erneut."
   },
   "register": {
     "title": "Registrieren",
