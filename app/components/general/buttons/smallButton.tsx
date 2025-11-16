@@ -1,4 +1,4 @@
-import React, { JSX } from "react";
+import React, { JSX, useState } from "react";
 import Icon from "@/components/general/icon";
 
 interface SmallButtonProps {
@@ -35,20 +35,27 @@ export default function SmallButton({
   disabled = false,
   className = "",
 }: Readonly<SmallButtonProps>): JSX.Element {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <button
       id={id}
       type="button"
       title={title}
       aria-label={title}
-      className={`btn bg-white m-1 dark:bg-dark-mode-background ${className}`}
+      className={`items-center justify-center p-2 rounded-lg text-base m-1 dark:text-white dark:bg-dark-mode-background 
+        ${isHovered ? "bg-linear-to-r from-primary to-secondary text-white" : "bg-white"} 
+        ${className}
+        `}
       onClick={onClick}
       disabled={disabled}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="size-5">
         {icon && <Icon icon={icon} />}
         {children}
-        </div>
+      </div>
     </button>
   );
 }

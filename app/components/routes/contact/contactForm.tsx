@@ -73,6 +73,12 @@ export default function ContactForm(): JSX.Element {
         id="txt-contact-email"
         label={t("main.contact.form.email")}
         value={email}
+        errorMessage={
+          !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$") &&
+          email.length > 0
+            ? t("main.contact.email-invalid")
+            : undefined
+        }
         onChange={(value: string) => dispatch(setEmail(value))}
       />
       <TextareaInput
@@ -85,9 +91,9 @@ export default function ContactForm(): JSX.Element {
         id="btn-contact-send"
         text={t("main.contact.form.submit")}
         icon="PaperAirplaneIcon"
-        className="mt-4"
+        className="mt-4 w-fit"
         disabled={
-          name.length === 0 || email.length === 0 || message.length === 0
+          name.length === 0 || email.length === 0 || message.length === 0 || !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
         }
         onClick={() => dispatch(sendMessage({ language: language }))}
       />

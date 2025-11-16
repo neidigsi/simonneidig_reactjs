@@ -18,7 +18,11 @@ interface BadgeText {
  */
 export default function Badge(badgeText: Readonly<BadgeText>) {
   return (
-    <div className={"badge " + badgeText.additionalClasses}>
+    <div
+      className={
+        "flex w-fit text-center p-2 rounded-lg " + badgeText.additionalClasses
+      }
+    >
       {badgeText.text}
     </div>
   );
