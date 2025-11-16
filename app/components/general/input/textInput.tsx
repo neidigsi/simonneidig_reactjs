@@ -7,10 +7,11 @@ interface TextInputProps {
   onChange: (value: string) => void;
   id?: string;
   type?: string;
+  errorMessage?: string; // Optional error message
 }
 
 /**
- * TextInput component that renders a styled text input with a floating label.
+ * TextInput component that renders a styled text input with a floating label and optional error message.
  *
  * @author Simon Neidig <mail@simon-neidig.eu>
  * 
@@ -19,8 +20,10 @@ interface TextInputProps {
  * @param {string} props.value - The current value of the text input.
  * @param {(value: string) => void} props.onChange - The function to call when the value changes.
  * @param {string} [props.id="text-input"] - The unique ID for the text input.
+ * @param {string} [props.type="text"] - The type of the text input.
+ * @param {string} [props.errorMessage] - The error message to display if there is an error.
  * 
- * @returns {JSX.Element} The rendered text input input component.
+ * @returns {JSX.Element} The rendered text input component.
  */
 export default function TextInput({
   label,
@@ -28,6 +31,7 @@ export default function TextInput({
   onChange,
   id = "text-input",
   type = "text",
+  errorMessage,
 }: Readonly<TextInputProps>): JSX.Element {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -42,10 +46,15 @@ export default function TextInput({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={(e) => onChange(e.target.value)}
-        className="peer w-full border-0 border-b-2 border-light-grey bg-transparent px-0 pt-7 pb-2 text-base text-black dark:text-white placeholder-transparent focus:border-primary/20 dark:focus:border-primary/60 focus:outline-none"
+        className={`peer w-full border-0 border-b-2 ${
+          errorMessage ? "border-red-500" : "border-light-grey"
+        } bg-transparent px-0 pt-7 pb-2 text-base text-black dark:text-white placeholder-transparent focus:border-primary/20 dark:focus:border-primary/60 focus:outline-none`}
         placeholder={label}
       />
       <InputLabel htmlFor={id} shouldFloat={shouldFloat} label={label} />
+      {errorMessage && (
+        <p className="mt-1 text-sm text-red-500">{errorMessage}</p>
+      )}
     </div>
   );
 }

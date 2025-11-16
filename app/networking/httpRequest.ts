@@ -14,7 +14,8 @@ interface Request {
   path: string;
   body?: any;
   responseType?: string;
-  language?: string; // optionales Feld für Sprache
+  language?: string;
+  jwt?: string;
 }
 
 /**
@@ -28,29 +29,46 @@ export async function http({
   body = undefined,
   responseType = undefined,
   language = undefined,
+  jwt = undefined,
 }: Request): Promise<any> {
   let config: any = {
     headers: {},
+    withCredentials: true,
   };
 
   if (language !== undefined) {
     config.headers["Accept-Language"] = language;
   }
+  if (jwt !== undefined) {
+    config.headers["Authorization"] = `Bearer ${jwt}`;
+  }
   if (responseType !== undefined) {
     config.responseType = responseType;
   }
 
-  // Prefix path with proxy base URL
   const url = `${BACKEND_URL}${path}`;
 
-  let response;
-  if (method === "GET") {
-    response = await axios.get(url, config);
-  } else if (method === "PUT") {
-    response = await axios.put(url, body, config);
-  } else if (method === "POST") {
-    response = await axios.post(url, body, config);
-  }
+  try {
+    let response;
+    if (method === "GET") {
+      response = await axios.get(url, config);
+    } else if (method === "PUT") {
+      response = await axios.put(url, body, config);
+    } else if (method === "POST") {
+      response = await axios.post(url, body, config);
+    } else {
+      throw new Error(`Unsupported HTTP method: ${method}`);
+    }
 
-  return response;
+    return response;
+  } catch (error: any) {
+    console.error("Full HTTP Error Object:", {
+      message: error.message,
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      data: error.response?.data,
+      config: error.config?.url,
+    });
+    throw error;
+  }
 }

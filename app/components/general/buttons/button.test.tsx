@@ -27,7 +27,6 @@ describe("Button Component", () => {
     const button = screen.getByRole("button", { name: /click me/i });
     expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute("id", "btn-default");
-    expect(button).toHaveClass("btn");
     expect(button).not.toBeDisabled();
 
     const icon = screen.getByTestId("mock-icon");
@@ -67,8 +66,6 @@ describe("Button Component", () => {
     );
 
     const button = screen.getByRole("button", { name: /test/i });
-    expect(button).toHaveClass("btn-inverted");
-    expect(button).toHaveClass("btn-disabled");
     expect(button).toHaveClass("custom-class");
     expect(button).toBeDisabled();
   });

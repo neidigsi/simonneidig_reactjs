@@ -17,6 +17,7 @@
     "contact": {
       "title": "Contact",
       "description": "Souhaitez-vous entrer en contact avec moi ? J'attends votre message avec impatience !",
+      "email-invalid": "Veuillez entrer une adresse e-mail valide.",
       "form": {
         "headline": "Formulaire de contact",
         "name": "Nom",
@@ -42,7 +43,8 @@
     "password": "Mot de passe",
     "submit": "Connexion",
     "forgot-password": "Mot de passe oublié ?",
-    "register": "S'inscrire"
+    "register": "S'inscrire",
+    "invalid-credentials": "Identifiants invalides. Veuillez réessayer."
   },
   "register": {
     "title": "S'inscrire",
@@ -53,7 +55,9 @@
     "password": "Mot de passe",
     "confirm-password": "Confirmer le mot de passe",
     "submit": "S'inscrire",
-    "already-have-account": "Vous avez déjà un compte ?"
+    "already-have-account": "Vous avez déjà un compte ?",
+    "password-mismatch": "Les mots de passe ne correspondent pas.",
+    "email-invalid": "Veuillez entrer une adresse e-mail valide."
   },
   "navigation": {
     "headlines": {

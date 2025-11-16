@@ -4,12 +4,14 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
 // Import internal dependencies
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import Card from "@/components/general/card/card";
 import "@/assets/css/main.css";
 import "@/i18n";
 import TextInput from "@/components/general/input/textInput";
 import Button from "@/components/general/buttons/button";
 import TextButton from "@/components/general/buttons/textButton";
+import { setEmail, setPassword, login } from "@/store/slices/userSlice";
 
 /**
  * Login Page Component
@@ -32,29 +34,51 @@ import TextButton from "@/components/general/buttons/textButton";
  * @returns {JSX.Element} The rendered Login page.
  */
 export default function Login() {
+  const email = useAppSelector((state) => state.user.user.email);
+  const password = useAppSelector((state) => state.user.user.password);
+  const loaded = useAppSelector((state) => state.user.loaded);
+  const loggedIn = useAppSelector((state) => state.user.loggedIn);
+  const error = useAppSelector((state) => state.user.error);
+  const language = useAppSelector((state) => state.settings.language);
+
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     document.title = t("login.title") + " | Simon Neidig";
   });
 
+  // Navigiere zur Hauptseite wenn erfolgreich angemeldet
+  useEffect(() => {
+    if (loggedIn && loaded) {
+      navigate("/");
+    }
+  }, [loggedIn, loaded, navigate]);
+
   return (
     <Card headline={t("login.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("login.description")}</div>
+      {error.active && (
+        <div className="mb-4 p-3 rounded text-sm bg-red-500/20 text-red-600">
+          {error.code === "LOGIN_BAD_CREDENTIALS" &&
+            t("login.invalid-credentials")}
+        </div>
+      )}
       <TextInput
         id="input-email"
         label={t("login.email")}
-        value=""
-        onChange={() => {}}
+        value={email}
+        onChange={(value: string) => dispatch(setEmail(value))}
       />
       <TextInput
         id="input-password"
         label={t("login.password")}
         type="password"
-        value=""
-        onChange={() => {}}
+        value={password}
+        onChange={(value: string) => dispatch(setPassword(value))}
       />
       <div className="grid justify-end">
         <TextButton
@@ -64,22 +88,25 @@ export default function Login() {
           onClick={() => {}}
         />
       </div>
-      <div className="grid justify-center mt-4">
+      <div className="mt-4 w-full">
         <Button
           id="btn-login-submit"
           text={t("login.submit")}
           icon="ArrowRightOnRectangleIcon"
-          className="mt-4"
+          loading={!loaded}
+          disabled={!loaded || email.length === 0 || password.length === 0}
+          className="mt-4 w-full"
           inverted={true}
-          onClick={() => {}}
+          onClick={() => dispatch(login({ language: language }))}
         />
       </div>
-      <div className="grid justify-center mt-4">
+      <div className="mt-4 w-full">
         <Button
           id="btn-login-register"
           text={t("login.register")}
           icon="UserPlusIcon"
-          className="text-dark-grey"
+          loading={false}
+          className="text-dark-grey w-full"
           onClick={() => navigate("/register")}
         />
       </div>

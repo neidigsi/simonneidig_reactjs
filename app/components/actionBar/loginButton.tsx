@@ -1,12 +1,12 @@
 // Import internal dependencies
 import SmallButton from "@/components/general/buttons/smallButton";
+import { logout } from "@/store/slices/userSlice";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-
 
 /**
  * LoginButton Component
@@ -28,13 +28,14 @@ import { useNavigate } from "react-router";
  */
 export default function LoginButton() {
   const loggedIn = useAppSelector((state) => state.user.loggedIn);
+  const language = useAppSelector((state) => state.settings.language);
+  const jwt = useAppSelector((state) => state.user.jwt);
+
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
   const { t } = useTranslation();
-
-
-  useEffect(() => {}, []);
 
   return (
     <SmallButton
@@ -46,10 +47,16 @@ export default function LoginButton() {
       }
       icon={
         loggedIn
-          ? "ArrowRightEndOnRectangleIcon"
-          : "ArrowStartEndOnRectangleIcon"
+          ? "ArrowRightStartOnRectangleIcon"
+          : "ArrowRightEndOnRectangleIcon"
       }
-      onClick={() => navigate("/login")}
+      onClick={() => {
+        if (!loggedIn) {
+          navigate("/login");
+        } else {
+          dispatch(logout({ language, jwt }));
+        }
+      }}
     />
   );
 }

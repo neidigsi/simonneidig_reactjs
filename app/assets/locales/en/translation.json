@@ -17,6 +17,7 @@
     "contact": {
       "title": "Contact",
       "description": "Would you like to get in touch with me? I look forward to your message!",
+      "email-invalid": "Please enter a valid email address.",
       "form": {
         "headline": "Form",
         "name": "Name",
@@ -42,7 +43,8 @@
     "password": "Password",
     "submit": "Sign In",
     "forgot-password": "Forgot your password?",
-    "register": "Register"
+    "register": "Register",
+    "invalid-credentials": "Invalid credentials. Please try again."
   },
   "register": {
     "title": "Register",
@@ -53,7 +55,9 @@
     "password": "Password",
     "confirm-password": "Confirm Password",
     "submit": "Register",
-    "already-have-account": "Already have an account?"
+    "already-have-account": "Already have an account?",
+    "password-mismatch": "The passwords do not match.",
+    "email-invalid": "Please enter a valid email address."
   },
   "navigation": {
     "headlines": {

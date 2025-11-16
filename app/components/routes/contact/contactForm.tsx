@@ -16,7 +16,6 @@ import { useTranslation } from "react-i18next";
 import { JSX, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-
 /**
  * ContactForm Component
  *
@@ -35,7 +34,7 @@ import { useNavigate } from "react-router";
  * @author Simon Neidig <mail@simon-neidig.eu>
  *
  * @param none - This component does not accept any props. All state is managed via Redux.
- * 
+ *
  * @returns {JSX.Element} Renders a localized contact form with fields for name, email, and message.
  * The form uses controlled inputs, disables the submit button until all fields are filled,
  * and dispatches a sendMessage action on submit. If sending fails, the user is redirected to an error page.
@@ -57,9 +56,9 @@ export default function ContactForm(): JSX.Element {
   useEffect(() => {
     if (loaded && !successful) {
       navigate("/error");
-      dispatch(resetContact())
+      dispatch(resetContact());
     }
-  });  
+  });
 
   return (
     <>
@@ -74,6 +73,12 @@ export default function ContactForm(): JSX.Element {
         id="txt-contact-email"
         label={t("main.contact.form.email")}
         value={email}
+        errorMessage={
+          !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$") &&
+          email.length > 0
+            ? t("main.contact.email-invalid")
+            : undefined
+        }
         onChange={(value: string) => dispatch(setEmail(value))}
       />
       <TextareaInput
@@ -86,9 +91,9 @@ export default function ContactForm(): JSX.Element {
         id="btn-contact-send"
         text={t("main.contact.form.submit")}
         icon="PaperAirplaneIcon"
-        className="mt-4"
+        className="mt-4 w-fit"
         disabled={
-          name.length === 0 || email.length === 0 || message.length === 0
+          name.length === 0 || email.length === 0 || message.length === 0 || !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")
         }
         onClick={() => dispatch(sendMessage({ language: language }))}
       />

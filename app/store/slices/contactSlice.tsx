@@ -22,11 +22,8 @@ const initialState: ContactState = {
 };
 
 export const sendMessage = createAsyncThunk(
-  "expertise/sendMessage",
-  async (
-    { language }: { language: string },
-    { getState }
-  ) => {
+  "contact/sendMessage",
+  async ({ language }: { language: string }, { getState }) => {
     const state = getState() as { contact: ContactState };
     const resp = await http({
       method: "POST",
@@ -42,12 +39,6 @@ export const sendMessage = createAsyncThunk(
     return resp;
   }
 );
-
-export const educationSlice = createSlice({
-  name: "education",
-  initialState: initialState,
-  reducers: {},
-});
 
 export const contactSlice = createSlice({
   name: "contact",
@@ -72,7 +63,7 @@ export const contactSlice = createSlice({
       state.message = "";
       state.sentSuccessfully = false;
       state.loaded = false;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -91,6 +82,7 @@ export const contactSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setName, setEmail, setMessage, resetContact } = contactSlice.actions;
+export const { setName, setEmail, setMessage, resetContact } =
+  contactSlice.actions;
 
 export default contactSlice.reducer;
