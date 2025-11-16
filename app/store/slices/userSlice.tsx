@@ -1,12 +1,15 @@
 // Import external dependencies
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 // Import internal dependencies
 import { http } from "@/networking/httpRequest";
 
 interface User {
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
+  repeatPassword: string;
 }
 
 interface UserState {
@@ -19,13 +22,18 @@ interface UserState {
 const initialState: UserState = {
   loaded: false,
   loggedIn: true,
-  user: { email: "", password: "" },
+  user: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+  },
 };
 
 export const login = createAsyncThunk(
   "user/login",
-  async ({},{ getState }
-  ) => {
+  async ({}, { getState }) => {
     const state = getState() as { user: UserState };
     const resp = await http({
       method: "POST",
@@ -54,7 +62,28 @@ export const logout = createAsyncThunk(
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    // Set the first name field
+    setFirstName: (state, action: PayloadAction<string>) => {
+      state.user.firstName = action.payload;
+    },
+    // Set the last name field
+    setLastName: (state, action: PayloadAction<string>) => {
+      state.user.lastName = action.payload;
+    },
+    // Set the e-mail field
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.user.email = action.payload;
+    },
+    // Set the password field
+    setPassword: (state, action: PayloadAction<string>) => {
+      state.user.password = action.payload;
+    },
+    // Set the repeat password field
+    setRepeatPassword: (state, action: PayloadAction<string>) => {
+      state.user.repeatPassword = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, action) => {
@@ -65,8 +94,7 @@ export const userSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.loaded = false;
       })
-      .addCase("i18n/changeLanguage", (state) => {
-      })
+      .addCase("i18n/changeLanguage", (state) => {})
       .addCase(logout.fulfilled, (state, action) => {
         state.jwt = action.payload.access_token;
         state.loaded = true;
@@ -77,5 +105,14 @@ export const userSlice = createSlice({
       });
   },
 });
+
+// Action creators are generated for each case reducer function
+export const {
+  setFirstName,
+  setLastName,
+  setEmail,
+  setPassword,
+  setRepeatPassword,
+} = userSlice.actions;
 
 export default userSlice.reducer;

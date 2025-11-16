@@ -4,12 +4,17 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
 // Import internal dependencies
+import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import Card from "@/components/general/card/card";
 import "@/assets/css/main.css";
 import "@/i18n";
 import TextInput from "@/components/general/input/textInput";
 import Button from "@/components/general/buttons/button";
 import TextButton from "@/components/general/buttons/textButton";
+import {
+  setEmail,
+  setPassword
+} from "@/store/slices/userSlice";
 
 /**
  * Login Page Component
@@ -32,9 +37,15 @@ import TextButton from "@/components/general/buttons/textButton";
  * @returns {JSX.Element} The rendered Login page.
  */
 export default function Login() {
+  const email = useAppSelector((state) => state.user.user.email);
+  const password = useAppSelector((state) => state.user.user.password);
+  const loaded = useAppSelector((state) => state.user.loaded);
+
   const { t } = useTranslation();
 
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     document.title = t("login.title") + " | Simon Neidig";
@@ -46,15 +57,15 @@ export default function Login() {
       <TextInput
         id="input-email"
         label={t("login.email")}
-        value=""
-        onChange={() => {}}
+        value={email}
+        onChange={(value: string) => dispatch(setEmail(value))}
       />
       <TextInput
         id="input-password"
         label={t("login.password")}
         type="password"
-        value=""
-        onChange={() => {}}
+        value={password}
+        onChange={(value: string) => dispatch(setPassword(value))}
       />
       <div className="grid justify-end">
         <TextButton
