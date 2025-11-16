@@ -16,7 +16,7 @@ import {
   setLastName,
   setEmail,
   setPassword,
-  setRepeatPassword
+  setRepeatPassword,
 } from "@/store/slices/userSlice";
 
 /**
@@ -78,6 +78,12 @@ export default function Register() {
         id="input-email"
         label={t("register.email")}
         value={email}
+        errorMessage={
+          !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$") &&
+          email.length > 0
+            ? t("register.email-invalid")
+            : undefined
+        }
         onChange={(value: string) => dispatch(setEmail(value))}
       />
       <TextInput
@@ -92,6 +98,11 @@ export default function Register() {
         label={t("register.confirm-password")}
         type="password"
         value={repeatPassword}
+        errorMessage={
+          password != repeatPassword
+            ? "Die Passwörter stimmen nicht überein."
+            : undefined
+        }
         onChange={(value: string) => dispatch(setRepeatPassword(value))}
       />
       <div className="grid justify-end">

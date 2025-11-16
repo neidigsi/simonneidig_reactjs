@@ -53,7 +53,9 @@
     "password": "Mot de passe",
     "confirm-password": "Confirmer le mot de passe",
     "submit": "S'inscrire",
-    "already-have-account": "Vous avez déjà un compte ?"
+    "already-have-account": "Vous avez déjà un compte ?",
+    "password-mismatch": "Les mots de passe ne correspondent pas.",
+    "email-invalid": "Veuillez entrer une adresse e-mail valide."
   },
   "navigation": {
     "headlines": {
