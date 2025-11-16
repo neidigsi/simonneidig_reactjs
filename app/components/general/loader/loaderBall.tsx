@@ -30,16 +30,13 @@ export default function LoaderBall({
     <div className="flex items-center justify-center space-x-2">
       <div className="dot-loader" style={{ animationDelay: animationDelay }}>
         <div
-          className={
-            "w-" +
-            size +
-            " h-" +
-            size +
-            " bg-" +
-            color +
-            " rounded-full" +
-            (darkColor != undefined ? " dark:bg-" + darkColor : "")
-          }
+          style={{
+            width: `${size * 0.25}rem`,
+            height: `${size * 0.25}rem`,
+            backgroundColor: color,
+            borderRadius: "50%",
+          }}
+          className="dark:bg-opacity-100"
         ></div>
       </div>
     </div>

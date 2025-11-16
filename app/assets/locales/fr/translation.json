@@ -17,6 +17,7 @@
     "contact": {
       "title": "Contact",
       "description": "Souhaitez-vous entrer en contact avec moi ? J'attends votre message avec impatience !",
+      "email-invalid": "Veuillez entrer une adresse e-mail valide.",
       "form": {
         "headline": "Formulaire de contact",
         "name": "Nom",

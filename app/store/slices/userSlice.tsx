@@ -20,7 +20,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  loaded: false,
+  loaded: true,
   loggedIn: true,
   user: {
     firstName: "",

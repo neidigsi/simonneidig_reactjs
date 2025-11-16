@@ -17,6 +17,7 @@
     "contact": {
       "title": "Contact",
       "description": "Would you like to get in touch with me? I look forward to your message!",
+      "email-invalid": "Please enter a valid email address.",
       "form": {
         "headline": "Form",
         "name": "Name",

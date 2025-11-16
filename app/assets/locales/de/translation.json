@@ -17,6 +17,7 @@
     "contact": {
       "title": "Kontakt",
       "description": "Möchten Sie mit mir in Kontakt treten? Ich freue mich auf Ihre Nachricht!",
+      "email-invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
       "form": {
         "headline": "Kontaktformular",
         "name": "Name",

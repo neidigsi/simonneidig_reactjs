@@ -113,12 +113,22 @@ export default function Register() {
           onClick={() => navigate("/login")}
         />
       </div>
-      <div className="grid justify-center mt-4">
+      <div className="justify-center mt-4">
         <Button
           id="btn-login-submit"
           text={t("register.submit")}
           icon="UserPlusIcon"
-          className="mt-4"
+          className="mt-4 w-full"
+          loading={!loaded}
+          disabled={
+            !loaded ||
+            firstName.length === 0 ||
+            lastName.length === 0 ||
+            email.length === 0 ||
+            password.length === 0 ||
+            repeatPassword.length === 0 ||
+            password !== repeatPassword
+          }
           inverted={true}
           onClick={() => {}}
         />

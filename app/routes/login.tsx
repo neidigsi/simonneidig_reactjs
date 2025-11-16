@@ -11,10 +11,7 @@ import "@/i18n";
 import TextInput from "@/components/general/input/textInput";
 import Button from "@/components/general/buttons/button";
 import TextButton from "@/components/general/buttons/textButton";
-import {
-  setEmail,
-  setPassword
-} from "@/store/slices/userSlice";
+import { setEmail, setPassword, login } from "@/store/slices/userSlice";
 
 /**
  * Login Page Component
@@ -75,22 +72,25 @@ export default function Login() {
           onClick={() => {}}
         />
       </div>
-      <div className="grid justify-center mt-4">
+      <div className="justify-center mt-4 w-full">
         <Button
           id="btn-login-submit"
           text={t("login.submit")}
           icon="ArrowRightOnRectangleIcon"
-          className="mt-4"
+          loading={!loaded}
+          disabled={!loaded || email.length === 0 || password.length === 0}
+          className="mt-4 w-full"
           inverted={true}
-          onClick={() => {}}
+          onClick={() => dispatch(login())}
         />
       </div>
-      <div className="grid justify-center mt-4">
+      <div className="justify-center mt-4 w-full">
         <Button
           id="btn-login-register"
           text={t("login.register")}
           icon="UserPlusIcon"
-          className="text-dark-grey"
+          loading={false}
+          className="text-dark-grey w-full"
           onClick={() => navigate("/register")}
         />
       </div>
