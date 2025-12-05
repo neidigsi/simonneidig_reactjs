@@ -14,7 +14,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@react-router/node": "^7.9.1",
-    "@react-router/serve": "^7.9.1",
+    "@react-router/serve": "^7.10.1",
     "@reduxjs/toolkit": "^2.11.0",
     "@tailwindcss/vite": "^4.1.17",
     "autoprefixer": "^10.4.22",
