@@ -34,7 +34,6 @@ export default function SocialMediaButton({
   const [active, setActive] = useState(false);
   const isDarkModeEnabled = useAppSelector((state) => state.settings.isDarkModeEnabled);
 
-
   /**
    * This method opens a given link in a new tab.
    *
@@ -49,7 +48,11 @@ export default function SocialMediaButton({
       id={`social-media-button-${id}`}
       type="button"
       aria-label={`Open ${id} in a new tab`}
-      className="btn bg-dark-grey/15"
+      className={`items-center justify-center p-2 rounded-lg text-base bg-dark-grey/15
+        ${active
+          ? "bg-linear-to-r from-primary to-secondary text-white dark:text-black"
+          : "text-black dark:text-white"
+        }`}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
       onClick={() => openInNewTab(url)}
