@@ -59,61 +59,74 @@ export default function Register() {
     document.title = t("register.title") + " | Simon Neidig";
   });
 
+  const handleRegister = () => {
+    // Registrierungslogik wird hier eingefügt
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleRegister();
+    }
+  };
+
   return (
     <Card headline={t("register.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("register.description")}</div>
-      <TextInput
-        id="input-first-name"
-        label={t("register.first-name")}
-        value={firstName}
-        onChange={(value: string) => dispatch(setFirstName(value))}
-      />
-      <TextInput
-        id="input-last-name"
-        label={t("register.last-name")}
-        value={lastName}
-        onChange={(value: string) => dispatch(setLastName(value))}
-      />
-      <TextInput
-        id="input-email"
-        label={t("register.email")}
-        value={email}
-        errorMessage={
-          !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$") &&
-          email.length > 0
-            ? t("register.email-invalid")
-            : undefined
-        }
-        onChange={(value: string) => dispatch(setEmail(value))}
-      />
-      <TextInput
-        id="input-password"
-        label={t("register.password")}
-        type="password"
-        value={password}
-        onChange={(value: string) => dispatch(setPassword(value))}
-      />
-      <TextInput
-        id="input-confirm-password"
-        label={t("register.confirm-password")}
-        type="password"
-        value={repeatPassword}
-        errorMessage={
-          password != repeatPassword
-            ? "Die Passwörter stimmen nicht überein."
-            : undefined
-        }
-        onChange={(value: string) => dispatch(setRepeatPassword(value))}
-      />
-      <div className="grid justify-end">
-        <TextButton
-          id="txt-btn-already-have-account"
-          text={t("register.already-have-account")}
-          className="mt-2 text-dark-grey"
-          onClick={() => navigate("/login")}
+      <div onKeyDown={handleKeyDown}>
+        <TextInput
+          id="input-first-name"
+          label={t("register.first-name")}
+          value={firstName}
+          onChange={(value: string) => dispatch(setFirstName(value))}
         />
+        <TextInput
+          id="input-last-name"
+          label={t("register.last-name")}
+          value={lastName}
+          onChange={(value: string) => dispatch(setLastName(value))}
+        />
+        <TextInput
+          id="input-email"
+          label={t("register.email")}
+          value={email}
+          errorMessage={
+            !email.match("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$") &&
+            email.length > 0
+              ? t("register.email-invalid")
+              : undefined
+          }
+          onChange={(value: string) => dispatch(setEmail(value))}
+        />
+        <TextInput
+          id="input-password"
+          label={t("register.password")}
+          type="password"
+          value={password}
+          onChange={(value: string) => dispatch(setPassword(value))}
+        />
+        <TextInput
+          id="input-confirm-password"
+          label={t("register.confirm-password")}
+          type="password"
+          value={repeatPassword}
+          errorMessage={
+            password != repeatPassword
+              ? t("register.password-mismatch")
+              : undefined
+          }
+          onChange={(value: string) => dispatch(setRepeatPassword(value))}
+        />
+        <div className="grid justify-end">
+          <TextButton
+            id="txt-btn-already-have-account"
+            text={t("register.already-have-account")}
+            className="mt-2 text-dark-grey"
+            onClick={() => navigate("/login")}
+          />
+        </div>
       </div>
-      <div className="justify-center mt-4">
+      <div className="mt-4 w-full">
         <Button
           id="btn-login-submit"
           text={t("register.submit")}
@@ -130,7 +143,7 @@ export default function Register() {
             password !== repeatPassword
           }
           inverted={true}
-          onClick={() => {}}
+          onClick={handleRegister}
         />
       </div>
     </Card>
