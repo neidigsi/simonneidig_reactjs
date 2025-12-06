@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import i18n from "i18next";
 import { useLocation } from "react-router";
+import Cookies from "js-cookie";
 
 // Import internal dependencies
 import Sidebar from "@/components/sidebar/sidebar";
@@ -16,6 +17,7 @@ import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import { loadSocialMedia } from "@/store/slices/socialMediaSlice";
 import Loader from "@/components/general/loader/loader";
 import LoginButton from "@/components/actionBar/loginButton";
+import { renewJwt } from "@/store/slices/userSlice";
 
 /**
  * SidebarLayout Component
@@ -98,6 +100,13 @@ export default function SidebarLayout({
   });
 
   useEffect(() => {
+    const username = Cookies.get("email") || "";
+    const password = Cookies.get("password") || "";
+    if ( username !== "" && password !== "") {
+      // Auto-login if credentials are stored in cookies
+      dispatch(renewJwt({ language: i18n.language }));
+    }
+
     // Set the language in the Redux store on mount
     dispatch(changeLanguage(i18n.language));
   }, []);
