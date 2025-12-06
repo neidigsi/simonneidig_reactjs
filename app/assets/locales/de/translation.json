@@ -73,6 +73,7 @@
         "login": "Anmelden",
         "logout": "Abmelden"
       },
+      "settings": "Einstellungen",
       "dark-mode": {
         "light": "Wechsel zu Lightmode",
         "dark": "Wechsel zu Darkmode"

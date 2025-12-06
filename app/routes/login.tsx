@@ -58,6 +58,19 @@ export default function Login() {
     }
   }, [loggedIn, loaded, navigate]);
 
+  const handleLogin = () => {
+    dispatch(login({ language: language }));
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (email.length > 0 && password.length > 0 && loaded) {
+        handleLogin();
+      }
+    }
+  };
+
   return (
     <Card headline={t("login.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("login.description")}</div>
@@ -67,19 +80,21 @@ export default function Login() {
             t("login.invalid-credentials")}
         </div>
       )}
-      <TextInput
-        id="input-email"
-        label={t("login.email")}
-        value={email}
-        onChange={(value: string) => dispatch(setEmail(value))}
-      />
-      <TextInput
-        id="input-password"
-        label={t("login.password")}
-        type="password"
-        value={password}
-        onChange={(value: string) => dispatch(setPassword(value))}
-      />
+      <div onKeyDown={handleKeyDown}>
+        <TextInput
+          id="input-email"
+          label={t("login.email")}
+          value={email}
+          onChange={(value: string) => dispatch(setEmail(value))}
+        />
+        <TextInput
+          id="input-password"
+          label={t("login.password")}
+          type="password"
+          value={password}
+          onChange={(value: string) => dispatch(setPassword(value))}
+        />
+      </div>
       <div className="grid justify-end">
         <TextButton
           id="txt-btn-forgot-password"
@@ -97,7 +112,7 @@ export default function Login() {
           disabled={!loaded || email.length === 0 || password.length === 0}
           className="mt-4 w-full"
           inverted={true}
-          onClick={() => dispatch(login({ language: language }))}
+          onClick={handleLogin}
         />
       </div>
       <div className="mt-4 w-full">

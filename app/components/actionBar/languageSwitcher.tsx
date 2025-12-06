@@ -62,13 +62,13 @@ export default function LanguageSwitcher() {
               onClick={() => handleChange(lang.code)}
             />
           ))}
-    <SmallButton
+      <SmallButton
         id="sm-btn-language-switcher-button"
         title={t("header.actionbar.language.title")}
         className={open ? " active" : ""}
         icon={"FlagIcon"}
-        onClick={() => setOpen(!open)}/>    
-      
+        onClick={() => setOpen(!open)} />
+
     </div>
   );
 }

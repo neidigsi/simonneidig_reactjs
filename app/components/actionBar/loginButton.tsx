@@ -5,7 +5,6 @@ import { logout } from "@/store/slices/userSlice";
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 /**

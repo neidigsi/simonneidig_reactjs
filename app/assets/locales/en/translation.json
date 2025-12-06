@@ -73,6 +73,7 @@
         "login": "Sign In",
         "logout": "Sign Out"
       },
+      "settings": "Settings",
       "dark-mode": {
         "light": "Switch to light mode",
         "dark": "Switch to dark mode"

@@ -73,6 +73,7 @@
         "login": "Connexion",
         "logout": "Déconnexion"
       },
+      "settings": "Paramètres",
       "dark-mode": {
         "light": "Passer en mode clair",
         "dark": "Passer en mode sombre"

@@ -19,10 +19,6 @@ h3 {
   }
 }
 
-.button-bar {
-  padding-top: 2rem;
-}
-
 .active {
   @apply bg-gradient-to-r from-primary to-secondary text-white;
 }

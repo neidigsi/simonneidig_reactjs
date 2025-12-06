@@ -18,6 +18,7 @@ import { loadSocialMedia } from "@/store/slices/socialMediaSlice";
 import Loader from "@/components/general/loader/loader";
 import LoginButton from "@/components/actionBar/loginButton";
 import { renewJwt } from "@/store/slices/userSlice";
+import ActionBar from "@/components/actionBar/actionBar";
 
 /**
  * SidebarLayout Component
@@ -138,21 +139,17 @@ export default function SidebarLayout({
             {/* Sidebar section */}
             <div className="col-span-1 md:col-span-1 lg:col-span-3 xl:col-span-2">
               {/* Action bar for small screens */}
-              <div className="md:hidden flex justify-end button-bar">
-                <LanguageSwitcher />
-                <DarkModeToggl />
-                <LoginButton />
-              </div>
+              <div className="md:hidden flex justify-end pt-8">
+                <ActionBar />
+              </div> 
               <Sidebar />
             </div>
             {/* Main content section */}
             <div className="col-span-1 md:col-span-1 lg:col-span-5 xl:col-span-5">
               {/* Action bar for medium and larger screens */}
-              <div className="hidden md:flex justify-end button-bar">
-                <LanguageSwitcher />
-                <DarkModeToggl />
-                <LoginButton />
-              </div>
+              <div className="hidden md:flex justify-end pt-8">
+                <ActionBar />
+              </div> 
               <div className="main-section">
                 <Navigation navRef={navRef} />
                 {children}
