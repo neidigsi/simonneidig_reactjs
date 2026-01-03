@@ -57,7 +57,8 @@
     "submit": "Registrieren",
     "already-have-account": "Haben Sie bereits ein Konto?",
     "password-mismatch": "Die Passwörter stimmen nicht überein.",
-    "email-invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+    "email-invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "user-already-exists": "Ein Benutzer mit dieser E-Mail-Adresse existiert bereits."
   },
   "navigation": {
     "headlines": {

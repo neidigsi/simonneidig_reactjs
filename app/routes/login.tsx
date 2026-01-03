@@ -51,7 +51,7 @@ export default function Login() {
     document.title = t("login.title") + " | Simon Neidig";
   });
 
-  // Navigiere zur Hauptseite wenn erfolgreich angemeldet
+  // Navigate to home if already logged in
   useEffect(() => {
     if (loggedIn && loaded) {
       navigate("/");
