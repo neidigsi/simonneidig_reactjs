@@ -101,6 +101,38 @@ export const login = createAsyncThunk(
   }
 );
 
+export const register = createAsyncThunk(
+  "user/register",
+  async ({ language }: { language: string }, { getState, rejectWithValue, dispatch }) => {
+    try {
+      const state = getState() as { user: UserState };
+
+      const resp = await http({
+        method: "POST",
+        path: "/auth/register",
+        body: {
+          first_name: state.user.user.firstName,
+          last_name: state.user.user.lastName,
+          email: state.user.user.email,
+          password: state.user.user.password,
+        },
+        language: language,
+      });
+
+      // Login the user automatically after successful registration
+      if (resp.status === 201) {
+        dispatch(login({ language }));
+      }
+
+      return resp;
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.detail || error.message || "Registration failed";
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
+
 export const logout = createAsyncThunk(
   "user/logout",
   async ({ language, jwt }: { language: string, jwt: string}, { rejectWithValue }) => {
@@ -190,6 +222,16 @@ export const userSlice = createSlice({
           
           localStorage.setItem("jwt", token);
         }
+      })
+      .addCase(register.pending, (state) => {
+        state.loaded = false;
+        state.error.active = false;
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.loaded = true;
+        state.loggedIn = false;
+        state.error.active = true;
+        state.error.code = action.payload as string;
       })
       .addCase(login.pending, (state) => {
         state.loaded = false;

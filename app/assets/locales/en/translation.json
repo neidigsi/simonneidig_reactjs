@@ -57,7 +57,8 @@
     "submit": "Register",
     "already-have-account": "Already have an account?",
     "password-mismatch": "The passwords do not match.",
-    "email-invalid": "Please enter a valid email address."
+    "email-invalid": "Please enter a valid email address.",
+    "user-already-exists": "A user with this email address already exists."
   },
   "navigation": {
     "headlines": {
