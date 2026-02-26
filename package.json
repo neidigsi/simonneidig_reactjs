@@ -17,7 +17,7 @@
     "@react-router/serve": "^7.10.1",
     "@reduxjs/toolkit": "^2.11.2",
     "@tailwindcss/vite": "^4.2.0",
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.4.27",
     "axios": "^1.13.5",
     "clsx": "^2.1.1",
     "i18next": "^25.8.13",
