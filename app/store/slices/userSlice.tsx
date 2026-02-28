@@ -1,5 +1,6 @@
 // Import external dependencies
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
 // Import internal dependencies
@@ -11,6 +12,7 @@ interface User {
   email: string;
   password: string;
   repeatPassword: string;
+  isSuperUser: boolean;
 }
 
 interface Error {
@@ -40,6 +42,7 @@ const initialState: UserState = {
     email: "",
     password: "",
     repeatPassword: "",
+    isSuperUser: false,
   },
 };
 
@@ -129,6 +132,22 @@ export const register = createAsyncThunk(
       const errorMessage =
         error.response?.data?.detail || error.message || "Registration failed";
       return rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const fetchUserProfile = createAsyncThunk(
+  "user/fetchUserProfile",
+  async ({ language }: { language: string }, { rejectWithValue }) => {
+    try {
+      const resp = await http({
+        method: "GET",
+        path: "/users/me",
+        language: language,
+      });
+      return resp;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || "Failed to fetch user profile");
     }
   }
 );
@@ -262,6 +281,22 @@ export const userSlice = createSlice({
         state.loaded = true;
         state.error.active = true;
         state.error.code = action.payload as string;
+      })
+      .addCase(fetchUserProfile.pending, (state) => {
+        state.loaded = false;
+      })
+      .addCase(fetchUserProfile.fulfilled, (state, action) => {
+        if (action.payload.status === 200 && action.payload.data) {
+          const userData = action.payload.data;
+          state.user.isSuperUser = userData.is_superuser || false;
+          state.user.firstName = userData.first_name || "";
+          state.user.lastName = userData.last_name || "";
+          state.loaded = true;
+        }
+      })
+      .addCase(fetchUserProfile.rejected, (state, action) => {
+        state.loaded = true;
+        state.user.isSuperUser = false;
       });
   },
 });

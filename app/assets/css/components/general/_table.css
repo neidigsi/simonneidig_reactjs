@@ -1,0 +1,49 @@
+/* Table Styles for TanStack Table Integration */
+
+.table-container {
+  @apply w-full overflow-x-auto;
+}
+
+.table-header {
+  @apply bg-grey/5 border-b border-grey/20;
+}
+
+.table-header-cell {
+  @apply px-6 py-3 text-left font-semibold text-grey-dark;
+}
+
+.table-body-row {
+  @apply border-b border-grey/20 hover:bg-grey/5 transition-colors;
+}
+
+.table-body-cell {
+  @apply px-6 py-4 text-grey-dark;
+}
+
+.table-pagination {
+  @apply flex items-center justify-between gap-2 mt-4;
+}
+
+.table-pagination-button {
+  @apply px-4 py-2 rounded border border-grey/20 text-grey-dark disabled:opacity-50 hover:bg-grey/5 transition-colors;
+}
+
+.table-empty-state {
+  @apply flex items-center justify-center py-8 text-grey;
+}
+
+.table-loading {
+  @apply flex items-center justify-center py-8;
+}
+
+.table-loading-spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-current;
+}
+
+.table-sortable-header {
+  @apply cursor-pointer select-none;
+}
+
+.table-sortable-header:hover {
+  @apply bg-grey/10;
+}

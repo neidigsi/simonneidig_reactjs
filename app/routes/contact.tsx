@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useAppSelector } from "@/store/hooks";
 import ContactForm from "@/components/routes/contact/contactForm";
 import SendingConfirmation from "@/components/routes/contact/sendingConfirmation";
+import ContactMessagesTable from "@/components/routes/contact/contactMessagesTable";
 import Card from "@/components/general/card/card";
 import "@/assets/css/main.css";
 
@@ -13,12 +14,22 @@ import "@/assets/css/main.css";
 /**
  * Contact Page Component
  *
- * This component renders the contact page, including a headline, description, and a card containing
- * either the contact form or a sending confirmation, depending on the submission state.
+ * This component renders the contact page with two distinct views:
+ * 
+ * User View:
+ * - Displays a localized contact form for user input.
+ * - Shows a confirmation message after successful submission.
+ * - Uses Redux state to determine which view to render.
+ *
+ * Admin View (for logged-in users with admin privileges):
+ * - Displays a table of all contact messages received
+ * - Allows sorting and pagination through submissions
+ * - Shows detailed information including timestamps
  *
  * Features:
  * - Displays a localized contact form for user input.
  * - Shows a confirmation message after successful submission.
+ * - Shows admin panel with message table for superusers.
  * - Uses Redux state to determine which view to render.
  * - Sets the page title dynamically based on the current language.
  * - Utilizes Tailwind CSS for layout and styling.
@@ -35,6 +46,8 @@ export default function Contact(): JSX.Element {
   const sentSuccessfully = useAppSelector(
     (state) => state.contact.sentSuccessfully
   );
+  const loggedIn = useAppSelector((state) => state.user.loggedIn);
+  const isSuperUser = useAppSelector((state) => state.user.user.isSuperUser);
 
   const { t } = useTranslation();
 
@@ -43,11 +56,23 @@ export default function Contact(): JSX.Element {
   })
 
   return (
-    <Card headline={t("main.contact.title")}>
-      {t("main.contact.description")}
-      <div className="mt-4 grid grid-cols-1 gap-2 w-full rounded-xl p-5 bg-dark-grey/15 text-base">
-        {sentSuccessfully ? <SendingConfirmation /> : <ContactForm />}
-      </div>
-    </Card>
+    <div className="w-full">
+      {/* User Contact Form Section */}
+      <Card headline={t("main.contact.title")}>
+        {t("main.contact.description")}
+        <div className="mt-4 grid grid-cols-1 gap-2 w-full rounded-xl p-5 bg-dark-grey/15 text-base">
+          {sentSuccessfully ? <SendingConfirmation /> : <ContactForm />}
+        </div>
+      </Card>
+
+      {/* Admin Panel - Messages Table */}
+      {loggedIn && isSuperUser && (
+        <div className="mt-8">
+          <Card headline={t("admin.contacts.title") || "Admin Panel: Contact Messages"}>
+            <ContactMessagesTable />
+          </Card>
+        </div>
+      )}
+    </div>
   );
 }
