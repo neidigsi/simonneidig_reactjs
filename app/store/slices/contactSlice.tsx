@@ -11,6 +11,17 @@ interface ContactState {
   email: string;
   message: string;
   sentSuccessfully: boolean;
+  messages: ContactMessage[];
+  messagesLoaded: boolean;
+  messagesLoading: boolean;
+}
+
+interface ContactMessage {
+  name: string;
+  email: string;
+  message: string;
+  creationDate: string;
+  language: string;
 }
 
 const initialState: ContactState = {
@@ -19,6 +30,9 @@ const initialState: ContactState = {
   email: "",
   message: "",
   sentSuccessfully: false,
+  messages: [],
+  messagesLoaded: false,
+  messagesLoading: false,
 };
 
 export const sendMessage = createAsyncThunk(
@@ -27,7 +41,7 @@ export const sendMessage = createAsyncThunk(
     const state = getState() as { contact: ContactState };
     const resp = await http({
       method: "POST",
-      path: "/routes/contact/",
+      path: "/contact/",
       body: JSON.stringify({
         name: state.contact.name,
         email: state.contact.email,
@@ -37,6 +51,24 @@ export const sendMessage = createAsyncThunk(
     });
 
     return resp;
+  }
+);
+
+export const fetchMessages = createAsyncThunk(
+  "contact/fetchMessages",
+  async ({ language, jwt }: { language: string; jwt: string }, { rejectWithValue }) => {
+    try {
+      const resp = await http({
+        method: "GET",
+        path: "/contact/",
+        language: language,
+        jwt: jwt,
+      });
+
+      return resp;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || "Failed to fetch messages");
+    }
   }
 );
 
@@ -77,6 +109,20 @@ export const contactSlice = createSlice({
       .addCase(sendMessage.rejected, (state, action) => {
         state.loaded = true;
         state.sentSuccessfully = false;
+      })
+      .addCase(fetchMessages.pending, (state) => {
+        state.messagesLoading = true;
+      })
+      .addCase(fetchMessages.fulfilled, (state, action) => {
+        state.messagesLoading = false;
+        state.messagesLoaded = true;
+        if (action.payload.status === 200 && Array.isArray(action.payload.data)) {
+          state.messages = action.payload.data;
+        }
+      })
+      .addCase(fetchMessages.rejected, (state, action) => {
+        state.messagesLoading = false;
+        state.messagesLoaded = true;
       });
   },
 });

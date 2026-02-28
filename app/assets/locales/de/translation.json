@@ -30,6 +30,18 @@
         "message": "Ihre Nachricht wurde erfolgreich gesendet. Ich werde mich so schnell wie möglich bei Ihnen melden.",
         "return-home": "Zurück zur Startseite",
         "return-to-contact": "Zurück zum Kontaktformular"
+      },
+      "table": {
+        "name": "Name",
+        "email": "E-Mail",
+        "message": "Nachricht",
+        "date": "Datum",
+        "language": "Sprache",
+        "headline": "Kontaktanfragen",
+        "description": "Alle eingegangenen Kontaktanfragen",
+        "previousButton": "Vorherige Seite",
+        "nextButton": "Nächste Seite",
+        "pageInfo": "Seite {{current}} von {{total}}"
       }
     }
   },

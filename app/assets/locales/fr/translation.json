@@ -30,6 +30,18 @@
         "message": "Votre message a été envoyé avec succès. Je vous répondrai dès que possible.",
         "return-home": "Retour à l'accueil",
         "return-to-contact": "Retour au formulaire de contact"
+      },
+      "table": {
+        "name": "Nom",
+        "email": "E-mail",
+        "message": "Message",
+        "date": "Date",
+        "language": "Langue",
+        "headline": "Messages de contact",
+        "description": "Tous les messages de contact reçus",
+        "previousButton": "Précédent",
+        "nextButton": "Suivant",
+        "pageInfo": "Page {{current}} de {{total}}"
       }
     }
   },

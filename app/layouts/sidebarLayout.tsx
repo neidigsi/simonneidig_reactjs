@@ -17,7 +17,7 @@ import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import { loadSocialMedia } from "@/store/slices/socialMediaSlice";
 import Loader from "@/components/general/loader/loader";
 import LoginButton from "@/components/actionBar/loginButton";
-import { renewJwt } from "@/store/slices/userSlice";
+import { renewJwt, fetchUserProfile } from "@/store/slices/userSlice";
 import ActionBar from "@/components/actionBar/actionBar";
 
 /**
@@ -85,6 +85,16 @@ export default function SidebarLayout({
    */
   const socialMediaLoaded = useAppSelector((state) => state.socialMedia.loaded);
 
+  /**
+   * Check if user is logged in
+   */
+  const loggedIn = useAppSelector((state) => state.user.loggedIn);
+
+  /**
+   * Get JWT token from store for authenticated requests
+   */
+  const jwt = useAppSelector((state) => state.user.jwt);
+
   useEffect(() => {
     // Load personal details if not already loaded
     if (!personalDetailsLoaded) {
@@ -129,6 +139,13 @@ export default function SidebarLayout({
     }
     prevPathRef.current = location.pathname; // Update previous path
   }, [location.pathname]);
+
+  useEffect(() => {
+    // Fetch user profile when user is logged in
+    if (loggedIn) {
+      dispatch(fetchUserProfile({ language: i18n.language, jwt: jwt }));
+    }
+  }, [loggedIn, dispatch]);
 
   return (
     <>

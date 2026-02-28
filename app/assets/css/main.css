@@ -21,4 +21,5 @@ body {
 @import "./utilities/_general";
 
 @import "./components/general/_loading";
+@import "./components/general/_table";
 @import "./components/navigation/_navigation";
