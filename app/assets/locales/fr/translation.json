@@ -40,7 +40,8 @@
         "headline": "Messages de contact",
         "description": "Tous les messages de contact reçus",
         "previousButton": "Précédent",
-        "nextButton": "Suivant"
+        "nextButton": "Suivant",
+        "pageInfo": "Page {{current}} de {{total}}"
       }
     }
   },

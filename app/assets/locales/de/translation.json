@@ -40,7 +40,8 @@
         "headline": "Kontaktanfragen",
         "description": "Alle eingegangenen Kontaktanfragen",
         "previousButton": "Vorherige Seite",
-        "nextButton": "Nächste Seite"
+        "nextButton": "Nächste Seite",
+        "pageInfo": "Seite {{current}} von {{total}}"
       }
     }
   },

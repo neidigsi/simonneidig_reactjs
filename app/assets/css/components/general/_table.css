@@ -5,45 +5,49 @@
 }
 
 .table-header {
-  @apply bg-grey/5 border-b border-grey/20;
+  @apply bg-gradient-to-b from-grey/10 to-grey/5 border-b border-grey/20;
 }
 
 .table-header-cell {
-  @apply px-6 py-3 text-left font-semibold text-black;
+  @apply px-6 py-4 text-left font-semibold text-dark-grey tracking-wide text-xs;
 }
 
 .table-body-row {
-  @apply border-b border-grey/20 hover:bg-grey/5 transition-colors;
+  @apply border-b border-grey/20 transition-all duration-200 ease-in-out hover:bg-primary/5 hover:shadow-md;
 }
 
-.table-body-cell {
-  @apply px-6 py-4 text-black;
+.table-body-row-even {
+  @apply bg-white;
+}
+
+.table-body-row-odd {
+  @apply bg-grey/3;
 }
 
 .table-pagination {
-  @apply flex items-center justify-between gap-2 mt-4;
+  @apply flex items-center justify-between gap-3 mt-6;
 }
 
 .table-pagination-button {
-  @apply px-4 py-2 rounded border border-grey/20 text-black disabled:opacity-50 hover:bg-grey/5 transition-colors;
+  @apply px-3 py-2 text-sm rounded-md border border-grey/30 text-black font-medium transition-all duration-200 ease-in-out disabled:opacity-40 disabled:cursor-not-allowed hover:enabled:bg-primary/10 hover:enabled:border-primary/50 active:enabled:scale-95;
 }
 
 .table-empty-state {
-  @apply flex items-center justify-center py-8 text-grey;
+  @apply flex items-center justify-center py-12 text-grey;
 }
 
 .table-loading {
-  @apply flex items-center justify-center py-8;
+  @apply flex items-center justify-center py-12;
 }
 
 .table-loading-spinner {
-  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-current;
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-primary;
 }
 
 .table-sortable-header {
-  @apply cursor-pointer select-none;
+  @apply cursor-pointer select-none hover:text-primary transition-colors;
 }
 
 .table-sortable-header:hover {
-  @apply bg-grey/10;
+  @apply bg-primary/5;
 }

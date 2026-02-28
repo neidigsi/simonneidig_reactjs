@@ -40,7 +40,8 @@
         "headline": "Contact Messages",
         "description": "All received contact messages",
         "previousButton": "Previous",
-        "nextButton": "Next"
+        "nextButton": "Next",
+        "pageInfo": "Page {{current}} of {{total}}"
       }
     }
   },

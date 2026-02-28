@@ -122,6 +122,13 @@ export default function ContactMessagesTable(): JSX.Element {
         pageSize={10}
         previousButtonLabel={t("main.contact.table.previousButton") || "Previous"}
         nextButtonLabel={t("main.contact.table.nextButton") || "Next"}
+        pageInfoTemplate={(current, total) =>
+          t("main.contact.table.pageInfo", {
+            current,
+            total,
+            defaultValue: `Page ${current} of ${total}`,
+          })
+        }
       />
     </div>
   );
