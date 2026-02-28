@@ -138,12 +138,13 @@ export const register = createAsyncThunk(
 
 export const fetchUserProfile = createAsyncThunk(
   "user/fetchUserProfile",
-  async ({ language }: { language: string }, { rejectWithValue }) => {
+  async ({ language, jwt }: { language: string; jwt: string }, { rejectWithValue }) => {
     try {
       const resp = await http({
         method: "GET",
         path: "/users/me",
         language: language,
+        jwt: jwt,
       });
       return resp;
     } catch (error: any) {

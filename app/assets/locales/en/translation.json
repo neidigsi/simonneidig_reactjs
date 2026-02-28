@@ -30,6 +30,15 @@
         "message": "Your message has been successfully sent. I will get back to you as soon as possible.",
         "return-home": "Back to home",
         "return-to-contact": "Back to contact form"
+      },
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "date": "Date",
+        "language": "Language",
+        "headline": "Contact Messages",
+        "description": "All received contact messages"
       }
     }
   },

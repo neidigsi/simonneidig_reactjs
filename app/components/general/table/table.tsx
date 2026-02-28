@@ -9,7 +9,6 @@ import {
   SortingState,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import "./table.css";
 
 interface TableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -109,7 +108,7 @@ export default function Table<TData, TValue>({
                     {headerGroup.headers.map((header) => (
                       <th
                         key={header.id}
-                        className="px-6 py-3 text-left font-semibold text-grey-dark"
+                        className="px-6 py-3 text-left font-semibold text-dark-grey"
                       >
                         {header.isPlaceholder
                           ? null
@@ -129,7 +128,7 @@ export default function Table<TData, TValue>({
                     className="border-b border-grey/20 hover:bg-grey/5 transition-colors"
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id} className="px-6 py-4 text-grey-dark">
+                      <td key={cell.id} className="px-6 py-4 text-dark-grey">
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -154,14 +153,14 @@ export default function Table<TData, TValue>({
                 <button
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
-                  className="px-4 py-2 rounded border border-grey/20 text-grey-dark disabled:opacity-50 hover:bg-grey/5 transition-colors"
+                  className="px-4 py-2 rounded border border-grey/20 text-dark-grey disabled:opacity-50 hover:bg-grey/5 transition-colors"
                 >
                   Previous
                 </button>
                 <button
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
-                  className="px-4 py-2 rounded border border-grey/20 text-grey-dark disabled:opacity-50 hover:bg-grey/5 transition-colors"
+                  className="px-4 py-2 rounded border border-grey/20 text-dark-grey disabled:opacity-50 hover:bg-grey/5 transition-colors"
                 >
                   Next
                 </button>

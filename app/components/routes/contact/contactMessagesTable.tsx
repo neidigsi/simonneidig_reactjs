@@ -45,17 +45,18 @@ export default function ContactMessagesTable(): JSX.Element {
     (state) => state.contact.messagesLoaded
   );
   const language = useAppSelector((state) => state.settings.language);
+  const jwt = useAppSelector((state) => state.user.jwt);
 
   useEffect(() => {
     if (!messagesLoaded && !messagesLoading) {
-      dispatch(fetchMessages({ language }));
+      dispatch(fetchMessages({ language, jwt }));
     }
   }, [dispatch, messagesLoaded, messagesLoading, language]);
 
   const columns: ColumnDef<ContactMessage>[] = [
     {
       accessorKey: "creationDate",
-      header: t("admin.contacts.table.date") || "Date",
+      header: t("main.contact.table.date") || "Date",
       cell: (info) => {
         const date = new Date(info.getValue() as string);
         return date.toLocaleDateString(undefined, {
@@ -69,11 +70,11 @@ export default function ContactMessagesTable(): JSX.Element {
     },
     {
       accessorKey: "name",
-      header: t("admin.contacts.table.name") || "Name",
+      header: t("main.contact.table.name") || "Name",
     },
     {
       accessorKey: "email",
-      header: t("admin.contacts.table.email") || "Email",
+      header: t("main.contact.table.email") || "Email",
       cell: (info) => (
         <a
           href={`mailto:${info.getValue() as string}`}
@@ -85,7 +86,7 @@ export default function ContactMessagesTable(): JSX.Element {
     },
     {
       accessorKey: "message",
-      header: t("admin.contacts.table.message") || "Message",
+      header: t("main.contact.table.message") || "Message",
       cell: (info) => {
         const message = info.getValue() as string;
         // Truncate message to 100 characters with ellipsis
@@ -93,19 +94,16 @@ export default function ContactMessagesTable(): JSX.Element {
       },
     },
     {
-      accessorKey: "language",
-      header: t("admin.contacts.table.language") || "Language",
+      accessorKey: "lang",
+      header: t("main.contact.table.language") || "Language",
     },
   ];
 
   return (
     <div className="w-full">
       <div className="mb-4">
-        <h3 className="text-lg font-semibold text-grey-dark">
-          {t("admin.contacts.headline") || "Contact Messages"}
-        </h3>
-        <p className="text-sm text-grey mt-1">
-          {t("admin.contacts.description") || "Total messages"}:{" "}
+        <p className="text-sm mt-1">
+          {t("main.contact.table.description") || "Total messages"}:{" "}
           <span className="font-semibold">{messages.length}</span>
         </p>
       </div>

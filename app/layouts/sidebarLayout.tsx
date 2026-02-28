@@ -90,6 +90,11 @@ export default function SidebarLayout({
    */
   const loggedIn = useAppSelector((state) => state.user.loggedIn);
 
+  /**
+   * Get JWT token from store for authenticated requests
+   */
+  const jwt = useAppSelector((state) => state.user.jwt);
+
   useEffect(() => {
     // Load personal details if not already loaded
     if (!personalDetailsLoaded) {
@@ -138,7 +143,7 @@ export default function SidebarLayout({
   useEffect(() => {
     // Fetch user profile when user is logged in
     if (loggedIn) {
-      dispatch(fetchUserProfile({ language: i18n.language }));
+      dispatch(fetchUserProfile({ language: i18n.language, jwt: jwt }));
     }
   }, [loggedIn, dispatch]);
 

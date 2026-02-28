@@ -41,7 +41,7 @@ export const sendMessage = createAsyncThunk(
     const state = getState() as { contact: ContactState };
     const resp = await http({
       method: "POST",
-      path: "/routes/contact/",
+      path: "/contact/",
       body: JSON.stringify({
         name: state.contact.name,
         email: state.contact.email,
@@ -56,12 +56,13 @@ export const sendMessage = createAsyncThunk(
 
 export const fetchMessages = createAsyncThunk(
   "contact/fetchMessages",
-  async ({ language }: { language: string }, { rejectWithValue }) => {
+  async ({ language, jwt }: { language: string; jwt: string }, { rejectWithValue }) => {
     try {
       const resp = await http({
         method: "GET",
-        path: "/routes/contact/",
+        path: "/contact/",
         language: language,
+        jwt: jwt,
       });
 
       return resp;

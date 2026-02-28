@@ -57,22 +57,24 @@ export default function Contact(): JSX.Element {
 
   return (
     <div className="w-full">
-      {/* User Contact Form Section */}
-      <Card headline={t("main.contact.title")}>
-        {t("main.contact.description")}
-        <div className="mt-4 grid grid-cols-1 gap-2 w-full rounded-xl p-5 bg-dark-grey/15 text-base">
-          {sentSuccessfully ? <SendingConfirmation /> : <ContactForm />}
-        </div>
-      </Card>
-
-      {/* Admin Panel - Messages Table */}
-      {loggedIn && isSuperUser && (
-        <div className="mt-8">
-          <Card headline={t("admin.contacts.title") || "Admin Panel: Contact Messages"}>
-            <ContactMessagesTable />
-          </Card>
-        </div>
-      )}
+      {
+        loggedIn && isSuperUser ?
+          (
+            <div className="mt-8">
+              <Card headline={t("main.contact.title") || "Admin Panel: Contact Messages"}>
+                <ContactMessagesTable />
+              </Card>
+            </div>
+          ) :
+          (
+            <Card headline={t("main.contact.title")}>
+              {t("main.contact.description")}
+              <div className="mt-4 grid grid-cols-1 gap-2 w-full rounded-xl p-5 bg-dark-grey/15 text-base">
+                {sentSuccessfully ? <SendingConfirmation /> : <ContactForm />}
+              </div>
+            </Card>
+          )
+      }
     </div>
   );
 }

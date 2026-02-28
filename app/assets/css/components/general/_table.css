@@ -9,7 +9,7 @@
 }
 
 .table-header-cell {
-  @apply px-6 py-3 text-left font-semibold text-grey-dark;
+  @apply px-6 py-3 text-left font-semibold text-dark-grey;
 }
 
 .table-body-row {
@@ -17,7 +17,7 @@
 }
 
 .table-body-cell {
-  @apply px-6 py-4 text-grey-dark;
+  @apply px-6 py-4 text-dark-grey;
 }
 
 .table-pagination {
@@ -25,7 +25,7 @@
 }
 
 .table-pagination-button {
-  @apply px-4 py-2 rounded border border-grey/20 text-grey-dark disabled:opacity-50 hover:bg-grey/5 transition-colors;
+  @apply px-4 py-2 rounded border border-grey/20 text-dark-grey disabled:opacity-50 hover:bg-grey/5 transition-colors;
 }
 
 .table-empty-state {
