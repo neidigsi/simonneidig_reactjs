@@ -38,7 +38,9 @@
         "date": "Date",
         "language": "Langue",
         "headline": "Messages de contact",
-        "description": "Tous les messages de contact reçus"
+        "description": "Tous les messages de contact reçus",
+        "previousButton": "Précédent",
+        "nextButton": "Suivant"
       }
     }
   },

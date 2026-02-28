@@ -18,6 +18,8 @@ interface TableProps<TData, TValue> {
   enableSorting?: boolean;
   enableFiltering?: boolean;
   pageSize?: number;
+  previousButtonLabel?: string;
+  nextButtonLabel?: string;
 }
 
 /**
@@ -66,6 +68,8 @@ export default function Table<TData, TValue>({
   enableSorting = true,
   enableFiltering = false,
   pageSize = 10,
+  previousButtonLabel = "Previous",
+  nextButtonLabel = "Next",
 }: TableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
@@ -128,7 +132,7 @@ export default function Table<TData, TValue>({
                     className="border-b border-grey/20 hover:bg-grey/5 transition-colors"
                   >
                     {row.getVisibleCells().map((cell) => (
-                      <td key={cell.id} className="px-6 py-4 text-dark-grey">
+                      <td key={cell.id} className="px-6 py-4 text-black">
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -153,16 +157,16 @@ export default function Table<TData, TValue>({
                 <button
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
-                  className="px-4 py-2 rounded border border-grey/20 text-dark-grey disabled:opacity-50 hover:bg-grey/5 transition-colors"
+                  className="px-4 py-2 rounded border border-grey/20 text-black disabled:opacity-50 hover:bg-grey/5 transition-colors"
                 >
-                  Previous
+                  {previousButtonLabel}
                 </button>
                 <button
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
-                  className="px-4 py-2 rounded border border-grey/20 text-dark-grey disabled:opacity-50 hover:bg-grey/5 transition-colors"
+                  className="px-4 py-2 rounded border border-grey/20 text-black disabled:opacity-50 hover:bg-grey/5 transition-colors"
                 >
-                  Next
+                  {nextButtonLabel}
                 </button>
               </div>
 

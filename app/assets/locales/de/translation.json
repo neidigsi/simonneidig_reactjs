@@ -38,7 +38,9 @@
         "date": "Datum",
         "language": "Sprache",
         "headline": "Kontaktanfragen",
-        "description": "Alle eingegangenen Kontaktanfragen"
+        "description": "Alle eingegangenen Kontaktanfragen",
+        "previousButton": "Vorherige Seite",
+        "nextButton": "Nächste Seite"
       }
     }
   },

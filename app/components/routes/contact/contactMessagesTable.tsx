@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchMessages } from "@/store/slices/contactSlice";
 import Table from "@/components/general/table/table";
 import { useTranslation } from "react-i18next";
+import { getLanguageFlag } from "@/utils/languageFlagConverter";
 
 interface ContactMessage {
   name: string;
@@ -89,20 +90,24 @@ export default function ContactMessagesTable(): JSX.Element {
       header: t("main.contact.table.message") || "Message",
       cell: (info) => {
         const message = info.getValue() as string;
-        // Truncate message to 100 characters with ellipsis
-        return message.length > 100 ? `${message.substring(0, 100)}...` : message;
+        // Truncate message to 1000 characters with ellipsis
+        return message.length > 1000 ? `${message.substring(0, 1000)}...` : message;
       },
     },
     {
       accessorKey: "lang",
       header: t("main.contact.table.language") || "Language",
+      cell: (info) => {
+        const langCode = info.getValue() as string;
+        return <span className="text-lg">{getLanguageFlag(langCode)}</span>;
+      },
     },
   ];
 
   return (
     <div className="w-full">
       <div className="mb-4">
-        <p className="text-sm mt-1">
+        <p className="text-sm text-black mt-1">
           {t("main.contact.table.description") || "Total messages"}:{" "}
           <span className="font-semibold">{messages.length}</span>
         </p>
@@ -115,6 +120,8 @@ export default function ContactMessagesTable(): JSX.Element {
         enablePagination={true}
         enableSorting={true}
         pageSize={10}
+        previousButtonLabel={t("main.contact.table.previousButton") || "Previous"}
+        nextButtonLabel={t("main.contact.table.nextButton") || "Next"}
       />
     </div>
   );
