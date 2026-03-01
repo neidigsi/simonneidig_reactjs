@@ -12,6 +12,7 @@ export default [
     route("resume", "routes/resume.tsx"),
     route("works", "routes/works.tsx"),
     route("page/:path", "routes/page.tsx"),
+    route("profile", "routes/profile.tsx"),
     route("*", "routes/error404.tsx"),
     route("error", "routes/error500.tsx"),
   ]),

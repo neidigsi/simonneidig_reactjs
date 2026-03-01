@@ -73,6 +73,19 @@
     "email-invalid": "Veuillez entrer une adresse e-mail valide.",
     "user-already-exists": "Un utilisateur avec cette adresse e-mail existe déjà."
   },
+  "profile": {
+    "title": "Modifier le profil",
+    "description": "Mettez à jour vos informations de profil.",
+    "first-name": "Prénom",
+    "last-name": "Nom de famille",
+    "email": "E-Mail",
+    "password": "Mot de passe",
+    "confirm-password": "Confirmer le mot de passe",
+    "email-invalid": "Veuillez entrer une adresse e-mail valide.",
+    "password-mismatch": "Les mots de passe ne correspondent pas.",
+    "save": "Enregistrer",
+    "cancel": "Annuler"
+  },
   "navigation": {
     "headlines": {
       "home": "À propos",

@@ -73,6 +73,19 @@
     "email-invalid": "Please enter a valid email address.",
     "user-already-exists": "A user with this email address already exists."
   },
+  "profile": {
+    "title": "Edit Profile",
+    "description": "Update your profile information.",
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "email": "E-Mail",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "email-invalid": "Please enter a valid email address.",
+    "password-mismatch": "The passwords do not match.",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
   "navigation": {
     "headlines": {
       "home": "About",

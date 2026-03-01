@@ -7,6 +7,7 @@ import { useAppSelector } from "@/store/hooks";
 
 // Import external dependencies
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import { log } from "console";
 
 /**
@@ -33,6 +34,11 @@ import { log } from "console";
 export default function ActionBar() {
     const { t } = useTranslation();
     const loggedIn = useAppSelector((state) => state.user.loggedIn);
+    const navigate = useNavigate();
+
+    const handleSettingsClick = () => {
+        navigate("/profile");
+    };
 
     return (
         <>
@@ -43,7 +49,7 @@ export default function ActionBar() {
                     id="sm-btn-settings"
                     title={t("header.actionbar.settings")}
                     icon={"Cog6ToothIcon"}
-                    onClick={() => { }}
+                    onClick={handleSettingsClick}
                 />)}
             <LoginButton />
         </>
