@@ -1,6 +1,7 @@
 // Import internal dependencies
 import SmallButton from "@/components/general/buttons/smallButton";
 import { logout } from "@/store/slices/userSlice";
+import { resetContactStatus } from "@/store/slices/contactSlice";
 
 // Import external dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
@@ -54,6 +55,7 @@ export default function LoginButton() {
           navigate("/login");
         } else {
           dispatch(logout({ language, jwt }));
+          dispatch(resetContactStatus());
         }
       }}
     />

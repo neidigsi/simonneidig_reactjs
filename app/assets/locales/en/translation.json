@@ -19,6 +19,9 @@
       "title": "Contact",
       "description": "Would you like to get in touch with me? I look forward to your message!",
       "email-invalid": "Please enter a valid email address.",
+      "send-success": "Success!",
+      "send-success-description": "Your message has been successfully sent. I will get back to you as soon as possible.",
+      "send-failed": "Error",
       "form": {
         "headline": "Form",
         "name": "Name",

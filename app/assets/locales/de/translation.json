@@ -19,6 +19,9 @@
       "title": "Kontakt",
       "description": "Möchten Sie mit mir in Kontakt treten? Ich freue mich auf Ihre Nachricht!",
       "email-invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "send-success": "Erfolg!",
+      "send-success-description": "Ihre Nachricht wurde erfolgreich gesendet. Ich werde mich so schnell wie möglich bei Ihnen melden.",
+      "send-failed": "Fehler",
       "form": {
         "headline": "Kontaktformular",
         "name": "Name",

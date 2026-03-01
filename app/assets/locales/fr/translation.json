@@ -19,6 +19,9 @@
       "title": "Contact",
       "description": "Souhaitez-vous entrer en contact avec moi ? J'attends votre message avec impatience !",
       "email-invalid": "Veuillez entrer une adresse e-mail valide.",
+      "send-success": "Succès !",
+      "send-success-description": "Votre message a été envoyé avec succès. Je vous répondrai dès que possible.",
+      "send-failed": "Erreur",
       "form": {
         "headline": "Formulaire de contact",
         "name": "Nom",
