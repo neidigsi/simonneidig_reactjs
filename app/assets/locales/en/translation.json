@@ -9,7 +9,8 @@
       "education": "Education",
       "experience": "Experience",
       "skills": "Skills",
-      "languages": "Languages"
+      "languages": "Languages",
+      "since": "since"
     },
     "works": {
       "title": "Works"

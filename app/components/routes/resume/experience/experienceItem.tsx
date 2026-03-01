@@ -1,3 +1,6 @@
+// Import external dependencies
+import { useTranslation } from "react-i18next";
+
 // Import internal dependencies
 import type { Experience } from "@/store/slices/experienceSlice";
 
@@ -22,6 +25,8 @@ export default function ExperienceItem({
   index: number;
   experience: Experience;
 }>) {
+  const { t } = useTranslation();
+
   return (
     <div className="pt-4 transition-transform transform hover:scale-105">
       <div
@@ -31,11 +36,14 @@ export default function ExperienceItem({
         }
       >
         <div className="text-sm text-dark-grey">
-          {new Date(experience.start_date).getFullYear()}
-          {" - "}
-          {experience.end_date > "3"
-            ? "present"
-            : new Date(experience.end_date).getFullYear()}
+          {
+            experience.end_date != null && experience.end_date < "3"
+              ?
+              <>
+                {new Date(experience.start_date).getFullYear() + " - " + new Date(experience.end_date).getFullYear()}
+              </>
+              : t("main.resume.since") + " " + new Date(experience.start_date).getFullYear()
+          }
         </div>
         <h3>{experience.title}</h3>
         {experience.company != undefined && (
