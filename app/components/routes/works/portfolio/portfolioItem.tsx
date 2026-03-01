@@ -28,9 +28,7 @@ export default function PortfolioItem({
         onClick={() => window.open(portfolio.url, "_blank")}
         className={
           "grid grid-cols-1 gap-2 w-full rounded-xl p-5 text-start transition-transform transform hover:scale-105 " +
-          +(portfolio.color == "primary"
-            ? "lg:bg-primary/20"
-            : "lg:bg-secondary/20") +
+          (portfolio.color == "primary" ? "lg:bg-primary/20" : "lg:bg-secondary/20") +
           (index % 2 == 0 ? " bg-primary/20" : " bg-secondary/20")
         }
       >

@@ -11,6 +11,7 @@ export interface Portfolio {
   url: string;
   categories: Category[];
   thumbnail_id: number;
+  index?: number;
 }
 
 interface Category {
@@ -54,11 +55,25 @@ export const worksSlice = createSlice({
       if (action.payload == "All") {
         state.filteredPortfolio = state.portfolio;
       } else {
-        state.filteredPortfolio = state.portfolio.filter((item) =>
+        let filtered = state.portfolio.filter((item) =>
           Array.isArray(item.categories)
             ? item.categories.some((cat) => cat?.name === action.payload)
             : false
         );
+        
+        // Create a new array with map instead of direct mutation
+        let j = 0;
+        for (let i = 0; i < filtered.length; i++) {
+          j += 1;
+          if (j < 2) {
+            filtered[i] = { ...filtered[i], index: i, color: "secondary" };
+          } else {
+            j = j % 3;
+            filtered[i] = { ...filtered[i], index: i, color: "primary" };
+          }
+        }
+
+        state.filteredPortfolio = filtered;
       }
     },
   },
@@ -66,22 +81,26 @@ export const worksSlice = createSlice({
     builder
       .addCase(loadWorks.fulfilled, (state, action) => {
         let resp = action.payload;
+
         // Create a new array with map instead of direct mutation
         let j = 0;
-        const coloredResp = resp.map((item: any, i: number) => {
+        for (let i = 0; i < resp.length; i++) {
           j += 1;
-          const color = j < 2 ? "secondary" : "primary";
-          if (j >= 2) j = j % 3;
-          return { ...item, index: i, color };
-        });
+          if (j < 2) {
+            resp[i] = { ...resp[i], index: i, color: "secondary" };
+          } else {
+            j = j % 3;
+            resp[i] = { ...resp[i], index: i, color: "primary" };
+          }
+        }
 
-        state.portfolio = coloredResp;
-        state.filteredPortfolio = coloredResp;
+        state.portfolio = resp;
+        state.filteredPortfolio = resp;
 
         // Extract category names efficiently
         const categoryNames: string[] = Array.from(
           new Set(
-            coloredResp.flatMap((item: { categories: { name: string }[] }) =>
+            resp.flatMap((item: { categories: { name: string }[] }) =>
               Array.isArray(item.categories)
                 ? item.categories.map((cat) => cat?.name ?? "")
                 : []
