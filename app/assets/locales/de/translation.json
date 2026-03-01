@@ -9,7 +9,8 @@
       "education": "Ausbildung",
       "experience": "Berufserfahrung",
       "skills": "Fähigkeiten",
-      "languages": "Sprachen"
+      "languages": "Sprachen",
+      "since": "seit"
     },
     "works": {
       "title": "Projekte"

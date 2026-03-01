@@ -1,3 +1,6 @@
+// Import external dependencies
+import { useTranslation } from "react-i18next";
+
 // Import internal dependencies
 import type { Education } from "@/store/slices/educationSlice";
 
@@ -22,6 +25,8 @@ export default function EducationItem({
   index: number;
   education: Education;
 }>) {
+  const { t } = useTranslation();
+
   return (
     <div className="pt-4 transition-transform transform hover:scale-105">
       <div
@@ -31,11 +36,14 @@ export default function EducationItem({
         }
       >
         <div className="text-sm text-dark-grey">
-          {new Date(education.start_date).getFullYear()}
-          {" - "}
-          {education.end_date > "3"
-            ? "present"
-            : new Date(education.end_date).getFullYear()}
+          {
+            education.end_date != null && education.end_date < "3"
+              ?
+              <>
+                {new Date(education.start_date).getFullYear() + " - " + new Date(education.end_date).getFullYear()}
+              </>
+              : t("main.resume.since") + " " + new Date(education.start_date).getFullYear()
+          }
         </div>
         <h3>{education.degree + " " + education.course_of_study}</h3>
         {education.university != undefined && (
