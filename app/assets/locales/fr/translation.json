@@ -19,6 +19,9 @@
       "title": "Contact",
       "description": "Souhaitez-vous entrer en contact avec moi ? J'attends votre message avec impatience !",
       "email-invalid": "Veuillez entrer une adresse e-mail valide.",
+      "send-success": "Succès !",
+      "send-success-description": "Votre message a été envoyé avec succès. Je vous répondrai dès que possible.",
+      "send-failed": "Erreur",
       "form": {
         "headline": "Formulaire de contact",
         "name": "Nom",
@@ -72,6 +75,22 @@
     "password-mismatch": "Les mots de passe ne correspondent pas.",
     "email-invalid": "Veuillez entrer une adresse e-mail valide.",
     "user-already-exists": "Un utilisateur avec cette adresse e-mail existe déjà."
+  },
+  "profile": {
+    "title": "Modifier le profil",
+    "description": "Mettez à jour vos informations de profil.",
+    "first-name": "Prénom",
+    "last-name": "Nom de famille",
+    "email": "E-Mail",
+    "password": "Mot de passe",
+    "confirm-password": "Confirmer le mot de passe",
+    "email-invalid": "Veuillez entrer une adresse e-mail valide.",
+    "password-mismatch": "Les mots de passe ne correspondent pas.",
+    "save": "Enregistrer",
+    "update-success": "Succès !",
+    "update-success-description": "Votre profil a été mis à jour avec succès.",
+    "update-failed": "Erreur",
+    "update-failed-description": "Une erreur s'est produite lors de la mise à jour de votre profil."
   },
   "navigation": {
     "headlines": {

@@ -56,6 +56,10 @@ export async function http({
       response = await axios.put(url, body, config);
     } else if (method === "POST") {
       response = await axios.post(url, body, config);
+    } else if (method === "PATCH") {
+      response = await axios.patch(url, body, config);
+    } else if (method === "DELETE") {
+      response = await axios.delete(url, config);
     } else {
       throw new Error(`Unsupported HTTP method: ${method}`);
     }

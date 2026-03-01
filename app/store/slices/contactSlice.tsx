@@ -14,6 +14,7 @@ interface ContactState {
   messages: ContactMessage[];
   messagesLoaded: boolean;
   messagesLoading: boolean;
+  error: string | null;
 }
 
 interface ContactMessage {
@@ -25,7 +26,7 @@ interface ContactMessage {
 }
 
 const initialState: ContactState = {
-  loaded: false,
+  loaded: true,
   name: "",
   email: "",
   message: "",
@@ -33,24 +34,40 @@ const initialState: ContactState = {
   messages: [],
   messagesLoaded: false,
   messagesLoading: false,
+  error: null,
 };
 
 export const sendMessage = createAsyncThunk(
   "contact/sendMessage",
-  async ({ language }: { language: string }, { getState }) => {
-    const state = getState() as { contact: ContactState };
-    const resp = await http({
-      method: "POST",
-      path: "/contact/",
-      body: JSON.stringify({
-        name: state.contact.name,
-        email: state.contact.email,
-        message: state.contact.message,
-      }),
-      language: language,
-    });
+  async ({ language }: { language: string }, { getState, rejectWithValue }) => {
+    try {
+      const state = getState() as { contact: ContactState; user: any };
+      const { loggedIn, user } = state.user;
+      
+      // Use user data if logged in, otherwise use form data
+      const name = loggedIn 
+        ? `${user.firstName} ${user.lastName}`.trim()
+        : state.contact.name;
+      const email = loggedIn 
+        ? user.email
+        : state.contact.email;
+      
+      const resp = await http({
+        method: "POST",
+        path: "/contact/",
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: state.contact.message,
+        }),
+        language: language,
+      });
 
-    return resp;
+      return resp;
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.detail || error.message || "Failed to send message";
+      return rejectWithValue(errorMessage);
+    }
   }
 );
 
@@ -94,7 +111,12 @@ export const contactSlice = createSlice({
       state.email = "";
       state.message = "";
       state.sentSuccessfully = false;
-      state.loaded = false;
+      state.error = null;
+      state.loaded = true;
+    },
+    // Reset only the contact sent status (used on logout)
+    resetContactStatus: (state) => {
+      state.sentSuccessfully = false;
     },
   },
   extraReducers: (builder) => {
@@ -102,13 +124,16 @@ export const contactSlice = createSlice({
       .addCase(sendMessage.fulfilled, (state, action) => {
         state.sentSuccessfully = true;
         state.loaded = true;
+        state.error = null;
       })
       .addCase(sendMessage.pending, (state) => {
         state.loaded = false;
+        state.error = null;
       })
       .addCase(sendMessage.rejected, (state, action) => {
         state.loaded = true;
         state.sentSuccessfully = false;
+        state.error = action.payload as string;
       })
       .addCase(fetchMessages.pending, (state) => {
         state.messagesLoading = true;
@@ -128,7 +153,7 @@ export const contactSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setName, setEmail, setMessage, resetContact } =
+export const { setName, setEmail, setMessage, resetContact, resetContactStatus } =
   contactSlice.actions;
 
 export default contactSlice.reducer;

@@ -33,6 +33,8 @@ export default function SendingConfirmation(): JSX.Element {
   const navigate = useNavigate();
 
   const name = useAppSelector((state) => state.contact.name);
+  const firstName = useAppSelector((state) => state.user.user.firstName);
+  const loggedIn = useAppSelector((state) => state.user.loggedIn);
 
   const { t } = useTranslation();
 
@@ -41,7 +43,7 @@ export default function SendingConfirmation(): JSX.Element {
   return (
     <>
       <h2 className="text-lg">
-        {t("main.contact.confirmation.headline")}, {name}!
+        {t("main.contact.confirmation.headline")}, {loggedIn ? firstName : name}!
       </h2>
       {t("main.contact.confirmation.message")}
       <div className="flex flex-col items-center justify-center">

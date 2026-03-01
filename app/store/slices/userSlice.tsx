@@ -153,6 +153,54 @@ export const fetchUserProfile = createAsyncThunk(
   }
 );
 
+export const updateUserProfile = createAsyncThunk(
+  "user/updateUserProfile",
+  async (
+    {
+      language,
+      jwt,
+      firstName,
+      lastName,
+      email,
+      password,
+    }: {
+      language: string;
+      jwt: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      password?: string;
+    },
+    { rejectWithValue }
+  ) => {
+    try {
+      const body: any = {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+      };
+
+      // Only include password if it's provided and not empty
+      if (password && password.length > 0) {
+        body.password = password;
+      }
+
+      const resp = await http({
+        method: "PATCH",
+        path: "/users/me",
+        body: body,
+        language: language,
+        jwt: jwt,
+      });
+      return resp;
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.detail || error.message || "Failed to update profile";
+      return rejectWithValue(errorMessage);
+    }
+  }
+);
+
 export const logout = createAsyncThunk(
   "user/logout",
   async ({ language, jwt }: { language: string, jwt: string}, { rejectWithValue }) => {
@@ -292,13 +340,36 @@ export const userSlice = createSlice({
           state.user.isSuperUser = userData.is_superuser || false;
           state.user.firstName = userData.first_name || "";
           state.user.lastName = userData.last_name || "";
+          state.user.email = userData.email || "";
           state.loaded = true;
         }
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
         state.loaded = true;
         state.user.isSuperUser = false;
-      });
+      })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.loaded = false;
+        state.error.active = false;
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        if (action.payload.status === 200 && action.payload.data) {
+          const userData = action.payload.data;
+          state.user.firstName = userData.first_name || state.user.firstName;
+          state.user.lastName = userData.last_name || state.user.lastName;
+          state.user.email = userData.email || state.user.email;
+          state.loaded = true;
+          state.error.active = false;
+          state.error.code = "";
+          // Clear password fields after successful update
+          state.user.password = "";
+          state.user.repeatPassword = "";
+        }
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
+        state.loaded = true;
+        state.error.active = true;
+        state.error.code = action.payload as string;      });
   },
 });
 
