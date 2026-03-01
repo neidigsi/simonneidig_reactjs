@@ -84,7 +84,10 @@
     "email-invalid": "Please enter a valid email address.",
     "password-mismatch": "The passwords do not match.",
     "save": "Save",
-    "cancel": "Cancel"
+    "update-success": "Success!",
+    "update-success-description": "Your profile has been updated successfully.",
+    "update-failed": "Error",
+    "update-failed-description": "An error occurred while updating your profile."
   },
   "navigation": {
     "headlines": {

@@ -84,7 +84,10 @@
     "email-invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
     "password-mismatch": "Die Passwörter stimmen nicht überein.",
     "save": "Speichern",
-    "cancel": "Abbrechen"
+    "update-success": "Erfolg!",
+    "update-success-description": "Ihr Profil wurde erfolgreich aktualisiert.",
+    "update-failed": "Fehler",
+    "update-failed-description": "Ein Fehler ist beim Aktualisieren Ihres Profils aufgetreten."
   },
   "navigation": {
     "headlines": {

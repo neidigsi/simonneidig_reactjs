@@ -1,7 +1,7 @@
 // Import external dependencies
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Import internal dependencies
 import { useAppSelector, useAppDispatch } from "@/store/hooks";
@@ -10,7 +10,7 @@ import "@/assets/css/main.css";
 import "@/i18n";
 import TextInput from "@/components/general/input/textInput";
 import Button from "@/components/general/buttons/button";
-import TextButton from "@/components/general/buttons/textButton";
+import Notification from "@/components/general/notification/notification";
 import {
   setFirstName,
   setLastName,
@@ -18,6 +18,7 @@ import {
   setPassword,
   setRepeatPassword,
   resetError,
+  updateUserProfile,
 } from "@/store/slices/userSlice";
 
 /**
@@ -50,6 +51,8 @@ import {
  * @returns {JSX.Element} The rendered Profile edit page.
  */
 export default function Profile() {
+  const [showNotification, setShowNotification] = useState(false);
+  
   const firstName = useAppSelector((state) => state.user.user.firstName);
   const lastName = useAppSelector((state) => state.user.user.lastName);
   const email = useAppSelector((state) => state.user.user.email);
@@ -60,6 +63,8 @@ export default function Profile() {
   const error = useAppSelector((state) => state.user.error);
   const loaded = useAppSelector((state) => state.user.loaded);
   const loggedIn = useAppSelector((state) => state.user.loggedIn);
+  const jwt = useAppSelector((state) => state.user.jwt);
+  const language = useAppSelector((state) => state.settings.language);
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -84,19 +89,27 @@ export default function Profile() {
     };
   }, [dispatch]);
 
-  const handleSave = () => {
-    // TODO: Implement profile update API call
-    console.log("Saving profile:", {
-      firstName,
-      lastName,
-      email,
-      password: password.length > 0 ? "***" : "",
-    });
-  };
+  // Show notification when update completes
+  useEffect(() => {
+    if (loaded && showNotification) {
+      // Notification will auto-close after delay
+      const timer = setTimeout(() => setShowNotification(false), 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [loaded, showNotification]);
 
-  const handleCancel = () => {
-    dispatch(resetError());
-    navigate(-1);
+  const handleSave = () => {
+    setShowNotification(true);
+    dispatch(
+      updateUserProfile({
+        language: language,
+        jwt: jwt,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password.length > 0 ? password : undefined,
+      })
+    );
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -132,26 +145,23 @@ export default function Profile() {
     !isPasswordMatch;
 
   return (
-    <Card headline={t("profile.title")} footer={false} className="max-w-sm">
+    <Card headline={t("profile.title")} footer={false}>
       <div className="mb-4">{t("profile.description")}</div>
-      {error.active && (
-        <div className="mb-4 p-3 rounded text-sm bg-red-500/20 text-red-600">
-          {error.code}
-        </div>
-      )}
       <div onKeyDown={handleKeyDown}>
-        <TextInput
-          id="input-first-name"
-          label={t("profile.first-name")}
-          value={firstName}
-          onChange={(value: string) => dispatch(setFirstName(value))}
-        />
-        <TextInput
-          id="input-last-name"
-          label={t("profile.last-name")}
-          value={lastName}
-          onChange={(value: string) => dispatch(setLastName(value))}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <TextInput
+            id="input-first-name"
+            label={t("profile.first-name")}
+            value={firstName}
+            onChange={(value: string) => dispatch(setFirstName(value))}
+          />
+          <TextInput
+            id="input-last-name"
+            label={t("profile.last-name")}
+            value={lastName}
+            onChange={(value: string) => dispatch(setLastName(value))}
+          />
+        </div>
         <TextInput
           id="input-email"
           label={t("profile.email")}
@@ -161,47 +171,57 @@ export default function Profile() {
           }
           onChange={(value: string) => dispatch(setEmail(value))}
         />
-        <TextInput
-          id="input-password"
-          label={t("profile.password")}
-          type="password"
-          value={password}
-          onChange={(value: string) => dispatch(setPassword(value))}
-        />
-        <TextInput
-          id="input-confirm-password"
-          label={t("profile.confirm-password")}
-          type="password"
-          value={repeatPassword}
-          errorMessage={
-            !isPasswordMatch && password.length > 0
-              ? t("profile.password-mismatch")
-              : undefined
-          }
-          onChange={(value: string) => dispatch(setRepeatPassword(value))}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          <TextInput
+            id="input-password"
+            label={t("profile.password")}
+            type="password"
+            value={password}
+            onChange={(value: string) => dispatch(setPassword(value))}
+          />
+          <TextInput
+            id="input-confirm-password"
+            label={t("profile.confirm-password")}
+            type="password"
+            value={repeatPassword}
+            errorMessage={
+              !isPasswordMatch && password.length > 0
+                ? t("profile.password-mismatch")
+                : undefined
+            }
+            onChange={(value: string) => dispatch(setRepeatPassword(value))}
+          />
+        </div>
       </div>
-      <div className="mt-6 flex gap-3 w-full">
+      <div className="mt-6">
         <Button
           id="btn-profile-save"
           text={t("profile.save")}
           icon="CheckIcon"
-          className="flex-1"
+          className="mt-4 w-fit"
           loading={!loaded}
           disabled={isSaveDisabled}
           inverted={true}
           onClick={handleSave}
         />
-        <Button
-          id="btn-profile-cancel"
-          text={t("profile.cancel")}
-          icon="XMarkIcon"
-          className="flex-1 text-dark-grey"
-          loading={false}
-          disabled={false}
-          onClick={handleCancel}
-        />
       </div>
+      <Notification
+        id="profile-notification"
+        header={
+          error.active && error.code
+            ? t("profile.update-failed")
+            : t("profile.update-success")
+        }
+        description={
+          error.active && error.code
+            ? error.code
+            : t("profile.update-success-description")
+        }
+        type={error.active && error.code ? "error" : "success"}
+        autoClose={true}
+        autoCloseDelay={3000}
+        isVisible={showNotification && loaded}
+      />
     </Card>
   );
 }
