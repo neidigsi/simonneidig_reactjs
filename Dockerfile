@@ -1,7 +1,7 @@
 # Production Dockerfile for React/Vite SSR app
 
 # Build stage: install dependencies and build the app
-FROM node:25-alpine AS build
+FROM node:26-alpine AS build
 
 # Set working directory
 WORKDIR /app
@@ -22,7 +22,7 @@ RUN npm run build
 
 
 # Runtime stage: only production files and dependencies
-FROM node:25-alpine
+FROM node:26-alpine
 
 # Set working directory
 WORKDIR /app
