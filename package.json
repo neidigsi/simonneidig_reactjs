@@ -23,7 +23,7 @@
     "clsx": "^2.1.1",
     "i18next": "^26.3.1",
     "i18next-browser-languagedetector": "^8.2.1",
-    "isbot": "^5.1.40",
+    "isbot": "^5.1.42",
     "js-cookie": "^3.0.8",
     "lightningcss": "^1.32.0",
     "react": "^19.0.0",
