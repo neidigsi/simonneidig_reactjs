@@ -13,6 +13,7 @@ const config: Config = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/app/$1",
+    "^react-router$": "<rootDir>/app/testUtils/reactRouterStub.tsx",
   },
   reporters: [
     "default",
