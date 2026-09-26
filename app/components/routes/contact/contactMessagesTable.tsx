@@ -1,8 +1,7 @@
-import { ColumnDef } from "@tanstack/react-table";
 import { JSX, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchMessages } from "@/store/slices/contactSlice";
-import Table from "@/components/general/table/table";
+import Table, { TableColumnDef } from "@/components/general/table/table";
 import { useTranslation } from "react-i18next";
 import { getLanguageFlag } from "@/utils/languageFlagConverter";
 
@@ -10,8 +9,8 @@ interface ContactMessage {
   name: string;
   email: string;
   message: string;
-  creationDate: string;
-  language: string;
+  creation_date: string;
+  lang: string;
 }
 
 /**
@@ -54,12 +53,20 @@ export default function ContactMessagesTable(): JSX.Element {
     }
   }, [dispatch, messagesLoaded, messagesLoading, language]);
 
-  const columns: ColumnDef<ContactMessage>[] = [
+  const columns: TableColumnDef<ContactMessage>[] = [
     {
-      accessorKey: "creationDate",
+      accessorKey: "creation_date",
       header: t("main.contact.table.date") || "Date",
       cell: (info) => {
-        const date = new Date(info.getValue() as string);
+        const rawValue = info.getValue() as string | null | undefined;
+        // Creation date can be missing for legacy records
+        if (!rawValue) {
+          return "—";
+        }
+        const date = new Date(rawValue);
+        if (Number.isNaN(date.getTime())) {
+          return "—";
+        }
         return date.toLocaleDateString(undefined, {
           year: "numeric",
           month: "2-digit",
@@ -89,7 +96,8 @@ export default function ContactMessagesTable(): JSX.Element {
       accessorKey: "message",
       header: t("main.contact.table.message") || "Message",
       cell: (info) => {
-        const message = info.getValue() as string;
+        // Message can be null for legacy records, fall back to empty string
+        const message = (info.getValue() as string | null) ?? "";
         // Truncate message to 1000 characters with ellipsis
         return message.length > 1000 ? `${message.substring(0, 1000)}...` : message;
       },
@@ -98,7 +106,8 @@ export default function ContactMessagesTable(): JSX.Element {
       accessorKey: "lang",
       header: t("main.contact.table.language") || "Language",
       cell: (info) => {
-        const langCode = info.getValue() as string;
+        // Language can be null when a record has no language association
+        const langCode = info.getValue() as string | null | undefined;
         return <span className="text-lg">{getLanguageFlag(langCode)}</span>;
       },
     },

@@ -9,7 +9,11 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
+    // TanStack Table v9 ships ESM-only, so it must be transformed for Jest (CJS)
+    "^.+\\.(js|jsx|mjs|cjs)$": ["ts-jest", { tsconfig: { allowJs: true } }],
   },
+  // Transform ESM-only TanStack packages inside node_modules, ignore the rest
+  transformIgnorePatterns: ["/node_modules/(?!@tanstack/)"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/app/$1",

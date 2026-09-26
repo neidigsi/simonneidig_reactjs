@@ -21,8 +21,8 @@ interface ContactMessage {
   name: string;
   email: string;
   message: string;
-  creationDate: string;
-  language: string;
+  creation_date: string;
+  lang: string;
 }
 
 const initialState: ContactState = {

@@ -1,17 +1,56 @@
 import {
   ColumnDef,
+  columnFilteringFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFns,
   flexRender,
-  getCoreRowModel,
-  useReactTable,
-  getPaginationRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
+  globalFilteringFeature,
+  rowPaginationFeature,
+  rowSortingFeature,
+  RowData,
+  sortFns,
   SortingState,
+  tableFeatures,
+  useTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-interface TableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+/**
+ * Feature set for the generic Table component (TanStack Table v9).
+ *
+ * Defined statically at module level so `tableFeatures()` can infer
+ * the exact feature types and validate the row model slots.
+ * All row models are always registered; `enableSorting`,
+ * `enableFiltering` and `enablePagination` toggle behavior via options.
+ */
+const features = tableFeatures({
+  columnFilteringFeature,
+  globalFilteringFeature,
+  rowSortingFeature,
+  rowPaginationFeature,
+  filteredRowModel: createFilteredRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  filterFns,
+  sortFns,
+});
+
+/**
+ * Column definition type bound to this table's feature set.
+ * Use it in consumers instead of the raw `ColumnDef` (which requires
+ * the feature set as its first generic in v9).
+ */
+export type TableColumnDef<TData extends RowData, TValue = unknown> = ColumnDef<
+  typeof features,
+  TData,
+  TValue
+>;
+
+interface TableProps<TData extends RowData, TValue> {
+  // `any` cell value at the options boundary mirrors the v8 `ColumnDef<TData, any>` behavior
+  columns: ColumnDef<typeof features, TData, any>[];
   data: TData[];
   isLoading?: boolean;
   enablePagination?: boolean;
@@ -35,11 +74,11 @@ interface TableProps<TData, TValue> {
  * - Built-in sorting, filtering, and pagination
  * - Responsive design with Tailwind CSS
  * - Loading state support
- * - Customizable columns via ColumnDef
+ * - Customizable columns via TableColumnDef
  *
  * Usage:
  * ```tsx
- * const columns: ColumnDef<ContactMessage>[] = [
+ * const columns: TableColumnDef<ContactMessage>[] = [
  *   { accessorKey: "name", header: "Name" },
  *   { accessorKey: "email", header: "Email" },
  * ];
@@ -51,7 +90,7 @@ interface TableProps<TData, TValue> {
  * @template TData - The type of data in each row
  * @template TValue - The type of the cell values
  *
- * @param {ColumnDef<TData, TValue>[]} columns - Column definitions for the table
+ * @param {TableColumnDef<TData, TValue>[]} columns - Column definitions for the table
  * @param {TData[]} data - Array of data to display in the table
  * @param {boolean} [isLoading=false] - Whether the table is in a loading state
  * @param {boolean} [enablePagination=false] - Enable pagination controls
@@ -61,7 +100,7 @@ interface TableProps<TData, TValue> {
  *
  * @returns {JSX.Element} The rendered table component
  */
-export default function Table<TData, TValue>({
+export default function Table<TData extends RowData, TValue>({
   columns,
   data,
   isLoading = false,
@@ -76,13 +115,10 @@ export default function Table<TData, TValue>({
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
 
-  const table = useReactTable({
+  const table = useTable({
+    features,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: enablePagination ? getPaginationRowModel() : undefined,
-    getSortedRowModel: enableSorting ? getSortedRowModel() : undefined,
-    getFilteredRowModel: enableFiltering ? getFilteredRowModel() : undefined,
     state: {
       sorting,
       globalFilter,
@@ -91,9 +127,13 @@ export default function Table<TData, TValue>({
     onGlobalFilterChange: setGlobalFilter,
     initialState: {
       pagination: {
-        pageSize: pageSize,
+        pageIndex: 0,
+        // Without pagination show all rows on a single page
+        pageSize: enablePagination ? pageSize : Infinity,
       },
     },
+    enableSorting,
+    enableFilters: enableFiltering,
   });
 
   return (
@@ -135,7 +175,7 @@ export default function Table<TData, TValue>({
                       rowIndex % 2 === 0 ? "bg-white" : "bg-grey/3"
                     } hover:bg-primary/5`}
                   >
-                    {row.getVisibleCells().map((cell) => (
+                    {row.getAllCells().map((cell) => (
                       <td key={cell.id} className="px-6 py-4 text-black">
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -176,7 +216,7 @@ export default function Table<TData, TValue>({
 
               <div className="text-xs text-black">
                 {pageInfoTemplate(
-                  table.getState().pagination.pageIndex + 1,
+                  table.state.pagination.pageIndex + 1,
                   table.getPageCount()
                 )}
               </div>
