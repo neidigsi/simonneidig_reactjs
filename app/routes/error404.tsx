@@ -48,7 +48,7 @@ export default function Error404(): JSX.Element {
             isDarkModeEnabled ? "/images/dark_404.png" : "/images/light_404.png"
           }
           alt="404 Not Found"
-          className="rounded-xl max-w-[400px] mb-6"
+          className="rounded-[20px] max-w-[400px] mb-6 liquid-avatar"
         />
         <p className="mb-4">{t("error.not-found.description")}</p>
         <Button

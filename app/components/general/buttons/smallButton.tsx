@@ -43,8 +43,8 @@ export default function SmallButton({
       type="button"
       title={title}
       aria-label={title}
-      className={`items-center justify-center p-2 rounded-lg text-base m-1 dark:text-white dark:bg-dark-mode-background 
-        ${isHovered ? "bg-linear-to-r from-primary to-secondary text-white" : "bg-white"} 
+      className={`glass-icon-btn glass-shine items-center justify-center p-2 rounded-2xl text-base m-1 dark:text-white 
+        ${isHovered ? "glass-button-primary" : ""} 
         ${className}
         `}
       onClick={onClick}

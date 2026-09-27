@@ -69,7 +69,7 @@ export default function Contact(): JSX.Element {
           (
             <Card headline={t("main.contact.title")}>
               {t("main.contact.description")}
-              <div className="mt-4 grid grid-cols-1 gap-2 w-full rounded-xl p-5 bg-dark-grey/15 text-base">
+              <div className="glass-item mt-4 grid grid-cols-1 gap-2 w-full rounded-[20px] p-5 text-base">
                 {sentSuccessfully ? <SendingConfirmation /> : <ContactForm />}
               </div>
             </Card>

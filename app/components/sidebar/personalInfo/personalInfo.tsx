@@ -30,13 +30,13 @@ export default function PersonalInfo() {
   });
 
   return (
-    <div className="flex bg-dark-grey/15 justify-center m-4 md:m-6 rounded-xl">
-      <div className="m-5 w-full">
+    <div className="flex glass glass-subtle justify-center m-4 md:m-6 rounded-2xl">
+      <div className="relative z-[1] m-5 w-full">
         {information.map(({ label, value, icon }: any, index: number) => (
           <div key={label}>
             <PersonalInfoItem label={label} value={value} icon={icon} />
             {index < information.length - 1 && (
-              <div className="bg-white dark:bg-dark-mode-background h-[1px] mx-10" />
+              <div className="liquid-divider mx-10" />
             )}
           </div>
         ))}

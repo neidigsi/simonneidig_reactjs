@@ -146,15 +146,15 @@ export default function Table<TData extends RowData, TValue>({
 
       {!isLoading && (
         <>
-          <div className="overflow-x-auto rounded-lg border border-grey/20">
-            <table className="w-full text-sm">
-              <thead className="bg-gradient-to-b from-grey/10 to-grey/5 border-b border-grey/20">
+          <div className="glass glass-subtle overflow-x-auto rounded-[20px]">
+            <table className="relative z-[1] w-full text-sm">
+              <thead className="table-header">
                 {table.getHeaderGroups().map((headerGroup) => (
                   <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header) => (
                       <th
                         key={header.id}
-                        className="px-6 py-4 text-left font-semibold text-black tracking-wide text-xs"
+                        className="table-header-cell text-black dark:text-white"
                       >
                         {header.isPlaceholder
                           ? null
@@ -171,12 +171,12 @@ export default function Table<TData extends RowData, TValue>({
                 {table.getRowModel().rows.map((row, rowIndex) => (
                   <tr
                     key={row.id}
-                    className={`border-b border-grey/20 transition-all duration-200 ease-in-out ${
-                      rowIndex % 2 === 0 ? "bg-white" : "bg-grey/3"
-                    } hover:bg-primary/5`}
+                    className={`table-body-row ${
+                      rowIndex % 2 === 0 ? "table-body-row-even" : "table-body-row-odd"
+                    }`}
                   >
                     {row.getAllCells().map((cell) => (
-                      <td key={cell.id} className="px-6 py-4 text-black">
+                      <td key={cell.id} className="px-6 py-4 text-black dark:text-white">
                         {flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
@@ -189,32 +189,32 @@ export default function Table<TData extends RowData, TValue>({
             </table>
 
             {table.getRowModel().rows.length === 0 && !isLoading && (
-              <div className="flex items-center justify-center py-12 text-grey">
+              <div className="table-empty-state">
                 <p>No data available</p>
               </div>
             )}
           </div>
 
           {enablePagination && (
-            <div className="flex items-center justify-between gap-3 mt-6">
+            <div className="table-pagination">
               <div className="flex gap-3">
                 <button
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
-                  className="px-3 py-2 text-sm rounded-md border border-grey/30 text-black font-medium transition-all duration-200 ease-in-out disabled:opacity-40 disabled:cursor-not-allowed hover:enabled:bg-primary/10 hover:enabled:border-primary/50 active:enabled:scale-95"
+                  className="table-pagination-button"
                 >
                   {previousButtonLabel}
                 </button>
                 <button
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
-                  className="px-3 py-2 text-sm rounded-md border border-grey/30 text-black font-medium transition-all duration-200 ease-in-out disabled:opacity-40 disabled:cursor-not-allowed hover:enabled:bg-primary/10 hover:enabled:border-primary/50 active:enabled:scale-95"
+                  className="table-pagination-button"
                 >
                   {nextButtonLabel}
                 </button>
               </div>
 
-              <div className="text-xs text-black">
+              <div className="text-xs text-black dark:text-white">
                 {pageInfoTemplate(
                   table.state.pagination.pageIndex + 1,
                   table.getPageCount()

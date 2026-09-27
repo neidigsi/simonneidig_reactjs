@@ -48,9 +48,9 @@ export default function SocialMediaButton({
       id={`social-media-button-${id}`}
       type="button"
       aria-label={`Open ${id} in a new tab`}
-      className={`items-center justify-center p-2 rounded-lg text-base bg-dark-grey/15
+      className={`glass-icon-btn glass-shine items-center justify-center p-2 rounded-2xl text-base
         ${active
-          ? "bg-linear-to-r from-primary to-secondary text-white dark:text-black"
+          ? "glass-button-primary"
           : "text-black dark:text-white"
         }`}
       onMouseEnter={() => setActive(true)}

@@ -1,5 +1,6 @@
 .bg-image {
     background-image: url('../../images/background.jpg');
+    position: relative;
 }
 
 .bg-image-attributes {
@@ -7,6 +8,22 @@
     background-attachment: fixed;
 }
 
+/* Soft light veil so glass surfaces stay readable over the photo */
+.bg-image::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.06) 40%, rgba(255, 255, 255, 0.2));
+}
+
 .dark .bg-image {
     background-image: url('../../images/background-dark.jpg');
+}
+
+.dark .bg-image::before {
+    background:
+        linear-gradient(180deg, rgba(10, 18, 30, 0.45), rgba(10, 18, 30, 0.15) 45%, rgba(10, 18, 30, 0.4));
 }

@@ -37,14 +37,14 @@ export default function Button({
   return (
     <button
       id={id}
-      className={`flex h-10 items-center justify-center p-2 rounded-lg text-base 
+      className={`glass-button glass-shine flex h-10 items-center justify-center px-4 py-2 rounded-2xl text-base 
         ${className} 
         ${
           (inverted && !isHovered) || (!inverted && isHovered)
-            ? "bg-linear-to-r from-primary to-secondary text-white dark:text-black"
+            ? "glass-button-primary"
             : "text-black dark:text-white"
         }
-        ${disabled && "p-2 rounded-lg text-base items-center text-dark-grey cursor-not-allowed opacity-50"}`}
+        ${disabled && "cursor-not-allowed opacity-50 saturate-50"}`}
       onClick={onClick}
       disabled={disabled}
       onMouseEnter={() => setIsHovered(true)}

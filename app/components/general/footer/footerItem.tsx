@@ -22,8 +22,8 @@ export default function FooterItem({
 
   return (
     <button
-      className={`text-black dark:text-white ${
-        path == undefined ? "" : "hover:cursor-pointer hover:text-primary"
+      className={`text-black dark:text-white transition-colors duration-300 ${
+        path == undefined ? "" : "liquid-underline hover:cursor-pointer hover:text-primary"
       }`}
       onClick={() => {
         if (path) {

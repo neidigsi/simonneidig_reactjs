@@ -116,7 +116,7 @@ export default function ContactMessagesTable(): JSX.Element {
   return (
     <div className="w-full">
       <div className="mb-4">
-        <p className="text-sm text-black mt-1">
+        <p className="text-sm text-black dark:text-white mt-1">
           {t("main.contact.table.description") || "Total messages"}:{" "}
           <span className="font-semibold">{messages.length}</span>
         </p>
