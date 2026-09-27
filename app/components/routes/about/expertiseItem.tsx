@@ -36,9 +36,7 @@ export default function ExpertiseItem({
   return (
     <div
       className={
-        "grid grid-cols-5 w-full rounded-xl py-5 transition-transform transform hover:scale-105 " +
-        (color == "primary" ? "lg:bg-primary/20" : "lg:bg-secondary/20") +
-        (index % 2 == 0 ? " bg-primary/20" : " bg-secondary/20")
+        "glass-item glass-shine animate-glass-rise grid grid-cols-5 w-full rounded-[20px] py-5 "
       }
     >
       <div className="grid col-span-1 justify-items-center ">

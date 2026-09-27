@@ -35,11 +35,11 @@ export default function Navigation({
   return (
     <div
       ref={navRef}
-      className="flex justify-between items-center sticky top-4 md:top-0 z-50 bg-inherit md:static md:z-auto"
+      className="flex justify-between items-center sticky top-4 md:top-0 z-50 md:static md:z-auto"
     >
       <div className="flex justify-start">
         {backButtonEnabled && (
-          <div className="bg-white dark:bg-dark-mode-background p-2 rounded-2xl drop-shadow-xl">
+          <div className="glass glass-strong glass-shine animate-glass-rise p-2 rounded-[20px]">
             <button
               id="navigation-back-button"
               type="button"
@@ -60,7 +60,7 @@ export default function Navigation({
         )}
       </div>
       <div className="flex justify-end">
-        <div className="grid grid-cols-4 gap-2 bg-white dark:bg-dark-mode-background p-2 rounded-2xl drop-shadow-xl">
+        <div className="glass glass-strong glass-shine animate-glass-rise grid grid-cols-4 gap-2 p-2 rounded-[20px]">
           <NavigationItem
             text={t("navigation.headlines.home")}
             path="/"

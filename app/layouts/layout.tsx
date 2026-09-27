@@ -23,13 +23,20 @@ export default function Layout() {
   return (
     <div
       className={
-        "grid place-content-center bg-image bg-image-attributes dark:bg-image-dark"
+        "grid place-content-center bg-image bg-image-attributes dark:bg-image-dark relative min-h-screen"
       }
     >
+      <div aria-hidden="true" className="liquid-orbs">
+        <span className="liquid-orb-1" />
+        <span className="liquid-orb-2" />
+        <span className="liquid-orb-3" />
+      </div>
       <StoreProvider>
-        <SidebarLayout>
-          <Outlet />
-        </SidebarLayout>
+        <div className="relative z-10">
+          <SidebarLayout>
+            <Outlet />
+          </SidebarLayout>
+        </div>
       </StoreProvider>
     </div>
   );

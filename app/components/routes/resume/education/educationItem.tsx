@@ -28,11 +28,10 @@ export default function EducationItem({
   const { t } = useTranslation();
 
   return (
-    <div className="pt-4 transition-transform transform hover:scale-105">
+    <div className="pt-4 animate-glass-rise">
       <div
         className={
-          "grid grid-cols-1 gap-2 w-full rounded-xl p-5 " +
-          (index % 2 == 1 ? "bg-primary/20" : "bg-secondary/20")
+          "glass-item glass-shine grid grid-cols-1 gap-2 w-full rounded-[20px] p-5 "
         }
       >
         <div className="text-sm text-dark-grey">

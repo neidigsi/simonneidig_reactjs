@@ -85,7 +85,7 @@ export default function Register() {
     <Card headline={t("register.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("register.description")}</div>
       {error.active && (
-        <div className="mb-4 p-3 rounded text-sm bg-red-500/20 text-red-600">
+        <div className="glass-item mb-4 p-3 rounded-2xl text-sm bg-red-500/20 text-red-600 border-red-500/30">
           {
             error.code === "REGISTER_USER_ALREADY_EXISTS" ?
               t("register.user-already-exists")

@@ -30,7 +30,7 @@ export default function InputLabel({
     <label
       htmlFor={htmlFor}
       className={clsx(
-        "absolute left-0 top-2 text-sm text-black dark:text-white transition-all duration-200 ease-in-out",
+        "absolute left-0 top-2 text-sm text-black/70 dark:text-white/70 transition-all duration-200 ease-in-out pointer-events-none",
         shouldFloat ? "translate-y-0 scale-90" : "translate-y-6 scale-100"
       )}
     >

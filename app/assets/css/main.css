@@ -19,6 +19,7 @@ body {
 
 @import "./utilities/_background";
 @import "./utilities/_general";
+@import "./utilities/_liquid-glass";
 
 @import "./components/general/_loading";
 @import "./components/general/_table";

@@ -50,7 +50,7 @@ export default function SendingConfirmation(): JSX.Element {
         <img
           src="/images/sendingSuccess.png"
           alt="Successfully sent"
-          className="rounded-xl max-w-[400px] mb-6"
+          className="rounded-[20px] max-w-[400px] mb-6 liquid-avatar"
         />
       </div>
       <div className="flex flex-row gap-4 mt-4">

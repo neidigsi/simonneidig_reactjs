@@ -19,8 +19,8 @@ export default function TextButton({
   return (
     <button
       id={id}
-      className={`hover:cursor-pointer hover:text-primary ${
-        active ? "text-primary" : "text-black dark:text-white"
+      className={`liquid-underline hover:cursor-pointer hover:text-primary transition-colors duration-300 ${
+        active ? "text-primary liquid-underline-active" : "text-black dark:text-white"
       } ${className}`}
       onClick={onClick}
     >

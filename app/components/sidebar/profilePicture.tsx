@@ -16,13 +16,12 @@ export default function ProfilePicture() {
     (state) => state.personalDetails.profilePictureId
   );
   return (
-    <div className="flex justify-center relative">
+    <div className="flex justify-center">
       <img
         src={`${import.meta.env.VITE_BACKEND_URL}/image/${profilePictureId}`}
         alt="User profile"
-        className="h-52 w-52 rounded-2xl z-10 object-cover"
+        className="liquid-avatar h-52 w-52 rounded-[24px] z-10 relative object-cover"
       />
-      <div className="bg-white dark:bg-dark-mode-background h-24 w-full rounded-t-2xl z-0 absolute bottom-0"></div>
     </div>
   );
 }

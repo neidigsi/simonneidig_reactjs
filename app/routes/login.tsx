@@ -75,7 +75,7 @@ export default function Login() {
     <Card headline={t("login.title")} footer={false} className="max-w-sm">
       <div className="mb-4">{t("login.description")}</div>
       {error.active && (
-        <div className="mb-4 p-3 rounded text-sm bg-red-500/20 text-red-600">
+        <div className="glass-item mb-4 p-3 rounded-2xl text-sm bg-red-500/20 text-red-600 border-red-500/30">
           {error.code === "LOGIN_BAD_CREDENTIALS" &&
             t("login.invalid-credentials")}
         </div>

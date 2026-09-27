@@ -89,9 +89,9 @@ export default function Notification({
   const notificationContent = (
     <div
       id={id}
-      className={`fixed bottom-6 right-6 w-96 p-4 rounded-lg bg-light-grey dark:bg-slate-700 text-black dark:text-white shadow-lg animate-fade-in ${getBorderColor()}`}
+      className={`glass glass-strong animate-glass-pop fixed bottom-6 right-6 w-96 p-4 rounded-[20px] text-black dark:text-white ${getBorderColor()}`}
     >
-      <div>
+      <div className="relative z-[1]">
         <h3 className="font-semibold text-sm mb-1">{header}</h3>
         <p className="text-xs text-slate-600 dark:text-slate-300">{description}</p>
       </div>

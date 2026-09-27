@@ -20,7 +20,7 @@ export default function Badge(badgeText: Readonly<BadgeText>) {
   return (
     <div
       className={
-        "flex w-fit text-center p-2 rounded-lg " + badgeText.additionalClasses
+        "glass-badge glass-interactive flex w-fit text-center px-3 py-2 rounded-2xl " + badgeText.additionalClasses
       }
     >
       {badgeText.text}

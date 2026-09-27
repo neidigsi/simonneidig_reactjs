@@ -27,11 +27,18 @@ export default function Layout() {
   return (
     <div
       className={
-        "grid place-content-center bg-image bg-image-attributes dark:bg-image-dark w-screen h-screen"
+        "grid place-content-center bg-image bg-image-attributes dark:bg-image-dark w-screen h-screen relative overflow-hidden"
       }
     >
+      <div aria-hidden="true" className="liquid-orbs">
+        <span className="liquid-orb-1" />
+        <span className="liquid-orb-2" />
+        <span className="liquid-orb-3" />
+      </div>
       <StoreProvider>
-        <Outlet />
+        <div className="relative z-10">
+          <Outlet />
+        </div>
       </StoreProvider>
     </div>
   );

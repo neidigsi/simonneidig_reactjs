@@ -39,7 +39,7 @@ export default function Error500(): JSX.Element {
         <img
           src="/images/500.png"
           alt="500 Server Error"
-          className="rounded-xl max-w-[400px] mb-6"
+          className="rounded-[20px] max-w-[400px] mb-6 liquid-avatar"
         />
         <p className="mb-4">{t("error.server-error.description")}</p>
         <Button
