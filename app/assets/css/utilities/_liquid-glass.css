@@ -209,9 +209,9 @@
   inset: -20%;
   background: linear-gradient(
     105deg,
-    transparent 42%,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent 58%
+    transparent 46%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 54%
   );
   transform: translateX(-70%);
   opacity: 0;
@@ -222,7 +222,7 @@
 .glass-shine:hover::after {
   opacity: 1;
   transform: translateX(70%);
-  transition: transform 0.8s var(--glass-spring), opacity 0.3s ease;
+  transition: transform 1s var(--glass-spring), opacity 0.4s ease;
 }
 
 /* ---------- Buttons ---------- */
