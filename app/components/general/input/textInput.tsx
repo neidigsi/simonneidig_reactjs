@@ -46,9 +46,9 @@ export default function TextInput({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={(e) => onChange(e.target.value)}
-        className={`glass-input peer w-full rounded-2xl ${
-          errorMessage ? "border-red-500/60" : ""
-        } bg-transparent px-3 pt-7 pb-2 text-base text-black dark:text-white placeholder-transparent focus:outline-none`}
+        className={`glass-input peer w-full ${
+          errorMessage ? "glass-input-error" : ""
+        } bg-transparent px-0 pt-7 pb-2 text-base text-black dark:text-white placeholder-transparent focus:outline-none`}
         placeholder={label}
       />
       <InputLabel htmlFor={id} shouldFloat={shouldFloat} label={label} />

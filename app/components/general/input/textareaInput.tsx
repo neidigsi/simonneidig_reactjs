@@ -40,7 +40,7 @@ export default function TextareaInput({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={(e) => onChange(e.target.value)}
-        className="glass-input peer w-full rounded-2xl bg-transparent px-3 pt-7 pb-2 text-base text-black dark:text-white placeholder-transparent focus:outline-none min-h-28"
+        className="glass-input peer w-full bg-transparent px-0 pt-7 pb-2 text-base text-black dark:text-white placeholder-transparent focus:outline-none"
         placeholder={label}
       />
       <InputLabel htmlFor={id} shouldFloat={shouldFloat} label={label} />

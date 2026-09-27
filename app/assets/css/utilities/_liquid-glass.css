@@ -86,6 +86,21 @@
   box-shadow: var(--glass-shadow-light), inset 0 1px 0 var(--glass-highlight);
 }
 
+/* .glass sets position:relative for its specular highlight; it must not
+   override explicit Tailwind positioning (e.g. the absolute backdrop
+   behind the profile picture). */
+.glass.absolute {
+  position: absolute;
+}
+
+.glass.fixed {
+  position: fixed;
+}
+
+.glass.sticky {
+  position: sticky;
+}
+
 .dark .glass {
   background: linear-gradient(135deg, rgba(38, 52, 71, 0.72), rgba(30, 41, 56, 0.52));
   border-color: rgba(255, 255, 255, 0.14);
@@ -318,29 +333,45 @@
 }
 
 .glass-input {
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  backdrop-filter: blur(12px) saturate(150%);
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  box-shadow: inset 0 1px 3px rgba(29, 99, 171, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  transition: border-color 0.3s ease, box-shadow 0.3s var(--glass-spring), background 0.3s ease, transform 0.3s var(--glass-spring);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(15, 40, 60, 0.22);
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dark .glass-input {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.16);
+  background: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.22);
 }
 
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.65);
-  border-color: rgba(0, 187, 170, 0.6);
-  box-shadow: 0 0 0 4px rgba(0, 187, 170, 0.18), 0 4px 20px rgba(0, 187, 170, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  transform: translateY(-1px);
+  background: transparent;
+  border-bottom-color: rgba(15, 40, 60, 0.45);
+  box-shadow: none;
+  transform: none;
 }
 
 .dark .glass-input:focus {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(0, 187, 170, 0.7);
+  background: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.45);
+  box-shadow: none;
+}
+
+/* The global :focus-visible ring must not draw a primary outline
+   around text fields — inputs only deepen their neutral underline. */
+.glass-input:focus-visible {
+  outline: none;
+}
+
+.glass-input-error {
+  border-bottom-color: rgba(239, 68, 68, 0.7);
+}
+
+.glass-input-error:focus {
+  border-bottom-color: rgba(239, 68, 68, 0.9);
+  box-shadow: 0 1px 0 0 rgba(239, 68, 68, 0.9);
 }
 
 /* ---------- Dividers + headline accents ---------- */
