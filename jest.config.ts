@@ -8,7 +8,7 @@ const config: Config = {
   coverageReporters: ["text", "json", "lcov", "cobertura"],
   setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": "<rootDir>/jest.transformer.cjs",
     // TanStack Table v9 ships ESM-only, so it must be transformed for Jest (CJS)
     "^.+\\.(js|jsx|mjs|cjs)$": ["ts-jest", { tsconfig: { allowJs: true } }],
   },
