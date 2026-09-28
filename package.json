@@ -6,8 +6,8 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "test": "jest",
-    "test:ci": "jest --coverage --json --outputFile=jest-report.json",
+    "test": "react-router typegen && jest",
+    "test:ci": "react-router typegen && jest --coverage --json --outputFile=jest-report.json",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },
