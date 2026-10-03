@@ -135,5 +135,8 @@
       "description": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.",
       "button": "Retour à l'accueil"
     }
+  },
+  "seo": {
+    "site-description": "Simon Neidig – Freelancer pour le développement de logiciels, la gestion de projets et l'analyse commerciale. Projets, CV et contact."
   }
 }

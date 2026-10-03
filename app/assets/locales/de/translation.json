@@ -135,5 +135,8 @@
       "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
       "button": "Zurück zur Startseite"
     }
+  },
+  "seo": {
+    "site-description": "Simon Neidig – Freelancer für Softwareentwicklung, Projektleitung & Business Analyse. Projekte, Lebenslauf und Kontakt."
   }
 }

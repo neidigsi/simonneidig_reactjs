@@ -7,6 +7,16 @@ import { JSX, useEffect } from "react";
 import "@/assets/css/main.css";
 import Card from "@/components/general/card/card";
 import Button from "@/components/general/buttons/button";
+import { pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/error500";
+
+export const meta: Route.MetaFunction = () =>
+  pageMeta({
+    title: "Server error – Simon Neidig",
+    description: "An unexpected error occurred on simon-neidig.eu.",
+    path: "/error",
+    noindex: true,
+  });
 
 /**
  * Error500 Component

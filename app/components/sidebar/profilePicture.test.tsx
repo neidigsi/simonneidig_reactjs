@@ -38,7 +38,9 @@ describe("ProfilePicture Component", () => {
       </Provider>
     );
 
-    const img = screen.getByAltText("User profile");
+    const img = screen.getByAltText(
+      "Simon Neidig – Freelance Softwareentwickler, Projektleitung & Business Analyse"
+    );
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute(
       "src",
@@ -58,7 +60,9 @@ describe("ProfilePicture Component", () => {
       </Provider>
     );
 
-    const img = screen.getByAltText("User profile");
+    const img = screen.getByAltText(
+      "Simon Neidig – Freelance Softwareentwickler, Projektleitung & Business Analyse"
+    );
     expect(img).toHaveClass("liquid-avatar");
     expect(img).toHaveClass("object-cover");
   });
@@ -74,10 +78,11 @@ describe("ProfilePicture Component", () => {
       </Provider>
     );
 
-    expect(screen.getByAltText("User profile")).toHaveAttribute(
-      "src",
-      expect.stringContaining("/image/1")
-    );
+    expect(
+      screen.getByAltText(
+        "Simon Neidig – Freelance Softwareentwickler, Projektleitung & Business Analyse"
+      )
+    ).toHaveAttribute("src", expect.stringContaining("/image/1"));
 
     // Re-create store with another id to simulate an update
     const updatedStore = makeStore(99);
@@ -87,9 +92,10 @@ describe("ProfilePicture Component", () => {
       </Provider>
     );
 
-    expect(screen.getByAltText("User profile")).toHaveAttribute(
-      "src",
-      expect.stringContaining("/image/99")
-    );
+    expect(
+      screen.getByAltText(
+        "Simon Neidig – Freelance Softwareentwickler, Projektleitung & Business Analyse"
+      )
+    ).toHaveAttribute("src", expect.stringContaining("/image/99"));
   });
 });

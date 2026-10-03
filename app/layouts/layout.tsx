@@ -34,7 +34,9 @@ export default function Layout() {
       <StoreProvider>
         <div className="relative z-10">
           <SidebarLayout>
-            <Outlet />
+            <main>
+              <Outlet />
+            </main>
           </SidebarLayout>
         </div>
       </StoreProvider>

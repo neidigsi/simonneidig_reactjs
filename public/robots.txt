@@ -1,4 +1,9 @@
 User-agent: *
+Allow: /
 Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+Disallow: /error
 
 Sitemap: https://simon-neidig.eu/sitemap.xml

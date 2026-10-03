@@ -19,7 +19,10 @@ export default function ProfilePicture() {
     <div className="flex justify-center">
       <img
         src={`${import.meta.env.VITE_BACKEND_URL}/image/${profilePictureId}`}
-        alt="User profile"
+        alt="Simon Neidig – Freelance Softwareentwickler, Projektleitung & Business Analyse"
+        width={208}
+        height={208}
+        loading="eager"
         className="liquid-avatar h-52 w-52 rounded-[24px] z-10 relative object-cover"
       />
     </div>

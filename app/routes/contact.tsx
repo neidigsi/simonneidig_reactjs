@@ -8,7 +8,11 @@ import ContactForm from "@/components/routes/contact/contactForm";
 import SendingConfirmation from "@/components/routes/contact/sendingConfirmation";
 import ContactMessagesTable from "@/components/routes/contact/contactMessagesTable";
 import Card from "@/components/general/card/card";
+import { PAGE_SEO, pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/contact";
 import "@/assets/css/main.css";
+
+export const meta: Route.MetaFunction = () => pageMeta(PAGE_SEO.contact);
 
 
 /**

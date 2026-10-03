@@ -7,7 +7,14 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadPage, resetPage } from "@/store/slices/pageSlice";
 import { setBackButtonEnabled } from "@/store/slices/settingsSlice";
 import PageMain from "@/components/routes/page/pageMain";
+import { PAGE_SEO, pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/page";
 import "@/assets/css/main.css";
+
+export const meta: Route.MetaFunction = ({ params }) =>
+  pageMeta(
+    params.path === "privacy" ? PAGE_SEO.privacy : PAGE_SEO.imprint
+  );
 
 /**
  * Page Component

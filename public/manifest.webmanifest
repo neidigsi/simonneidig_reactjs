@@ -1,0 +1,17 @@
+{
+  "name": "Simon Neidig",
+  "short_name": "Simon Neidig",
+  "description": "Simon Neidig – Freelancer für Softwareentwicklung, Projektleitung & Business Analyse. Projekte, Lebenslauf und Kontakt.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

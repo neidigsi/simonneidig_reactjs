@@ -8,6 +8,16 @@ import "@/assets/css/main.css";
 import { useAppSelector } from "@/store/hooks";
 import Card from "@/components/general/card/card";
 import Button from "@/components/general/buttons/button";
+import { pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/error404";
+
+export const meta: Route.MetaFunction = () =>
+  pageMeta({
+    title: "Page not found – Simon Neidig",
+    description: "The requested page was not found on simon-neidig.eu.",
+    path: "/",
+    noindex: true,
+  });
 
 /**
  * Error404 Component

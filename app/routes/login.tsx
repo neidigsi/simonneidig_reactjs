@@ -12,6 +12,16 @@ import TextInput from "@/components/general/input/textInput";
 import Button from "@/components/general/buttons/button";
 import TextButton from "@/components/general/buttons/textButton";
 import { setEmail, setPassword, login } from "@/store/slices/userSlice";
+import { pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/login";
+
+export const meta: Route.MetaFunction = () =>
+  pageMeta({
+    title: "Sign In – Simon Neidig",
+    description: "Sign in to manage content on simon-neidig.eu.",
+    path: "/login",
+    noindex: true,
+  });
 
 /**
  * Login Page Component
