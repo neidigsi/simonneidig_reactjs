@@ -63,7 +63,11 @@ describe("Sidebar", () => {
     );
     expect(screen.getByText("John Doe")).toBeInTheDocument();
     expect(screen.getByText("Developer")).toBeInTheDocument();
-    expect(screen.getByAltText("User profile")).toBeInTheDocument();
+    expect(
+      screen.getByAltText(
+        "Simon Neidig – Freelance Softwareentwickler, Projektleitung & Business Analyse"
+      )
+    ).toBeInTheDocument();
   });
 
   it("renders contact button and navigates to /contact on click", () => {

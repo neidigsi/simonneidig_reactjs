@@ -20,6 +20,16 @@ import {
   resetError,
   updateUserProfile,
 } from "@/store/slices/userSlice";
+import { pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/profile";
+
+export const meta: Route.MetaFunction = () =>
+  pageMeta({
+    title: "Edit Profile – Simon Neidig",
+    description: "Manage your profile on simon-neidig.eu.",
+    path: "/profile",
+    noindex: true,
+  });
 
 /**
  * Profile Page Component

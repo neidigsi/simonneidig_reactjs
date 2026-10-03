@@ -14,9 +14,11 @@ jest.mock("react-router", () => {
 });
 
 describe("root links", () => {
-  it("registers the favicon", () => {
+  it("registers the favicon, manifest and apple touch icon", () => {
     expect(links()).toEqual([
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/favicon.ico" },
     ]);
   });
 });

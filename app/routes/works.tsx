@@ -7,7 +7,11 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadWorks } from "@/store/slices/worksSlice";
 import Card from "@/components/general/card/card";
 import PortfolioList from "@/components/routes/works/portfolio/portfolioList";
+import { PAGE_SEO, pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/works";
 import "@/assets/css/main.css";
+
+export const meta: Route.MetaFunction = () => pageMeta(PAGE_SEO.works);
 
 /**
  * Works Page Component

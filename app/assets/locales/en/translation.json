@@ -135,5 +135,8 @@
       "description": "An unexpected error occurred. Please try again later.",
       "button": "Back to home"
     }
+  },
+  "seo": {
+    "site-description": "Simon Neidig – Freelancer for software development, project management & business analysis. Projects, resume and contact."
   }
 }

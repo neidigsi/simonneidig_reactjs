@@ -9,7 +9,11 @@ import { loadExperiences } from "@/store/slices/experienceSlice";
 import { loadEducations } from "@/store/slices/educationSlice";
 import EducationList from "@/components/routes/resume/education/educationList";
 import ExperienceList from "@/components/routes/resume/experience/experienceList";
+import { PAGE_SEO, pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/resume";
 import "@/assets/css/main.css";
+
+export const meta: Route.MetaFunction = () => pageMeta(PAGE_SEO.resume);
 
 /**
  * Resume Page Component

@@ -19,6 +19,16 @@ import {
   setRepeatPassword,
   register
 } from "@/store/slices/userSlice";
+import { pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/register";
+
+export const meta: Route.MetaFunction = () =>
+  pageMeta({
+    title: "Register – Simon Neidig",
+    description: "Create an account on simon-neidig.eu.",
+    path: "/register",
+    noindex: true,
+  });
 
 /**
  * Register Page Component

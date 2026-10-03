@@ -8,8 +8,12 @@ import Card from "@/components/general/card/card";
 import { loadPersonalInfo } from "@/store/slices/personalInfoSlice";
 import ExpertiseItem from "@/components/routes/about/expertiseItem";
 import { loadExpertises } from "@/store/slices/expertiseSlice";
+import { PAGE_SEO, pageMeta } from "@/utils/seo";
+import type { Route } from "./+types/about";
 import "@/assets/css/main.css";
 import "@/i18n";
+
+export const meta: Route.MetaFunction = () => pageMeta(PAGE_SEO.about);
 
 /**
  * About Page Component
